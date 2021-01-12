@@ -15,6 +15,14 @@ class CreateTransaccionProductosTable extends Migration
     {
         Schema::create('transaccion_productos', function (Blueprint $table) {
             $table->id();
+            
+            //Foraneas
+            $table->unsignedBigInteger('id_transaccions');
+            $table->foreign('id_transaccions')->references('id')->on('transaccions');
+
+            $table->unsignedBigInteger('id_productos');
+            $table->foreign('id_productos')->references('id')->on('productos');
+
             $table->timestamps();
         });
     }

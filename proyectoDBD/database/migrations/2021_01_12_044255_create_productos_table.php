@@ -15,6 +15,19 @@ class CreateProductosTable extends Migration
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
+            $table->string('nombreProducto');
+            $table->integer('precioUnitario');
+            $table->integer('stock');
+            $table->string('categoria');
+            //foraneas
+            $table->unsignedBigInteger('id_cantidad');
+            $table->foreign('id_cantidad')->references('id')->on('cantidads');
+
+            $table->unsignedBigInteger('id_proceso_compras');
+            $table->foreign('id_proceso_compras')->references('id')->on('proceso_compras');
+
+
+
             $table->timestamps();
         });
     }

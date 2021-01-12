@@ -15,6 +15,14 @@ class CreateTransaccionUsersTable extends Migration
     {
         Schema::create('transaccion_users', function (Blueprint $table) {
             $table->id();
+
+            //Foraneas
+            $table->unsignedBigInteger('id_transaccions');
+            $table->foreign('id_transaccions')->references('id')->on('transaccions');
+
+            $table->unsignedBigInteger('id_users');
+            $table->foreign('id_users')->references('id')->on('users');
+
             $table->timestamps();
         });
     }

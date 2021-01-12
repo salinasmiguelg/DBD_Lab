@@ -15,6 +15,15 @@ class CreatePuestoProductosTable extends Migration
     {
         Schema::create('puesto_productos', function (Blueprint $table) {
             $table->id();
+
+            //Foraneas
+            $table->unsignedBigInteger('id_productos');
+            $table->foreign('id_productos')->references('id')->on('productos');
+
+            $table->unsignedBigInteger('id_puestos');
+            $table->foreign('id_puestos')->references('id')->on('puestos');
+
+
             $table->timestamps();
         });
     }

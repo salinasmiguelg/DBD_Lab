@@ -15,6 +15,19 @@ class CreateProcesoComprasTable extends Migration
     {
         Schema::create('proceso_compras', function (Blueprint $table) {
             $table->id();
+            $table->boolean('pagoRealizado');
+            $table->date('fechaPago');
+
+            //Foraneas
+            $table->unsignedBigInteger('id_comprobantes');
+            $table->foreign('id_comprobantes')->references('id')->on('comprobantes');
+
+            $table->unsignedBigInteger('id_proceso_pagos');
+            $table->foreign('id_proceso_pagos')->references('id')->on('proceso_pagos');
+
+            $table->unsignedBigInteger('id_proceso_despachos');
+            $table->foreign('id_proceso_despachos')->references('id')->on('proceso_despachos');
+
             $table->timestamps();
         });
     }

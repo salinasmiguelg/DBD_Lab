@@ -15,6 +15,14 @@ class CreateProcesoPagosTable extends Migration
     {
         Schema::create('proceso_pagos', function (Blueprint $table) {
             $table->id();
+            $table->boolean('tipoPago');
+            $table->integer('costeTotal');
+            $table->date('fechaPago');
+
+            //Foranea
+            $table->unsignedBigInteger('id_metodo_de_pagos');
+            $table->foreign('id_metodo_de_pagos')->references('id')->on('metodo_de_pagos');
+
             $table->timestamps();
         });
     }

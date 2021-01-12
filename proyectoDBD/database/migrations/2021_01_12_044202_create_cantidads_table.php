@@ -15,6 +15,8 @@ class CreateCantidadsTable extends Migration
     {
         Schema::create('cantidads', function (Blueprint $table) {
             $table->id();
+            $table->string('tipoDeCantidad');
+
             $table->timestamps();
         });
     }

@@ -15,6 +15,19 @@ class CreatePuestosTable extends Migration
     {
         Schema::create('puestos', function (Blueprint $table) {
             $table->id();
+            $table->string('categoria');
+            $table->string('descripcion');
+
+            //Foraneas
+            $table->unsignedBigInteger('id_ferias');
+            $table->foreign('id_ferias')->references('id')->on('ferias');
+
+            $table->unsignedBigInteger('id_rols');
+            $table->foreign('id_rols')->references('id')->on('rols');
+
+            $table->unsignedBigInteger('id_users');
+            $table->foreign('id_users')->references('id')->on('users');
+
             $table->timestamps();
         });
     }
