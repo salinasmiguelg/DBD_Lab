@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Direccion;
 use App\Models\Proceso_despacho;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,7 +23,12 @@ class Proceso_despachoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'tipo_despacho' => $this->faker->randomElement($array = array ('Entrega a domicilio','Retiro en tienda')),
+            'fecha_despacho' => $this->faker->date,
+            'elementos_despachados' => $this->faker->numberBetween($min = 1, $max = 10),
+            'coste_despacho' => $this->faker->numberBetween($min = 1000, $max = 10000),
+            'id_direccions' => Direccion::Factory()
+
         ];
     }
 }

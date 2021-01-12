@@ -15,7 +15,7 @@ class CreateProcesoPagosTable extends Migration
     {
         Schema::create('proceso_pagos', function (Blueprint $table) {
             $table->id();
-            $table->boolean('tipoPago');
+            $table->string('tipoPago');
             $table->integer('costeTotal');
             $table->date('fechaPago');
 

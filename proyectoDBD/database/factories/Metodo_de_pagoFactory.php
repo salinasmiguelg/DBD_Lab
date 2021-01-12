@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Transaccion;
 use App\Models\Metodo_de_pago;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,7 +23,11 @@ class Metodo_de_pagoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'numero_tarjeta' => $this->faker->creditCardNumber,
+            'tipo_de_cuenta_bancaria' => $this->faker->creditCardType,
+            'banco' => $this->faker->randomElement($array = array ('Banco Estado','Santander','BCI','Banco de Chile')),
+            'titular' => $this->faker->name,
+            'id_transaccions' => Transaccion::Factory()
         ];
     }
 }

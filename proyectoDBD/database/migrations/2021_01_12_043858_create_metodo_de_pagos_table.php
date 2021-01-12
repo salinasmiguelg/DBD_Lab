@@ -18,7 +18,7 @@ class CreateMetodoDePagosTable extends Migration
             $table->string('numero_tarjeta');
             $table->string('tipo_de_cuenta_bancaria');
             $table->string('banco');
-            $table->string('tirular');
+            $table->string('titular');
             $table->unsignedBigInteger('id_transaccions');
             $table->foreign('id_transaccions')->references('id')->on('transaccions');
             $table->timestamps();

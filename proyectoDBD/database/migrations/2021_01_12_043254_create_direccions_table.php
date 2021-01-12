@@ -17,7 +17,7 @@ class CreateDireccionsTable extends Migration
             $table->id();
             $table->string('calle');
             $table->integer('numero');
-            $table->integer('es_departamento');
+            $table->boolean('es_departamento');
             $table->unsignedBigInteger('id_users');
             $table->foreign('id_users')->references('id')->on('users');
             $table->unsignedBigInteger('id_comunas');

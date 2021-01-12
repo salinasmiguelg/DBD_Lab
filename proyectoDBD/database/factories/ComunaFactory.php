@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Region;
 use App\Models\Comuna;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,7 +23,8 @@ class ComunaFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nombre' => $this->faker->state,
+            'id_regions' => Region::Factory()
         ];
     }
 }

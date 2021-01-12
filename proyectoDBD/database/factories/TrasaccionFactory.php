@@ -22,7 +22,8 @@ class TrasaccionFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'monto' => $this->faker->randomNumber,
+            'fechaPago' => $this->faker->date
         ];
     }
 }

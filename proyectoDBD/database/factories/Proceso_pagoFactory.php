@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Metodo_de_pago;
 use App\Models\Proceso_pago;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,7 +23,10 @@ class Proceso_pagoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'tipoPago' => $this->faker->creditCardType,
+            'costeTotal' => $this->faker->numberBetween($min = 1000, $max = 10000),
+            'fechaPago' => $this->faker->date,
+            'id_metodo_de_pagos' => Metodo_de_pago::Factory()
         ];
     }
 }

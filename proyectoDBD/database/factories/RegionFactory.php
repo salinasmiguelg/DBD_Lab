@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use App\Models\Region;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,7 +23,8 @@ class RegionFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nombre' => $this->faker->randomElement($array = array ('Arica y Parinacota','Tarapaca','Antofagasta','Atacama','Coquimbo','Valparaiso','Metropolitana de Santiago','Libertador General Bernardo O´Higgins','Maule','Ñuble','Biobio','La Araucania','Los Rios','Los Lagos','Aysen del General Carlos Ibáñez del Campo','Magallanes y la Antártica Chilena')),
+            'id_users' => User::Factory()
         ];
     }
 }
