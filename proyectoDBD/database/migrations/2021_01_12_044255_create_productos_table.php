@@ -20,8 +20,8 @@ class CreateProductosTable extends Migration
             $table->integer('stock');
             $table->string('categoria');
             //foraneas
-            $table->unsignedBigInteger('id_cantidad');
-            $table->foreign('id_cantidad')->references('id')->on('cantidads');
+            $table->unsignedBigInteger('id_cantidads');
+            $table->foreign('id_cantidads')->references('id')->on('cantidads');
 
             $table->unsignedBigInteger('id_proceso_compras');
             $table->foreign('id_proceso_compras')->references('id')->on('proceso_compras');

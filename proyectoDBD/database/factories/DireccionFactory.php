@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Region;
+use App\Models\User;
 use App\Models\Comuna;
 use App\Models\Direccion;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -26,8 +26,8 @@ class DireccionFactory extends Factory
         return [
             'calle' => $this->faker->streetName,
             'numero' => $this->faker->buildingNumber,
-            'es_departamento' => $this->boolean,
-            'id_regions' => Region::all()->random()->id,
+            'es_departamento' => $this->faker->boolean,
+            'id_users' => User::all()->random()->id,
             'id_comunas' => Comuna::all()->random()->id
         ];
     }

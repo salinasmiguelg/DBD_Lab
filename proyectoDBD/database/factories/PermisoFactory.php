@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Models\Rol;
 use App\Models\Permiso;
-use App\Models\Rol;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 
