@@ -23,6 +23,9 @@ class Proceso_compraFactory extends Factory
     {
         return [
             //
+            'pagoRealizado'=>$this->faker->boolean,
+            'fechaPago'=>$this->faker->date
+
         ];
     }
 }

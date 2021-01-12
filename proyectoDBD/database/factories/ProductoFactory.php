@@ -23,6 +23,11 @@ class ProductoFactory extends Factory
     {
         return [
             //
+            'nombreProducto'=>$this->faker->word,
+            'precioUnitario'=>$this->faker->randomNumber,
+            'stock'=>$this->faker->randomNumber,
+            'categoria'=>$this->faker->word
+
         ];
     }
 }

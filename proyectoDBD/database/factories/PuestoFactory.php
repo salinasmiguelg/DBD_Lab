@@ -23,6 +23,8 @@ class PuestoFactory extends Factory
     {
         return [
             //
+            'categoria'=>$this->faker->text,
+            'descripcion'=>$this->faker->text
         ];
     }
 }

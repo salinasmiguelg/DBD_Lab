@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Permiso;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+
 class PermisoFactory extends Factory
 {
     /**
@@ -23,6 +24,7 @@ class PermisoFactory extends Factory
     {
         return [
             //
+            'nombre'=>$this->faker->word
         ];
     }
 }

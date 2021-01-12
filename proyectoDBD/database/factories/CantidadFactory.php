@@ -22,7 +22,9 @@ class CantidadFactory extends Factory
     public function definition()
     {
         return [
-            //
+            // 
+            'tipoDeCantidad'=>$this->faker->word
+            
         ];
     }
 }
