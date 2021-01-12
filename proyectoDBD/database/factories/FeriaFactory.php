@@ -24,7 +24,7 @@ class FeriaFactory extends Factory
     {
         return [
             'descripcion' => $this->faker->text,
-            'id_comunas' => Comuna::Factory()
+            'id_comunas' => Comuna::all()->random()->id
         ];
     }
 }

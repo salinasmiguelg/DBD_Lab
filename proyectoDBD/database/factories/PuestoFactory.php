@@ -28,9 +28,9 @@ class PuestoFactory extends Factory
             //
             'categoria'=>$this->faker->text,
             'descripcion'=>$this->faker->text,
-            'id_users' => User::Factory(),
-            'id_ferias' => Feria::Factory(),
-            'id_rols' => Rol::Factory()
+            'id_users' => User::all()->random()->id,
+            'id_ferias' => Feria::all()->random()->id,
+            'id_rols' => Rol::all()->random()->id
         ];
     }
 }

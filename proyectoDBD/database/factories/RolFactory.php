@@ -25,7 +25,7 @@ class RolFactory extends Factory
         return [
             //
             'nombre'=>$this->faker->word,
-            'id_users' => User::Factory()
+            'id_users' => User::all()->random()->id
         ];
     }
 }

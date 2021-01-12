@@ -27,7 +27,7 @@ class Metodo_de_pagoFactory extends Factory
             'tipo_de_cuenta_bancaria' => $this->faker->creditCardType,
             'banco' => $this->faker->randomElement($array = array ('Banco Estado','Santander','BCI','Banco de Chile')),
             'titular' => $this->faker->name,
-            'id_transaccions' => Transaccion::Factory()
+            'id_transaccions' => Transaccion::all()->random()->id
         ];
     }
 }

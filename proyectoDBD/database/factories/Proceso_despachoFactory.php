@@ -27,7 +27,7 @@ class Proceso_despachoFactory extends Factory
             'fecha_despacho' => $this->faker->date,
             'elementos_despachados' => $this->faker->numberBetween($min = 1, $max = 10),
             'coste_despacho' => $this->faker->numberBetween($min = 1000, $max = 10000),
-            'id_direccions' => Direccion::Factory()
+            'id_direccions' => Direccion::all()->random()->id
 
         ];
     }

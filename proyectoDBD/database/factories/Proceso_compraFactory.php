@@ -28,9 +28,9 @@ class Proceso_compraFactory extends Factory
             //
             'pagoRealizado'=>$this->faker->boolean,
             'fechaPago'=>$this->faker->date,
-            'id_comprobantes' => Comprobante::Factory(),
-            'id_proceso_pagos' => Proceso_pago::Factory(),
-            'id_proceso_despachos' => Proceso_despacho::Factory()
+            'id_comprobantes' => Comprobante::all()->random()->id,
+            'id_proceso_pagos' => Proceso_pago::all()->random()->id,
+            'id_proceso_despachos' => Proceso_despacho::all()->random()->id
         ];
     }
 }

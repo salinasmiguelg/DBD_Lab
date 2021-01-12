@@ -24,7 +24,7 @@ class ComprobanteFactory extends Factory
     {
         return [
             'tipo' => $this->faker->randomElement($array = array ('boleta','comprobante')),
-            'id_users' => User::Factory()
+            'id_users' => User::all()->random()->id
         ];
     }
 }

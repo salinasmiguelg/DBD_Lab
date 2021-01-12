@@ -29,8 +29,8 @@ class ProductoFactory extends Factory
             'precioUnitario'=>$this->faker->randomNumber,
             'stock'=>$this->faker->randomNumber,
             'categoria'=>$this->faker->word,
-            'id_proceso_compras' => Proceso_compra::Factory(),
-            'id_cantidads' => Cantidad::Factory()
+            'id_proceso_compras' => Proceso_compra::all()->random()->id,
+            'id_cantidads' => Cantidad::all()->random()->id
         ];
     }
 }

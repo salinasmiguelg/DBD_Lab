@@ -24,7 +24,7 @@ class ComunaFactory extends Factory
     {
         return [
             'nombre' => $this->faker->state,
-            'id_regions' => Region::Factory()
+            'id_regions' => Region::all()->random()->id
         ];
     }
 }

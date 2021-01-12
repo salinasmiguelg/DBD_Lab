@@ -24,8 +24,8 @@ class Transaccion_comprobanteFactory extends Factory
     public function definition()
     {
         return [
-            'id_transaccions' => Transaccion::Factory(),
-            'id_comprobantes' => Comprobante::Factory()
+            'id_transaccions' => Transaccion::all()->random()->id,
+            'id_comprobantes' => Comprobante::all()->random()->id
         ];
     }
 }

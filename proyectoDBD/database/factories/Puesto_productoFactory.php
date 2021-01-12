@@ -24,8 +24,8 @@ class Puesto_productoFactory extends Factory
     public function definition()
     {
         return [
-            'id_puestos' => Puesto::Factory(),
-            'id_productos' => Producto::Factory()
+            'id_puestos' => Puesto::all()->random()->id,
+            'id_productos' => Producto::all()->random()->id
         ];
     }
 }

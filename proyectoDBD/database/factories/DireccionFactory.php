@@ -27,8 +27,8 @@ class DireccionFactory extends Factory
             'calle' => $this->faker->streetName,
             'numero' => $this->faker->buildingNumber,
             'es_departamento' => $this->boolean,
-            'id_regions' => Region::Factory(),
-            'id_comunas' => Comuna::Factory()
+            'id_regions' => Region::all()->random()->id,
+            'id_comunas' => Comuna::all()->random()->id
         ];
     }
 }
