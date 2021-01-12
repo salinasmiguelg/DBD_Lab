@@ -23,7 +23,7 @@ class CantidadFactory extends Factory
     {
         return [
             // 
-            'tipoDeCantidad'=>$this->faker->word
+            'tipoDeCantidad'=> $this->faker->randomElement($array = array ('Kilos' , 'Unidades' , 'Cajas'))
             
         ];
     }
