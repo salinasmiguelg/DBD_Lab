@@ -15,6 +15,12 @@ class CreateMetodoDePagosTable extends Migration
     {
         Schema::create('metodo_de_pagos', function (Blueprint $table) {
             $table->id();
+            $table->string('numero_tarjeta');
+            $table->string('tipo_de_cuenta_bancaria');
+            $table->string('banco');
+            $table->string('tirular');
+            $table->unsignedBigInteger('id_transaccions');
+            $table->foreign('id_transaccions')->references('id')->on('transaccions');
             $table->timestamps();
         });
     }

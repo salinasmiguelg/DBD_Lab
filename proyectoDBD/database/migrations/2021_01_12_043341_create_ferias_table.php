@@ -15,6 +15,9 @@ class CreateFeriasTable extends Migration
     {
         Schema::create('ferias', function (Blueprint $table) {
             $table->id();
+            $table->string('descripcion');
+            $table->unsignedBigInteger('id_comunas');
+            $table->foreign('id_comunas')->references('id')->on('comunas');
             $table->timestamps();
         });
     }

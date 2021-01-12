@@ -15,6 +15,13 @@ class CreateProcesoDespachosTable extends Migration
     {
         Schema::create('proceso_despachos', function (Blueprint $table) {
             $table->id();
+            $table->string('tipo_despacho');
+            $table->date('fecha_despacho');
+            $table->integer('elementos_despachados');
+            $table->string('productos_despacho');
+            $table->integer('coste_despacho');
+            $table->unsignedBigInteger('id_direccions');
+            $table->foreign('id_direccions')->references('id')->on('direccions');
             $table->timestamps();
         });
     }

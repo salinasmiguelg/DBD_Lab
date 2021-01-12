@@ -15,6 +15,9 @@ class CreateComprobantesTable extends Migration
     {
         Schema::create('comprobantes', function (Blueprint $table) {
             $table->id();
+            $table->string('tipo');
+            $table->unsignedBigInteger('id_users');
+            $table->foreign('id_users')->references('id')->on('users');
             $table->timestamps();
         });
     }

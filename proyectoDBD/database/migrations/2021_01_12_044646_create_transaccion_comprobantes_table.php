@@ -15,6 +15,10 @@ class CreateTransaccionComprobantesTable extends Migration
     {
         Schema::create('transaccion_comprobantes', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_transaccions');
+            $table->foreign('id_transaccions')->references('id')->on('transaccions');
+            $table->unsignedBigInteger('id_comprobantes');
+            $table->foreign('id_comprobantes')->references('id')->on('coprobantes');
             $table->timestamps();
         });
     }
