@@ -2,7 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\Comprobante;
+use App\Models\Proceso_pago;
 use App\Models\Proceso_compra;
+use App\Models\Proceso_despacho;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class Proceso_compraFactory extends Factory
@@ -24,8 +27,10 @@ class Proceso_compraFactory extends Factory
         return [
             //
             'pagoRealizado'=>$this->faker->boolean,
-            'fechaPago'=>$this->faker->date
-
+            'fechaPago'=>$this->faker->date,
+            'id_comprobantes' => Comprobante::Factory(),
+            'id_proceso_pagos' => Proceso_pago::Factory(),
+            'id_proceso_despachos' => Proceso_despacho::Factory()
         ];
     }
 }

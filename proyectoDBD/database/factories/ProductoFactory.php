@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Cantidad;
+use App\Models\Proceso_compra;
 use App\Models\Producto;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -26,8 +28,9 @@ class ProductoFactory extends Factory
             'nombreProducto'=>$this->faker->word,
             'precioUnitario'=>$this->faker->randomNumber,
             'stock'=>$this->faker->randomNumber,
-            'categoria'=>$this->faker->word
-
+            'categoria'=>$this->faker->word,
+            'id_proceso_compras' => Proceso_compra::Factory(),
+            'id_cantidads' => Cantidad::Factory()
         ];
     }
 }

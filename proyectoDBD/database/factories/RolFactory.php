@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use App\Models\Rol;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -23,8 +24,8 @@ class RolFactory extends Factory
     {
         return [
             //
-            'nombre'=>$this->faker->word
-
+            'nombre'=>$this->faker->word,
+            'id_users' => User::Factory()
         ];
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Transaccion;
+use App\Models\Comprobante;
 use App\Models\Transaccion_comprobante;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,7 +24,8 @@ class Transaccion_comprobanteFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'id_transaccions' => Transaccion::Factory(),
+            'id_comprobantes' => Comprobante::Factory()
         ];
     }
 }

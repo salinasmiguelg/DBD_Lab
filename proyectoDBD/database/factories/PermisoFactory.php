@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Rol;
 use App\Models\Permiso;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -24,7 +25,8 @@ class PermisoFactory extends Factory
     {
         return [
             //
-            'nombre'=>$this->faker->word
+            'nombre'=>$this->faker->word,
+            'id_rols' => Rol::Factory()
         ];
     }
 }

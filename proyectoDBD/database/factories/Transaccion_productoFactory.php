@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Transaccion;
+use App\Models\Producto;
 use App\Models\Transaccion_producto;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,7 +24,8 @@ class Transaccion_productoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'id_transaccions' => Transaccion::Factory(),
+            'id_productos' => Producto::Factory()
         ];
     }
 }
