@@ -3,64 +3,73 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Proceso_despacho;
+use App\Models\Direccion;
 
 class Proceso_despachoController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Se muestra una lista con los elementos
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $proceso_despacho = Proceso_despacho::all()->where($proceso_despacho->delete,false);
+        return reponse()->json($proceso_despacho);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * Guarda un nuevo elemento en la base de datos.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $proceso_despacho = new Proceso_despacho();
+        $validatedData = $request->validate([
+            'tipo_despacho' => ['require' , 'min:2' , 'max:30'],
+            'fecha_despacho' => ['require'],
+            'elementos_despachados' => ['require' , "min:1"],
+            'coste_despacho' => ['require' , "min:1"],
+            'id_direccions' => ['require' , "numeric"],
+            'delete' => ['require' , 'boolean']
+        ]);
+
+        //Se verifican que las llaves foraneas del elemento a guardar exitan como tal
+        $direccion = Direccion::find($request->id_users);
+        if($direccion == NULL){
+            return response()->json([
+                'message'=>'No existe direccion con esa id'
+        }
+        
+        $proceso_despacho->calle = $request->calle;
+        $proceso_despacho->numero = $request->numero;
+        $proceso_despacho->es_departamento = $request->es_departamento;
+        $proceso_despacho->delete = $request->delete;
+        //$proceso_despacho->delete = "false";
+
+        return response()->json([
+            "message"=>"Se ha creado un nuevo Proceso de Despacho",
+            "id" => $proceso_despacho->id
+        ],202);
     }
 
     /**
-     * Display the specified resource.
+     * Muestra el recurso especificado
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $proceso_despacho = Proceso_despacho::find($id);
+        return response()->json($proceso_despacho);
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
+     * Actualiza el recurso especificado en la base de Datos
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -68,17 +77,40 @@ class Proceso_despachoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $proceso_despacho = Proceso_despacho::find($id);
+        if($request->tipo_despacho != NULL){
+            $proceso_despacho->tipo_despacho = $request->tipo_despacho;
+        }
+        if($request->fecha_despacho != NULL){
+            $proceso_despacho->fecha_despacho = $request->fecha_despacho;
+        }
+        if($request->elementos_despachados != NULL){
+            $proceso_despacho->elementos_despachados = $request->elementos_despachados;
+        }
+        if($request->coste_despacho != NULL){
+            $proceso_despacho->coste_despacho = $request->coste_despacho;
+        }
+        if($request->delete != NULL){
+            $proceso_despacho->delete = $request->delete;
+        $proceso_despacho->save();
+        return response()->jason($proceso_despacho);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina el recurso especificado de la Base de Datos.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $proceso_despacho = Proceso_despacho::find($id);
+        if($proceso_despacho != NULL){
+           $proceso_despacho->delete = true; 
+        }
+        else{
+            "message" => "id proceso de despacho inexistente"
+        }
+        return response()->json($proceso_despacho);
     }
 }

@@ -3,64 +3,66 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Permiso;
+use App\Models\Rol;
 
 class PermisoController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Se muestra una lista con los elementos
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $permiso = Permiso::all()->where($permiso->delete,false);
+        return reponse()->json($permiso);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * Guarda un nuevo elemento en la base de datos.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $permiso = new Permiso();
+        $validatedData = $request->validate([
+            'nombre' => ['require' , 'min:2' , 'max:30'],
+            'delete' => ['require' , 'boolean'],
+            'id_rols' => ['require' , 'numeric']
+        ]);
+
+        //Se verifican que las llaves foraneas del elemento a guardar exitan como tal
+        $rol = Rol::find($request->id_users);
+        if($rol == NULL){
+            return response()->json([
+                'message'=>'No existe Rol con esa id'
+        }
+        
+        $permiso->nombre = $request->nombre;
+        $permiso->delete = $request->delete;
+        return response()->json([
+        "message"=>"Se ha creado un Permiso",
+        "id" => $permiso->id
+        ],202);
     }
 
     /**
-     * Display the specified resource.
+     *  Muestra el recurso especificado
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $permiso = Permiso::find($id);
+        return response()->json($permiso);
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
+     * Actualiza el recurso especificado en la base de Datos
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -68,17 +70,31 @@ class PermisoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $permiso = Permiso::find($id);
+        if($request->nombre != NULL){
+            $permiso->nombre = $request->nombre;
+        }
+        if($request->delete != NULL){
+            $permiso->delete = $request->delete;
+        $permiso->save();
+        return response()->jason($permiso);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina el recurso especificado de la Base de Datos.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $permiso = Permiso::find($id);
+        if($permiso != NULL){
+           $permiso->delete = true; 
+        }
+        else{
+            "message" => "id Permiso inexistente"
+        }
+        return response()->json($permiso);
     }
 }

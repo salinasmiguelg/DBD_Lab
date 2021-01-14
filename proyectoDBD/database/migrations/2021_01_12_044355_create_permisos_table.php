@@ -18,6 +18,7 @@ class CreatePermisosTable extends Migration
             $table->string('nombre');
             $table->unsignedBigInteger('id_rols');
             $table->foreign('id_rols')->references('id')->on('rols');
+            $table->boolean('delete');
             $table->timestamps();
         });
     }

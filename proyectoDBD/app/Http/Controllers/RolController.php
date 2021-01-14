@@ -1,66 +1,69 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Rol;
+use App\Models\User;
 
 use Illuminate\Http\Request;
 
 class RolController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Se muestra una lista con los elementos
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $rol = Direccion::all()->where($rol->delete,false);
+        return reponse()->json($rol);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * Guarda un nuevo elemento en la base de datos.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $rol = new Rol();
+        $validatedData = $request->validate([
+            'nombre' => ['require' , 'min:2' , 'max:30'],
+            'delete' => ['require' , 'boolean'],
+            'id_users' => ['require' , 'boolean']
+        ]);
+
+        //Se verifican que las llaves foraneas del elemento a guardar exitan como tal
+        $user = User::find($request->id_users);
+        if($user == NULL){
+            return response()->json([
+                'message'=>'No existe usuario con esa id'
+        }
+        
+        $rol->nombre = $request->nombre;
+        $rol->delete = $request->delete;
+        //$rol->delete = "false";
+        return response()->json([
+        "message"=>"Se ha creado un Rol",
+        "id" => $rol->id
+        ],202);
     }
 
     /**
-     * Display the specified resource.
+     * Muestra el recurso especificado.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $rol = Rol::find($id);
+        return response()->json($rol);
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
+     * Actualiza el recurso especificado en la base de Datos
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -68,17 +71,31 @@ class RolController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rol = User::find($id);
+        if($request->nombre != NULL){
+            $rol->nombre = $request->nombre;
+        }
+        if($request->delete != NULL){
+            $direccion->delete = $request->delete;
+        $rol->save();
+        return response()->jason($rol);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina el recurso especificado de la Base de Datos.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $rol = Rol::find($id);
+        if($rol != NULL){
+           $rol->delete = true; 
+        }
+        else{
+            "message" => "id Rol inexistente"
+        }
+        return response()->json($rol);
     }
 }

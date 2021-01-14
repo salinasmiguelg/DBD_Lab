@@ -26,6 +26,7 @@ class Proceso_pagoFactory extends Factory
             'tipoPago' => $this->faker->creditCardType,
             'costeTotal' => $this->faker->numberBetween($min = 1000, $max = 10000),
             'fechaPago' => $this->faker->date,
+            'delete' => $this->faker->boolean,
             'id_metodo_de_pagos' => Metodo_de_pago::all()->random()->id
         ];
     }

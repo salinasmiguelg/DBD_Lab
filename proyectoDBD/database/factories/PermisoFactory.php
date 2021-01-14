@@ -26,6 +26,7 @@ class PermisoFactory extends Factory
         return [
             //
             'nombre' => $this->faker->randomElement($array = array ('Crear Usuario' , 'Borrar Usuario','Modificar Usuario')),
+            'delete' => $this->faker->boolean,
             'id_rols' => Rol::all()->random()->id
         ];
     }

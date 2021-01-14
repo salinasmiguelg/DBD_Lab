@@ -19,6 +19,7 @@ class CreateProcesoDespachosTable extends Migration
             $table->date('fecha_despacho');
             $table->integer('elementos_despachados');
             $table->integer('coste_despacho');
+            $table->boolean('delete');
             $table->unsignedBigInteger('id_direccions');
             $table->foreign('id_direccions')->references('id')->on('direccions');
             $table->timestamps();

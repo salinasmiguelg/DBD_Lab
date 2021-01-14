@@ -18,6 +18,7 @@ class CreateRolsTable extends Migration
             $table->string('nombre');
             $table->unsignedBigInteger('id_users');
             $table->foreign('id_users')->references('id')->on('users');
+            $table->boolean('delete');
             $table->timestamps();
         });
     }

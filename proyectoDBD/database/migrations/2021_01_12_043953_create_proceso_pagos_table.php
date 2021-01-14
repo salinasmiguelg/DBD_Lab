@@ -18,6 +18,7 @@ class CreateProcesoPagosTable extends Migration
             $table->string('tipoPago');
             $table->integer('costeTotal');
             $table->date('fechaPago');
+            $table->boolean('delete');
 
             //Foranea
             $table->unsignedBigInteger('id_metodo_de_pagos');

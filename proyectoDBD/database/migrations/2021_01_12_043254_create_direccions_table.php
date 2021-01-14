@@ -22,6 +22,7 @@ class CreateDireccionsTable extends Migration
             $table->foreign('id_users')->references('id')->on('users');
             $table->unsignedBigInteger('id_comunas');
             $table->foreign('id_comunas')->references('id')->on('comunas');
+            $table->boolean('delete');
             $table->timestamps();
         });
     }
