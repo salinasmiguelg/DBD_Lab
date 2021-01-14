@@ -14,16 +14,8 @@ class Puesto_productoController extends Controller
     public function index()
     {
         //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $puesto_productoController = Puesto_productoController::all()->where($puesto_productoController->delete,false);
+        return reponse()->json($puesto_productoController);
     }
 
     /**
@@ -48,16 +40,6 @@ class Puesto_productoController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

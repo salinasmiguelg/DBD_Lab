@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Comuna;
 class ComunaController extends Controller
 {
     /**
@@ -14,18 +14,11 @@ class ComunaController extends Controller
     public function index()
     {
         //
+        $comuna = Comuna::all()->where($comuna->delete,false);
+        return reponse()->json($comuna);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
+   
     /**
      * Store a newly created resource in storage.
      *
@@ -35,6 +28,15 @@ class ComunaController extends Controller
     public function store(Request $request)
     {
         //
+        $comuna = new Comuna();
+        $validatedData = $request->validate([
+            'nombre' => ['require' , 'min:2' , 'max:30']
+        ]);
+        $comuna->nombre = $request->nombre;
+        return response()->json([
+        "mesage"=>"Se ha creado una region",
+        "id" => $comuna->id
+        ],202);
     }
 
     /**
@@ -46,18 +48,10 @@ class ComunaController extends Controller
     public function show($id)
     {
         //
+        $comuna = Comuna::find($id);
+        return response()->json($comuna);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -69,6 +63,12 @@ class ComunaController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $comuna = Comuna::find($id);
+        if($request->nombre != NULL){
+            $comuna->nombre = $request->nombre;
+        }
+        $comuna->save();
+        return response()->jason($comuna);
     }
 
     /**
@@ -80,5 +80,13 @@ class ComunaController extends Controller
     public function destroy($id)
     {
         //
+        $comuna = Comuna::find($id);
+        if($comuna != NULL){
+           $comuna->delete = true; 
+        }
+        else{
+            "message" => "id inexistente"
+        }
+        return response()->json($comuna);
     }
 }

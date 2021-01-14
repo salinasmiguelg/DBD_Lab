@@ -24,6 +24,7 @@ class RegionFactory extends Factory
     {
         return [
             'nombre' => $this->faker->randomElement($array = array ('Arica y Parinacota','Tarapaca','Antofagasta','Atacama','Coquimbo','Valparaiso','Metropolitana de Santiago','Libertador General Bernardo O´Higgins','Maule','Ñuble','Biobio','La Araucania','Los Rios','Los Lagos','Aysen del General Carlos Ibáñez del Campo','Magallanes y la Antártica Chilena')),
+            'delete' => $this->faker->boolean,
             'id_users' => User::all()->random()->id
         ];
     }

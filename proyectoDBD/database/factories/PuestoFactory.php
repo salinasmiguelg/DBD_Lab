@@ -28,6 +28,7 @@ class PuestoFactory extends Factory
             //
             'categoria'=>$this->faker->text,
             'descripcion'=>$this->faker->text,
+            'delete' => $this->faker->boolean,
             'id_users' => User::all()->random()->id,
             'id_ferias' => Feria::all()->random()->id,
             'id_rols' => Rol::all()->random()->id

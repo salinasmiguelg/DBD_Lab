@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Region;
 class RegionController extends Controller
 {
     /**
@@ -14,16 +14,8 @@ class RegionController extends Controller
     public function index()
     {
         //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $region = Region::all()->where($region->delete,false);
+        return reponse()->json($region);
     }
 
     /**
@@ -35,7 +27,17 @@ class RegionController extends Controller
     public function store(Request $request)
     {
         //
+        $region = new Region();
+        $validatedData = $request->validate([
+            'nombre' => ['require' , 'min:2' , 'max:30']
+        ]);
+        $region->nombre = $request->nombre;
+        return response()->json([
+        "mesage"=>"Se ha creado una region",
+        "id" => $region->id
+        ],202);
     }
+    
 
     /**
      * Display the specified resource.
@@ -46,18 +48,10 @@ class RegionController extends Controller
     public function show($id)
     {
         //
+        $region = Region::find($id);
+        return response()->json($region);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -69,6 +63,12 @@ class RegionController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $region = Region::find($id);
+        if($request->nombre != NULL){
+            $region->nombre = $request->nombre;
+        }
+        $region->save();
+        return response()->jason($region);
     }
 
     /**
@@ -80,5 +80,13 @@ class RegionController extends Controller
     public function destroy($id)
     {
         //
+        $region = Region::find($id);
+        if($region != NULL){
+           $region->delete = true; 
+        }
+        else{
+            "message" => "id inexistente"
+        }
+        return response()->json($region);
     }
 }

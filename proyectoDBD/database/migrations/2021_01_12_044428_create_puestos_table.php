@@ -17,7 +17,7 @@ class CreatePuestosTable extends Migration
             $table->id();
             $table->string('categoria');
             $table->string('descripcion');
-
+            $table->boolean('delete');
             //Foraneas
             $table->unsignedBigInteger('id_ferias');
             $table->foreign('id_ferias')->references('id')->on('ferias');
