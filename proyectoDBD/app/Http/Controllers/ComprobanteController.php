@@ -45,7 +45,7 @@ class ComprobanteController extends Controller
         if($user  == NULL){
             return response()->json([
                 "message"=>"No se encontró el usuario",
-                "id"=>$user->id;
+                "id"=>$user->id,
             ],404);
         }
         $comprobante = new Comprobante();
@@ -92,7 +92,7 @@ class ComprobanteController extends Controller
                 $comprobante->tipo = $request->tipo;
             }
             if($request->id_users!=NULL){
-                $user : User::find($id_users);
+                $user = User::find($id_users);
                 if($user != NULL){
                     $comprobante->id_users = $request->id_users;
                 }
