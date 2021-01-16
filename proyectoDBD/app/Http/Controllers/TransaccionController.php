@@ -77,6 +77,7 @@ class TransaccionController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $transaccion = Transaccion::find($id);
         if($transaccion!=NULL){
             if($request->monto!=NULL){
                 $transaccion->monto = $request->monto;
@@ -87,6 +88,8 @@ class TransaccionController extends Controller
             if($request->delete!=NULL){
                 $transaccion->delete = $request->delete;
             }
+            $transaccion->save();
+            return response()->json($transaccion);
         }
         return response()->json([
             "message"=>"No se encontró transaccion"

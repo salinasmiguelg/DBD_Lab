@@ -70,6 +70,7 @@ class CantidadController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $cantidad = Cantidad::find($id);
         if($cantidad!=NULL){
             if($request->tipoDeCantidad!=NULL){
                 $cantidad->tipoDeCantidad = $request->tipoDeCantidad;
@@ -77,6 +78,8 @@ class CantidadController extends Controller
             if($request->delete!=NULL){
                 $cantidad->delete = $request->delete;
             }
+            $cantidad->save();
+            return response()->json($cantidad);
         }
         return response()->json([
             "message"=>"No se encontró cantidad"

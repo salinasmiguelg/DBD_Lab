@@ -40,10 +40,24 @@ class Transaccion_userController extends Controller
                 "message"=>"La id_transaccions debe ser un valor entero",
             ]);
         }
+        $transaccion = Transaccion::find($id_transaccions);
+        if($transaccion  == NULL){
+            return response()->json([
+                "message"=>"No se encontró transaccion",
+                "id"=>$transaccion->id;
+            ],404);
+        }
         if(!is_integer($request->id_users)){
             return response()->json([
                 "message"=>"La id_users debe ser un valor entero",
             ]);
+        }
+        $user = User::find($id_users);
+        if($user  == NULL){
+            return response()->json([
+                "message"=>"No se encontró el usuario",
+                "id"=>$user->id;
+            ],404);
         }
         }
         $transaccion_user = new Transacciones_user();
@@ -84,16 +98,25 @@ class Transaccion_userController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $transaccion_user = Transaccion_user::find($id);
         if($transaccion_user!=NULL){
             if($request->id_transaccions!=NULL){
-                $transaccion_user->id_transaccions = $request->id_transaccions;
+                $transaccion : Transaccion::find($id_transaccions);
+                if($transaccion != NULL){
+                    $transaccion_user->id_transaccions = $request->id_transaccions;
+                }
             }
             if($request->id_users!=NULL){
-                $transaccion_user->id_users = $request->id_users;
+                $user : User::find($id_users);
+                if($user != NULL){
+                    $transaccion_user->id_users = $request->id_users;
+                }   
             }
             if($request->delete!=NULL){
                 $transaccion_user->delete = $request->delete;
             }
+            $transaccion_user->save();
+            return response()->json($transaccion_user);
         }
         return response()->json([
             "message"=>"No se encontró transaccion_user"

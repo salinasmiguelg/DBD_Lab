@@ -40,6 +40,13 @@ class ComprobanteController extends Controller
                 "message"=>"La id_users debe ser un valor entero",
             ]);
         }
+        $user = User::find($id_users);
+        if($user  == NULL){
+            return response()->json([
+                "message"=>"No se encontró el usuario",
+                "id"=>$user->id;
+            ],404);
+        }
         }
         $comprobante = new Comprobante();
         $comprobante->tipo = $request->tipo;
@@ -79,16 +86,22 @@ class ComprobanteController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $comprobante = Comprobante::find($id);
         if($comprobante!=NULL){
             if($request->tipo!=NULL){
                 $comprobante->tipo = $request->tipo;
             }
             if($request->id_users!=NULL){
-                $comprobante->id_users = $request->id_users;
+                $user : User::find($id_users);
+                if($user != NULL){
+                    $comprobante->id_users = $request->id_users;
+                }
             }
             if($request->delete!=NULL){
                 $comprobante->delete = $request->delete;
             }
+            $comprobante->save();
+            return response()->json($comprobante);
         }
         return response()->json([
             "message"=>"No se encontró comprobante"
