@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Cantidad;
 
 class CantidadController extends Controller
 {
@@ -33,7 +34,6 @@ class CantidadController extends Controller
         $validated = $request->validate([
             'tipoDeCantidad' => ['required'],
         ]);
-        }
         $cantidad = new Cantidad();
         $cantidad->tipoDeCantidad = $request->tipoDeCantidad;
         $cantidad->delete = false;
@@ -42,7 +42,9 @@ class CantidadController extends Controller
             "message"=>"Se ha creado cantidad",
             "id"=>$cantidad->id
         ],202);
-    }
+        }
+        
+
 
     /**
      * Display the specified resource.
