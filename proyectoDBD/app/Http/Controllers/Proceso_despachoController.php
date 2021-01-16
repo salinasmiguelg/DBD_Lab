@@ -15,8 +15,13 @@ class Proceso_despachoController extends Controller
      */
     public function index()
     {
-        $proceso_despacho = Proceso_despacho::all()->where($proceso_despacho->delete,false);
-        return reponse()->json($proceso_despacho);
+        $proceso_despacho = Proceso_despacho::all()->where('delete',false);
+        if($proceso_despacho != NULL){
+            return response()->json($proceso_despacho);
+        }
+        return response()->json([
+            "message"=>"No se encontró el proceso de despacho correspondiente",
+        ],404);
     }
 
     /**
@@ -65,6 +70,11 @@ class Proceso_despachoController extends Controller
     public function show($id)
     {
         $proceso_despacho = Proceso_despacho::find($id);
+        if($proceso_despacho == NULL or $proceso_despacho->delete == true){
+            return response()->json([
+                'message'=>'No se encontro un proceso de despacho'
+            ]);
+        }
         return response()->json($proceso_despacho);
     }
 
@@ -107,6 +117,7 @@ class Proceso_despachoController extends Controller
         $proceso_despacho = Proceso_despacho::find($id);
         if($proceso_despacho != NULL){
            $proceso_despacho->delete = true; 
+           $proceso_despacho->save();
         }
         else{
             "message" => "id proceso de despacho inexistente"

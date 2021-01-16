@@ -15,8 +15,13 @@ class PermisoController extends Controller
      */
     public function index()
     {
-        $permiso = Permiso::all()->where($permiso->delete,false);
-        return reponse()->json($permiso);
+        $permiso = Permiso::all()->where('delete',false);
+        if($permiso != NULL){
+            return response()->json($permiso);
+        }
+        return response()->json([
+            "message"=>"No se encontró permiso",
+        ],404);
     }
 
     /**
@@ -58,6 +63,11 @@ class PermisoController extends Controller
     public function show($id)
     {
         $permiso = Permiso::find($id);
+        if($permiso == NULL or $permiso->delete == true){
+            return response()->json([
+                'message'=>'No se encontro un permiso'
+            ]);
+        }
         return response()->json($permiso);
     }
 
@@ -91,6 +101,7 @@ class PermisoController extends Controller
         $permiso = Permiso::find($id);
         if($permiso != NULL){
            $permiso->delete = true; 
+           $permiso->save();
         }
         else{
             "message" => "id Permiso inexistente"

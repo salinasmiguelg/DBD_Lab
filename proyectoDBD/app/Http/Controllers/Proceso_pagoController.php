@@ -15,8 +15,13 @@ class Proceso_pagoController extends Controller
      */
     public function index()
     {
-        $proceso_pago = Proceso_pago::all()->where($proceso_pago->delete,false);
-        return reponse()->json($proceso_pago);
+        $proceso_pago = Proceso_pago::all()->where('delete',false);
+        if($proceso_pago != NULL){
+            return response()->json($proceso_pago);
+        }
+        return response()->json([
+            "message"=>"No se encontró comprobante",
+        ],404);
     }
 
     /**
@@ -65,6 +70,11 @@ class Proceso_pagoController extends Controller
     public function show($id)
     {
         $proceso_pago = Proceso_pago::find($id);
+        if($proceso_pago == NULL or $proceso_pago->delete == true){
+            return response()->json([
+                'message'=>'No se encontro una proceso de pago'
+            ]);
+        }
         return response()->json($proceso_pago);
     }
 
@@ -77,7 +87,20 @@ class Proceso_pagoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $proceso_despacho = Proceso_despacho::find($id);
+        if($request->tipoPago != NULL){
+            $proceso_despacho->tipoPago = $request->tipoPago;
+        }
+        if($request->costeTotal != NULL){
+            $proceso_despacho->costeTotal = $request->costeTotal;
+        }
+        if($request->fechaPago != NULL){
+            $proceso_despacho->fechaPago = $request->fechaPago;
+        }
+        if($request->delete != NULL){
+            $proceso_despacho->delete = $request->delete;
+        $proceso_despacho->save();
+        return response()->jason($proceso_despacho);
     }
 
     /**
@@ -91,6 +114,7 @@ class Proceso_pagoController extends Controller
         $proceso_pago = Proceso_pago::find($id);
         if($proceso_pago != NULL){
            $proceso_pago->delete = true; 
+           $proceso_pago->save();
         }
         else{
             "message" => "id inexistente"

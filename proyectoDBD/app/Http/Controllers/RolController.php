@@ -15,8 +15,13 @@ class RolController extends Controller
      */
     public function index()
     {
-        $rol = Direccion::all()->where($rol->delete,false);
-        return reponse()->json($rol);
+        $rol = Direccion::all()->where('delete',false);
+        if($rol != NULL){
+            return response()->json($rol);
+        }
+        return response()->json([
+            "message"=>"No se encontró rol",
+        ],404);
     }
 
     /**
@@ -59,6 +64,11 @@ class RolController extends Controller
     public function show($id)
     {
         $rol = Rol::find($id);
+        if($rol == NULL or $rol->delete == true){
+            return response()->json([
+                'message'=>'No se encontro un rol'
+            ]);
+        }
         return response()->json($rol);
     }
 
@@ -92,6 +102,7 @@ class RolController extends Controller
         $rol = Rol::find($id);
         if($rol != NULL){
            $rol->delete = true; 
+           $rol->save();
         }
         else{
             "message" => "id Rol inexistente"

@@ -16,8 +16,13 @@ class DireccionController extends Controller
      */
     public function index()
     {
-        $direccion = Direccion::all()->where($direccion->delete,false);
-        return reponse()->json($direccion);
+        $direccion = Direccion::all()->where('delete',false);
+        if($direccion != NULL){
+            return response()->json($direccion);
+        }
+        return response()->json([
+            "message"=>"No se encontró direccion",
+        ],404);
     }
 
     /**
@@ -73,7 +78,7 @@ class DireccionController extends Controller
     public function show($id)
     {
         $direccion = Direccion::find($id);
-        if($direccion == NULL){
+        if($direccion == NULL or $direccion->delete == true){
             return response()->json([
                 'message'=>'No se encontro una direccion'
             ]);
@@ -118,6 +123,7 @@ class DireccionController extends Controller
         $direccion = Direccion::find($id);
         if($direccion != NULL){
            $direccion->delete = true; 
+           $direccion->save();
         }
         else{
             "message" => "id Direccion inexistente"
