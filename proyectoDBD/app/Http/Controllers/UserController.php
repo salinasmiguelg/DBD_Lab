@@ -16,8 +16,14 @@ class UserController extends Controller
     public function index()
     {
         //
-        $user = User::all()->where($user->delete,false);
-        return reponse()->json($user);
+        $user = User::all()->where('delete',false);
+        if($user != NULL){
+            return reponse()->json($user);
+        }
+        return reponse()->json([
+            "message" => "No se encontro User",
+        ], 404);
+        
 
     }
 
@@ -44,6 +50,7 @@ class UserController extends Controller
         $user->contraseña = $request->contraseña;
         $user->numeroTelefono = $request->numeroTelefono;
         $user->email = $request->email;
+        $user->delete = $request->delete;
         return response()->json([
         "mesage"=>"Se ha creado un usuario",
         "id" => $user->id
@@ -61,6 +68,10 @@ class UserController extends Controller
     {
         //
         $user = User::find($id);
+        if($user == NULL or $user->delete == true){
+            return response()->json([
+                'message' => 'No se encontro User']);
+        }
         return response()->json($user);
     }
 
@@ -91,6 +102,9 @@ class UserController extends Controller
         if($request->email != NULL){
             $user->email = $request->email;
         }
+        if($request->delete != NULL){
+            $user->delete = $request->delete;
+        }
         $user->save();
         return response()->jason($user);
         
@@ -109,6 +123,7 @@ class UserController extends Controller
         $user = User::find($id);
         if($user != NULL){
            $user->delete = true; 
+           $user->save();
         }
         else{
             "message" => "id inexistente"

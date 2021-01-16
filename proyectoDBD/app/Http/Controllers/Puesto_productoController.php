@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Puesto_producto;
+use App\Models\Puesto;
+use App\Models\Producto;
 class Puesto_productoController extends Controller
 {
     /**
@@ -14,8 +16,13 @@ class Puesto_productoController extends Controller
     public function index()
     {
         //
-        $puesto_productoController = Puesto_productoController::all()->where($puesto_productoController->delete,false);
-        return reponse()->json($puesto_productoController);
+        $puesto_producto = Puesto_producto::all()->where('delete',false);
+        if($puesto_producto != NULL){
+            return response()->json($puesto_producto);
+        }
+        return response()->json([
+            "message"=>"No se encontró puesto_producto",
+        ],404);;
     }
 
     /**
@@ -27,6 +34,28 @@ class Puesto_productoController extends Controller
     public function store(Request $request)
     {
         //
+        $puesto_producto = new Puesto_producto();
+        $validatedData = $request->validate([
+            'delete' => ['require' , 'boolean'],
+            'id_productos' => ['require' , 'numeric'],
+            'id_puestos' => ['require' , 'numeric']
+        ]);
+        $producto = Producto::find($request->id_productos);
+        if($producto == NULL){
+            return response()->json([
+                'message'=>'No existe producto con esa id'
+        }
+
+        $puesto = Puesto::find($request->id_puestos);
+        if($puesto == NULL){
+            return response()->json([
+                'message'=>'No existe puesto con esa id'
+        }
+        $puesto_producto->delete = $request->delete;
+        return response()->json([
+            "message"=>"Se ha creado un nuevo puesto_producto",
+            "id" => $puesto_producto->id
+        ],202);
     }
 
     /**
@@ -38,6 +67,13 @@ class Puesto_productoController extends Controller
     public function show($id)
     {
         //
+        $puesto_producto = Puesto_producto::find($id);
+        if($puesto_producto == NULL or $puesto_producto->delete == true){
+            return response()->json([
+                'message'=>'No se encontro una puesto_producto'
+            ]);
+        }
+        return response()->json($puesto_producto);
     }
 
 
@@ -51,6 +87,13 @@ class Puesto_productoController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $puesto_producto = Puesto_producto::find($id);
+        if($request->delete != NULL){
+            $puesto_producto->delete = $request->delete;
+        }
+        $puesto_producto->save();
+        return response()->jason($puesto_producto);
+
     }
 
     /**
@@ -62,5 +105,14 @@ class Puesto_productoController extends Controller
     public function destroy($id)
     {
         //
+        $puesto_producto = Puesto_producto::find($id);
+        if($puesto_producto != NULL){
+           $puesto_producto->delete = true; 
+           $puesto_producto->save();
+        }
+        else{
+            "message" => "id puesto_producto inexistente"
+        }
+        return response()->json($puesto_producto);
     }
 }

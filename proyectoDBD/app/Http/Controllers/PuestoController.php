@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Puesto;
+use App\Models\User;
+use App\Models\Feria;
+use App\Models\Rol;
 class PuestoController extends Controller
 {
     /**
@@ -14,8 +17,13 @@ class PuestoController extends Controller
     public function index()
     {
         //
-        $puesto = Puesto::all()->where($puesto->delete,false);
-        return reponse()->json($puesto);
+        $puesto = Puesto::all()->where('delete',false);
+        if($puesto != NULL){
+            return response()->json($puesto);
+        }
+        return response()->json([
+            "message"=>"No se encontró puesto",
+        ],404);
     }
 
    
@@ -31,10 +39,30 @@ class PuestoController extends Controller
         $puesto = new Puesto();
         $validatedData = $request->validate([
             'categoria' => ['require' , 'min:2' , 'max:30'],
-            'descripcion' => ['require' , 'min:2' , 'max:150']
+            'descripcion' => ['require' , 'min:2' , 'max:150'],
+            'delete' => ['require' , 'boolean'],
+            'id_ferias' => ['require' , 'numeric'],
+            'id_rols' => ['require' , 'numeric'],
+            'id_users' => ['require' , 'numeric']
         ]);
+        $user = User::find($request->id_users);
+        if($user == NULL){
+            return response()->json([
+                'message'=>'No existe usuario con esa id'
+        }
+        $feria = Feria::find($request->id_ferias);
+        if($feria == NULL){
+            return response()->json([
+                'message'=>'No existe usuario con esa id'
+        }
+        $rol = Rol::find($request->id_rols);
+        if($rol == NULL){
+            return response()->json([
+                'message'=>'No existe usuario con esa id'
+        }
         $puesto->nombre = $request->nombre;
         $puesto->descripcion = $request->descripcion;
+        $puesto->delete = $request->delete;
         return response()->json([
         "mesage"=>"Se ha creado una region",
         "id" => $puesto->id
@@ -51,6 +79,11 @@ class PuestoController extends Controller
     {
         //
         $puesto = Puesto::find($id);
+        if($puesto == NULL or $puesto->delete == true){
+            return response()->json([
+                'message'=>'No se encontro una puesto'
+            ]);
+        }
         return response()->json($puesto);
     }
 
@@ -73,6 +106,9 @@ class PuestoController extends Controller
         if($request->descripcion != NULL){
             $puesto->descripcion = $request->descripcion;
         }
+        if($request->delete != NULL){
+            $puesto->delete = $request->delete;
+        }
         $puesto->save();
         return response()->jason($puesto);
     }
@@ -89,9 +125,10 @@ class PuestoController extends Controller
         $puesto = Puesto::find($id);
         if($puesto != NULL){
            $puesto->delete = true; 
+           $puesto->save();
         }
         else{
-            "message" => "id inexistente"
+            "message" => "id Puesto inexistente"
         }
         return response()->json($puesto);
     }

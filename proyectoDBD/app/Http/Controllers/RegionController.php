@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Region;
+use App\Models\User;
 class RegionController extends Controller
 {
     /**
@@ -14,8 +15,13 @@ class RegionController extends Controller
     public function index()
     {
         //
-        $region = Region::all()->where($region->delete,false);
-        return reponse()->json($region);
+        $region = Region::all()->where('delete',false);
+        if($region != NULL){
+            return reponse()->json($region);
+        }
+        return reponse()->json([
+            "message" => "No se encontro Region",
+        ], 404);
     }
 
     /**
@@ -29,9 +35,19 @@ class RegionController extends Controller
         //
         $region = new Region();
         $validatedData = $request->validate([
-            'nombre' => ['require' , 'min:2' , 'max:30']
+            'nombre' => ['require' , 'min:2' , 'max:30'],
+            'delete' => ['require' , 'boolean'],
+            'id_users' => ['require' , 'numeric']
         ]);
+        //Se verifican las llaves foraneas
+        $user = User::find($request->id_users);
+        if($user == NULL){
+            return response()->json([
+                'message'=>'No existe usuario con esa id'
+        }
+
         $region->nombre = $request->nombre;
+        $region->delete = $request->delete;
         return response()->json([
         "mesage"=>"Se ha creado una region",
         "id" => $region->id
@@ -49,6 +65,11 @@ class RegionController extends Controller
     {
         //
         $region = Region::find($id);
+        if($region == NULL or $region->delete == true){
+            return response()->json([
+                'message'=>'No se encontro Region'
+            ]);
+        }
         return response()->json($region);
     }
 
@@ -67,6 +88,9 @@ class RegionController extends Controller
         if($request->nombre != NULL){
             $region->nombre = $request->nombre;
         }
+        if($request->delete != NULL){
+            $region->delete = $request->delete;
+        }
         $region->save();
         return response()->jason($region);
     }
@@ -83,9 +107,10 @@ class RegionController extends Controller
         $region = Region::find($id);
         if($region != NULL){
            $region->delete = true; 
+           $region->save();
         }
         else{
-            "message" => "id inexistente"
+            "message" => "id Region inexistente"
         }
         return response()->json($region);
     }
