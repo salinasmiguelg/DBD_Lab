@@ -39,7 +39,7 @@ class RolController extends Controller
             'id_users' => ['require' , 'boolean']
         ]);
 
-        //Se verifican que las llaves foraneas del elemento a guardar exitan como tal
+        //Se verifican que las llaves foraneas del elemento a guardar existan como tal
         $user = User::find($request->id_users);
         if($user == NULL){
             return response()->json([
@@ -81,7 +81,7 @@ class RolController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $rol = User::find($id);
+        $rol = Rol::find($id);
         if($request->nombre != NULL){
             $rol->nombre = $request->nombre;
         }

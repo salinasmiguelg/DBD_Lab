@@ -41,7 +41,7 @@ class Proceso_pagoController extends Controller
             'id_metodo_de_pagos' => ['require' , 'numeric']
         ]);
 
-        //Se verifican que las llaves foraneas del elemento a guardar exitan como tal
+        //Se verifican que las llaves foraneas del elemento a guardar existan como tal
         $metodo_de_pago = Metodo_de_pago::find($request->id_metodo_de_pagos);
         if($metodo_de_pago == NULL){
             return response()->json([
@@ -87,20 +87,20 @@ class Proceso_pagoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $proceso_despacho = Proceso_despacho::find($id);
+        $proceso_pago = Proceso_pago::find($id);
         if($request->tipoPago != NULL){
-            $proceso_despacho->tipoPago = $request->tipoPago;
+            $proceso_pago->tipoPago = $request->tipoPago;
         }
         if($request->costeTotal != NULL){
-            $proceso_despacho->costeTotal = $request->costeTotal;
+            $proceso_pago->costeTotal = $request->costeTotal;
         }
         if($request->fechaPago != NULL){
-            $proceso_despacho->fechaPago = $request->fechaPago;
+            $proceso_pago->fechaPago = $request->fechaPago;
         }
         if($request->delete != NULL){
-            $proceso_despacho->delete = $request->delete;
-        $proceso_despacho->save();
-        return response()->jason($proceso_despacho);
+            $proceso_pago->delete = $request->delete;
+        $proceso_pago->save();
+        return response()->jason($proceso_pago);
     }
 
     /**

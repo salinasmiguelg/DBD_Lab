@@ -42,7 +42,7 @@ class Proceso_despachoController extends Controller
             'delete' => ['require' , 'boolean']
         ]);
 
-        //Se verifican que las llaves foraneas del elemento a guardar exitan como tal
+        //Se verifican que las llaves foraneas del elemento a guardar existan como tal
         $direccion = Direccion::find($request->id_users);
         if($direccion == NULL){
             return response()->json([

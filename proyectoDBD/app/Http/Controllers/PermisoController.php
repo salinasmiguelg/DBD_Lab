@@ -39,7 +39,7 @@ class PermisoController extends Controller
             'id_rols' => ['require' , 'numeric']
         ]);
 
-        //Se verifican que las llaves foraneas del elemento a guardar exitan como tal
+        //Se verifican que las llaves foraneas del elemento a guardar existan como tal
         $rol = Rol::find($request->id_users);
         if($rol == NULL){
             return response()->json([
