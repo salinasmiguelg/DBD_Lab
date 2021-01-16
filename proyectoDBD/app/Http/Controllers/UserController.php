@@ -43,6 +43,7 @@ class UserController extends Controller
             'apellido' =>['require' , 'min:2' , 'max:30'],
             'contraseña' => ['require' , 'min:8' , 'max:15'],
             'numeroTelefono' => ['require' , 'min:9', 'max:11'],
+            'delete' => ['require' , 'numeric'],
             'email' => ['require']
         ]);
         $user->nombre = $request->nombre;

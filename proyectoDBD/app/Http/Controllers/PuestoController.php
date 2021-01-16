@@ -45,6 +45,7 @@ class PuestoController extends Controller
             'id_rols' => ['require' , 'numeric'],
             'id_users' => ['require' , 'numeric']
         ]);
+        //verificar las llaves foraneas
         $user = User::find($request->id_users);
         if($user == NULL){
             return response()->json([
@@ -60,7 +61,7 @@ class PuestoController extends Controller
             return response()->json([
                 'message'=>'No existe usuario con esa id'
         }
-        $puesto->nombre = $request->nombre;
+        $puesto->categoria = $request->categoria;
         $puesto->descripcion = $request->descripcion;
         $puesto->delete = $request->delete;
         return response()->json([
@@ -100,8 +101,8 @@ class PuestoController extends Controller
     {
         //
         $puesto = Puesto::find($id);
-        if($request->nombre != NULL){
-            $puesto->nombre = $request->nombre;
+        if($request->categoria != NULL){
+            $puesto->categoria = $request->categoria;
         }
         if($request->descripcion != NULL){
             $puesto->descripcion = $request->descripcion;
