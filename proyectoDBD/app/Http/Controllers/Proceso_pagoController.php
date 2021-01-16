@@ -45,7 +45,8 @@ class Proceso_pagoController extends Controller
         $metodo_de_pago = Metodo_de_pago::find($request->id_metodo_de_pagos);
         if($metodo_de_pago == NULL){
             return response()->json([
-                'message'=>'No existe metodo de pago con esa id'
+                'message'=>'No existe método de pago con esa ID'
+            ]);
         }
 
         //Se guarda el nuevo elemento
@@ -102,6 +103,7 @@ class Proceso_pagoController extends Controller
             $proceso_pago->delete = $request->delete;
         $proceso_pago->save();
         return response()->jason($proceso_pago);
+        }
     }
 
     /**
@@ -118,8 +120,12 @@ class Proceso_pagoController extends Controller
            $proceso_pago->save();
         }
         else{
-            "message" => "id inexistente"
+            return response()->json([
+                'message'=>'Proceso de pago con esa ID no existe'
+            ]);
         }
-        return response()->json($proceso_pago);
+        return response()->json([
+            'message'=>'Se borró proceso de pago'
+        ]);
     }
 }

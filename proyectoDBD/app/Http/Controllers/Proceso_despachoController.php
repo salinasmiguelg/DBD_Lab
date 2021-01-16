@@ -47,6 +47,7 @@ class Proceso_despachoController extends Controller
         if($direccion == NULL){
             return response()->json([
                 'message'=>'No existe direccion con esa id'
+            ]);
         }
         
         $proceso_despacho->calle = $request->calle;
@@ -105,6 +106,7 @@ class Proceso_despachoController extends Controller
             $proceso_despacho->delete = $request->delete;
         $proceso_despacho->save();
         return response()->jason($proceso_despacho);
+        }
     }
 
     /**
@@ -121,8 +123,12 @@ class Proceso_despachoController extends Controller
            $proceso_despacho->save();
         }
         else{
-            "message" => "id proceso de despacho inexistente"
+            return response()->json([
+                'message'=>'Id proceso de despacho no existe'
+            ]);
         }
-        return response()->json($proceso_despacho);
+        return response()->json([
+            'message'=>'Se borró rol proceso de despacho'
+        ]);
     }
 }

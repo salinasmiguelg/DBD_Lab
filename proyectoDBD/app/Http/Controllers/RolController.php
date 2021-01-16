@@ -15,7 +15,7 @@ class RolController extends Controller
      */
     public function index()
     {
-        $rol = Direccion::all()->where('delete',false);
+        $rol = Rol::all()->where('delete',false);
         if($rol != NULL){
             return response()->json($rol);
         }
@@ -43,8 +43,9 @@ class RolController extends Controller
         $user = User::find($request->id_users);
         if($user == NULL){
             return response()->json([
-                'message'=>'No existe usuario con esa id'
-        }
+                "message"=>"No existe usuario con esa id"
+            ]);
+            }
         
         $rol->nombre = $request->nombre;
         $rol->delete = $request->delete;
@@ -90,7 +91,10 @@ class RolController extends Controller
         if($request->delete != NULL){
             $direccion->delete = $request->delete;
         $rol->save();
-        return response()->jason($rol);
+        return response()->jason([
+            'message'=>'Rol actualizado'
+        ]);
+        }
     }
 
     /**
@@ -107,8 +111,12 @@ class RolController extends Controller
            $rol->save();
         }
         else{
-            "message" => "id Rol inexistente"
+            return response()->json([
+                'message'=>'id Rol inexistente'
+            ]);
         }
-        return response()->json($rol);
+        return response()->json([
+            'message'=>'Se borró rol solicitado'
+        ]);
     }
 }

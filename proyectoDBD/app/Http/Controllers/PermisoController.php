@@ -42,8 +42,9 @@ class PermisoController extends Controller
         //Se verifican que las llaves foraneas del elemento a guardar existan como tal
         $rol = Rol::find($request->id_users);
         if($rol == NULL){
-            return response()->json([
-                'message'=>'No existe Rol con esa id'
+            return response()->jason([
+                'message'=>'id Rol no existe'
+            ]);
         }
         
         $permiso->nombre = $request->nombre;
@@ -91,6 +92,7 @@ class PermisoController extends Controller
             $permiso->delete = $request->delete;
         $permiso->save();
         return response()->jason($permiso);
+        }
     }
 
     /**
@@ -107,8 +109,12 @@ class PermisoController extends Controller
            $permiso->save();
         }
         else{
-            "message" => "id Permiso inexistente"
+            return response()->jason([
+                'message'=>'id permiso no existe'
+            ]);
         }
-        return response()->json($permiso);
+        return response()->json([
+            'message'=>'Se borró permiso solicitado'
+        ]);
     }
 }

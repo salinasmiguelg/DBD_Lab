@@ -47,13 +47,15 @@ class DireccionController extends Controller
         $user = User::find($request->id_users);
         if($user == NULL){
             return response()->json([
-                'message'=>'No existe usuario con esa id'
+                'message'=>'id User inexistente'
+            ]);
         }
 
         $comuna = Comuna::find($request->id_comunas);
         if($comuna == NULL){
             return response()->json([
-                'message'=>'No existe comuna con esa id'
+                'message'=>'id comuna inexistente'
+            ]);
         }
 
         //Se guardan los elementos en la nueva direccion creada
@@ -110,7 +112,9 @@ class DireccionController extends Controller
             $direccion->delete = $request->delete;
         }
         $direccion->save();
-        return response()->jason($direccion);
+        return response()->jason([
+            'message'=>'Direccion actualizada'
+        ]);
     }
 
     /**
@@ -127,8 +131,12 @@ class DireccionController extends Controller
            $direccion->save();
         }
         else{
-            "message" => "id Direccion inexistente"
+            return response()->jason([
+                'message'=>'id Direccion no existe'
+            ]);
         }
-        return response()->json($direccion);
+        return response()->json([
+            'message'=>'Se borró direccion solicitada'
+        ]);
     }
 }
