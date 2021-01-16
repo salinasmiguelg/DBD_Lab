@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Transaccion_user;
+use App\Models\Transaccion;
+use App\Models\User;
 
 class Transaccion_userController extends Controller
 {
@@ -59,7 +62,6 @@ class Transaccion_userController extends Controller
                 "id"=>$user->id;
             ],404);
         }
-        }
         $transaccion_user = new Transacciones_user();
         $transaccion_user->id_transaccions = $request->id_transaccions;
         $transaccion_user->id_users = $request->id_users;
@@ -69,7 +71,7 @@ class Transaccion_userController extends Controller
             "message"=>"Se ha creado transaccion_user",
             "id"=>$transaccion_user->id
         ],202);
-    }
+        }
 
     /**
      * Display the specified resource.

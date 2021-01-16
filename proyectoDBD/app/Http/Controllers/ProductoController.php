@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Producto;
+use App\Models\Cantidad;
+use App\Models\Proceso_compra;
 
 class ProductoController extends Controller
 {

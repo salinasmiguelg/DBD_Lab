@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Comprobante;
+use App\Models\User;
 class ComprobanteController extends Controller
 {
     /**
@@ -47,7 +48,6 @@ class ComprobanteController extends Controller
                 "id"=>$user->id;
             ],404);
         }
-        }
         $comprobante = new Comprobante();
         $comprobante->tipo = $request->tipo;
         $comprobante->id_users = $request->id_users;
@@ -57,7 +57,7 @@ class ComprobanteController extends Controller
             "message"=>"Se ha creado comprobante",
             "id"=>$comprobante->id
         ],202);
-    }
+        }
 
     /**
      * Display the specified resource.
