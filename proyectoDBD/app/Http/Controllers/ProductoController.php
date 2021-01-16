@@ -60,7 +60,7 @@ class ProductoController extends Controller
         if($cantidad  == NULL){
             return response()->json([
                 "message"=>"No se encontró cantidad",
-                "id"=>$cantidad->id;
+                "id"=>$cantidad->id
             ],404);
         }
         if(!is_integer($request->id_proceso_compras)){
@@ -72,7 +72,7 @@ class ProductoController extends Controller
         if($proceso_compra  == NULL){
             return response()->json([
                 "message"=>"No se encontró proceso_compra",
-                "id"=>$proceso_compra->id;
+                "id"=>$proceso_compra->id,
             ],404);
         }
         $producto = new Producto();
@@ -117,7 +117,7 @@ class ProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $producto : Producto::find($id);
+        $producto = Producto::find($id);
         if($producto!=NULL){
             if($request->nombreProducto!=NULL){
                 $producto->nombreProducto = $request->nombreProducto;
@@ -132,13 +132,13 @@ class ProductoController extends Controller
                 $producto->categoria = $request->categoria;
             }
             if($request->id_cantidads!=NULL){
-                $cantidad : Cantidad::find($id_cantidads);
+                $cantidad = Cantidad::find($id_cantidads);
                 if($cantidad != NULL){
                     $producto->id_cantidads = $request->id_cantidads;
                 }
             }
             if($request->id_proceso_compras!=NULL){
-                $proceso_compra : Proceso_compra::find($id_proceso_compras);
+                $proceso_compra = Proceso_compra::find($id_proceso_compras);
                 if($proceso_compra != NULL){
                     $producto->id_proceso_compras = $request->id_proceso_compras;
                 }

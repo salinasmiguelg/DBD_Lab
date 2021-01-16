@@ -47,7 +47,7 @@ class Transaccion_userController extends Controller
         if($transaccion  == NULL){
             return response()->json([
                 "message"=>"No se encontró transaccion",
-                "id"=>$transaccion->id;
+                "id"=>$transaccion->id,
             ],404);
         }
         if(!is_integer($request->id_users)){
@@ -59,7 +59,7 @@ class Transaccion_userController extends Controller
         if($user  == NULL){
             return response()->json([
                 "message"=>"No se encontró el usuario",
-                "id"=>$user->id;
+                "id"=>$user->id,
             ],404);
         }
         $transaccion_user = new Transacciones_user();
@@ -103,13 +103,13 @@ class Transaccion_userController extends Controller
         $transaccion_user = Transaccion_user::find($id);
         if($transaccion_user!=NULL){
             if($request->id_transaccions!=NULL){
-                $transaccion : Transaccion::find($id_transaccions);
+                $transaccion = Transaccion::find($id_transaccions);
                 if($transaccion != NULL){
                     $transaccion_user->id_transaccions = $request->id_transaccions;
                 }
             }
             if($request->id_users!=NULL){
-                $user : User::find($id_users);
+                $user = User::find($id_users);
                 if($user != NULL){
                     $transaccion_user->id_users = $request->id_users;
                 }   
