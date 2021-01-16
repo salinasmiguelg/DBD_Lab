@@ -23,11 +23,11 @@ Route::get('/cantidad/{id}','CantidadController@show');
 Route::put('/cantidad/{id}','CantidadController@update');
 Route::delete('/cantidad/{id}','CantidadController@destroy');
 //comprobante
-Route::get('/comprobante','Comprobante@index');
-Route::post('/comprobante/create','Comprobante@store');
-Route::get('/comprobante/{id}','Comprobante@show');
-Route::put('/comprobante/{id}','Comprobante@update');
-Route::delete('/comprobante/{id}','Comprobante@destroy');
+Route::get('/comprobante','ComprobanteController@index');
+Route::post('/comprobante/create','ComprobanteController@store');
+Route::get('/comprobante/{id}','ComprobanteController@show');
+Route::put('/comprobante/{id}','ComprobanteController@update');
+Route::delete('/comprobante/{id}','ComprobanteController@destroy');
 //comuna
 Route::get('/comuna','ComunaController@index');
 Route::post('/comuna/create','ComunaController@store');

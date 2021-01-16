@@ -64,6 +64,7 @@ class PuestoController extends Controller
         $puesto->categoria = $request->categoria;
         $puesto->descripcion = $request->descripcion;
         $puesto->delete = $request->delete;
+        $puesto->save();
         return response()->json([
         "mesage"=>"Se ha creado una region",
         "id" => $puesto->id

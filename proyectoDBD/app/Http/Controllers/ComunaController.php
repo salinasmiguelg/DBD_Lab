@@ -49,6 +49,7 @@ class ComunaController extends Controller
 
         $comuna->nombre = $request->nombre;
         $comuna->delete = $request->delete;
+        $comuna->save();
         return response()->json([
         "mesage"=>"Se ha creado una Comuna",
         "id" => $comuna->id

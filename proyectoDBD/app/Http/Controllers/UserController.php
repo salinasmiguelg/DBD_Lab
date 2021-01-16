@@ -52,6 +52,7 @@ class UserController extends Controller
         $user->numeroTelefono = $request->numeroTelefono;
         $user->email = $request->email;
         $user->delete = $request->delete;
+        $user->save();
         return response()->json([
         "mesage"=>"Se ha creado un usuario",
         "id" => $user->id

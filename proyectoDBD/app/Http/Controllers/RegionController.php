@@ -48,6 +48,7 @@ class RegionController extends Controller
 
         $region->nombre = $request->nombre;
         $region->delete = $request->delete;
+        $region->save();
         return response()->json([
         "mesage"=>"Se ha creado una region",
         "id" => $region->id

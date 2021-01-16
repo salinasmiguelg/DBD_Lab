@@ -52,6 +52,7 @@ class Puesto_productoController extends Controller
                 'message'=>'No existe puesto con esa id'
         }
         $puesto_producto->delete = $request->delete;
+        $puesto_producto->save();
         return response()->json([
             "message"=>"Se ha creado un nuevo puesto_producto",
             "id" => $puesto_producto->id
