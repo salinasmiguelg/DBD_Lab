@@ -18,6 +18,7 @@ class CreateComprobantesTable extends Migration
             $table->string('tipo');
             $table->unsignedBigInteger('id_users');
             $table->foreign('id_users')->references('id')->on('users');
+            $table->boolean('delete');
             $table->timestamps();
         });
     }

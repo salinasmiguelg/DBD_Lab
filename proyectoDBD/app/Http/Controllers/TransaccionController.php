@@ -13,17 +13,13 @@ class TransaccionController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $transaccion = Transaccion::all()->where('delete',false);
+        if($transaccion != NULL){
+            return response()->json($transaccion);
+        }
+        return response()->json([
+            "message"=>"No se encontró transaccion",
+        ],404);
     }
 
     /**
@@ -34,7 +30,24 @@ class TransaccionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'monto' => ['required'],
+            'tipoDeCantidad' => ['required'],
+        ]);
+        if(!is_integer($request->monto)){
+            return response()->json([
+                "message"=>"El monto debe ser un valor entero",
+            ]);
+        }
+        $transaccion = new Transaccion();
+        $transaccion->monto = $request->monto;
+        $transaccion->fechaPago = $request->fechaPago;
+        $transaccion->delete = false;
+        $transaccion->save();
+        return response()->json([
+            "message"=>"Se ha creado transaccion",
+            "id"=>$transaccion->id
+        ],202);
     }
 
     /**
@@ -45,19 +58,15 @@ class TransaccionController extends Controller
      */
     public function show($id)
     {
-        //
+        $transaccion = Transaccion::find($id);
+        if($transaccion != NULL && $transaccion->delete == false){
+            return response()->json($transaccion);
+        }
+        return response()->json([
+            "message"=>"No se encontró transaccion"
+        ],404);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -68,7 +77,20 @@ class TransaccionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if($transaccion!=NULL){
+            if($request->monto!=NULL){
+                $transaccion->monto = $request->monto;
+            }
+            if($request->fechaPago!=NULL){
+                $transaccion->fechaPago = $request->fechaPago;
+            }
+            if($request->delete!=NULL){
+                $transaccion->delete = $request->delete;
+            }
+        }
+        return response()->json([
+            "message"=>"No se encontró transaccion"
+        ],404);
     }
 
     /**
@@ -79,6 +101,17 @@ class TransaccionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $transaccion = Transaccion::find($id);
+        if($transaccion != NULL){
+            $transaccion->delete = true;
+            $transaccion->save();
+            return response()->json([
+                "message"=> "SoftDelete a transaccion",
+                "id"=>$transaccion->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró el transaccion"
+        ],404);
     }
 }

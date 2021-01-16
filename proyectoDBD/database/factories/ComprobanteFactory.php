@@ -24,7 +24,9 @@ class ComprobanteFactory extends Factory
     {
         return [
             'tipo' => $this->faker->randomElement($array = array ('boleta','comprobante')),
+            'delete' => $this->faker->boolean,
             'id_users' => User::all()->random()->id
+            
         ];
     }
 }

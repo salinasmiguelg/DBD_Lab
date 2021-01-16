@@ -25,7 +25,7 @@ class CreateProductosTable extends Migration
 
             $table->unsignedBigInteger('id_proceso_compras');
             $table->foreign('id_proceso_compras')->references('id')->on('proceso_compras');
-
+            $table->boolean('delete');
 
 
             $table->timestamps();

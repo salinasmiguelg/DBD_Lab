@@ -13,17 +13,13 @@ class CantidadController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $cantidad = Cantidad::all()->where('delete',false);
+        if($cantidad != NULL){
+            return response()->json($cantidad);
+        }
+        return response()->json([
+            "message"=>"No se encontró cantidad",
+        ],404);
     }
 
     /**
@@ -34,7 +30,18 @@ class CantidadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'tipoDeCantidad' => ['required'],
+        ]);
+        }
+        $cantidad = new Cantidad();
+        $cantidad->tipoDeCantidad = $request->tipoDeCantidad;
+        $cantidad->delete = false;
+        $cantidad->save();
+        return response()->json([
+            "message"=>"Se ha creado cantidad",
+            "id"=>$cantidad->id
+        ],202);
     }
 
     /**
@@ -45,18 +52,13 @@ class CantidadController extends Controller
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $cantidad = Cantidad::find($id);
+        if($cantidad != NULL && $cantidad->delete == false){
+            return response()->json($cantidad);
+        }
+        return response()->json([
+            "message"=>"No se encontró cantidad"
+        ],404);
     }
 
     /**
@@ -68,7 +70,17 @@ class CantidadController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if($cantidad!=NULL){
+            if($request->tipoDeCantidad!=NULL){
+                $cantidad->tipoDeCantidad = $request->tipoDeCantidad;
+            }
+            if($request->delete!=NULL){
+                $cantidad->delete = $request->delete;
+            }
+        }
+        return response()->json([
+            "message"=>"No se encontró cantidad"
+        ],404);
     }
 
     /**
@@ -79,6 +91,17 @@ class CantidadController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cantidad = Cantidad::find($id);
+        if($cantidad != NULL){
+            $cantidad->delete = true;
+            $cantidad->save();
+            return response()->json([
+                "message"=> "SoftDelete a cantidad",
+                "id"=>$cantidad->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró el cantidad"
+        ],404);
     }
 }

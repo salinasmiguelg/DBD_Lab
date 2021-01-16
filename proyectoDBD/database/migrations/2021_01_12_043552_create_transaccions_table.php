@@ -17,7 +17,7 @@ class CreateTransaccionsTable extends Migration
             $table->id();
             $table->integer('monto');
             $table->date('fechaPago');            
-
+            $table->boolean('delete');
             $table->timestamps();
         });
     }
