@@ -53,7 +53,8 @@ class Proceso_despachoController extends Controller
         $proceso_despacho->numero = $request->numero;
         $proceso_despacho->es_departamento = $request->es_departamento;
         $proceso_despacho->delete = $request->delete;
-        //$proceso_despacho->delete = "false";
+
+        $proceso_despacho->save();
 
         return response()->json([
             "message"=>"Se ha creado un nuevo Proceso de Despacho",

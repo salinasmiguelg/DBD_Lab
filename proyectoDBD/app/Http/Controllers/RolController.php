@@ -48,7 +48,9 @@ class RolController extends Controller
         
         $rol->nombre = $request->nombre;
         $rol->delete = $request->delete;
-        //$rol->delete = "false";
+
+        $rol->save();
+        
         return response()->json([
         "message"=>"Se ha creado un Rol",
         "id" => $rol->id

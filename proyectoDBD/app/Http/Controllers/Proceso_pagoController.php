@@ -53,7 +53,8 @@ class Proceso_pagoController extends Controller
         $proceso_pago->numero = $request->numero;
         $proceso_pago->es_departamento = $request->es_departamento;
         $proceso_pago->delete = $request->delete;
-        //$proceso_pago->delete = "false";
+
+        $proceso_pago->save();
 
         return response()->json([
             "message"=>"Se ha creado un nuevo Proceso de Despacho",

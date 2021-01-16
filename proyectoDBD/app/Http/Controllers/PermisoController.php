@@ -48,6 +48,9 @@ class PermisoController extends Controller
         
         $permiso->nombre = $request->nombre;
         $permiso->delete = $request->delete;
+
+        $permiso->save();
+
         return response()->json([
         "message"=>"Se ha creado un Permiso",
         "id" => $permiso->id

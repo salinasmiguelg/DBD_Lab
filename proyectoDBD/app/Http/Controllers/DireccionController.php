@@ -61,7 +61,8 @@ class DireccionController extends Controller
         $direccion->numero = $request->numero;
         $direccion->es_departamento = $request->es_departamento;
         $direccion->delete = $request->delete;
-        //$direccion->delete = "false";
+
+        $direccion->save();
 
         return response()->json([
             "message"=>"Se ha creado una nueva direccion",
