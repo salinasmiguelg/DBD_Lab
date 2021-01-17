@@ -104,9 +104,9 @@ class Proceso_despachoController extends Controller
         }
         if($request->delete != NULL){
             $proceso_despacho->delete = $request->delete;
-        $proceso_despacho->save();
-        return response()->jason($proceso_despacho);
         }
+        $proceso_despacho->save();
+        return response()->json($proceso_despacho);
     }
 
     /**

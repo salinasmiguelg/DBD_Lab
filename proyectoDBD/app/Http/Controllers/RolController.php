@@ -90,11 +90,9 @@ class RolController extends Controller
         }
         if($request->delete != NULL){
             $direccion->delete = $request->delete;
-        $rol->save();
-        return response()->jason([
-            'message'=>'Rol actualizado'
-        ]);
         }
+        $rol->save();
+        return response()->json($rol);
     }
 
     /**

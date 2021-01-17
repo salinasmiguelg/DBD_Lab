@@ -112,9 +112,7 @@ class DireccionController extends Controller
             $direccion->delete = $request->delete;
         }
         $direccion->save();
-        return response()->jason([
-            'message'=>'Direccion actualizada'
-        ]);
+        return response()->json($direccion);
     }
 
     /**

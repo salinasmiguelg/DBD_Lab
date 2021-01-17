@@ -101,9 +101,9 @@ class Proceso_pagoController extends Controller
         }
         if($request->delete != NULL){
             $proceso_pago->delete = $request->delete;
-        $proceso_pago->save();
-        return response()->jason($proceso_pago);
         }
+    $proceso_pago->save();
+    return response()->json($proceso_pago);
     }
 
     /**

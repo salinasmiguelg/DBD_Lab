@@ -90,9 +90,9 @@ class PermisoController extends Controller
         }
         if($request->delete != NULL){
             $permiso->delete = $request->delete;
-        $permiso->save();
-        return response()->jason($permiso);
         }
+        $permiso->save();
+        return response()->json($permiso);
     }
 
     /**
