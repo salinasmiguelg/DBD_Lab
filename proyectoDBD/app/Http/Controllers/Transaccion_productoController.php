@@ -37,23 +37,24 @@ class Transaccion_productoController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'id_comprobantes' => ['required'],
+            'id_transaccions' => ['required'],
             'id_productos' => ['required'],
         ]);
-        $comprobante = Comprobante::find($id_comprobantes);
-        if($comprobante  == NULL){
+        $producto = Producto::find($request->id_productos);
+        if($producto  == NULL){
             return response()->json([
-                "message"=>"No se encontró comprobante",
-                "id"=>$comprobante->id,
+                "message"=>"No se encontró producto",
+                "id"=>$producto->id,
             ],404);
         }
-        $producto = Producto::find($id_productos);
+        $transaccion = Transaccion::find($request->id_transaccions);
         if($transaccion  == NULL){
             return response()->json([
                 "message"=>"No se encontró método de transacción",
                 "id"=>$transaccion->id,
             ],404);
         }
+        $transaccion_producto = new Transaccion_producto();
         $transaccion_producto->id_productos = $request->id_productos;
         $transaccion_producto->id_transaccions = $request->id_transaccions;
         
@@ -95,13 +96,13 @@ class Transaccion_productoController extends Controller
         $transaccion_producto = Transaccion_producto::find($id);
         if($transaccion_producto!=NULL){
             if($request->id_productos!=NULL){
-                $producto = Producto::find($id_productos);
+                $producto = Producto::find($request->id_productos);
                 if($producto != NULL){
-                    $transaccion_producto->id_transaccions = $request->id_transaccions;
+                    $transaccion_producto->id_productos = $request->id_productos;
                 }
             }
             if($request->id_transaccions!=NULL){
-                $transaccion = Transaccion::find($id_transaccions);
+                $transaccion = Transaccion::find($request->id_transaccions);
                 if($transaccion != NULL){
                     $transaccion_producto->id_transaccions = $request->id_transaccions;
                 }

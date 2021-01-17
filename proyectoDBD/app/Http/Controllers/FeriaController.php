@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Feria;
 use App\Models\Comuna;
+
 class FeriaController extends Controller
 {
     /**
@@ -35,7 +36,7 @@ class FeriaController extends Controller
             'descripcion' => ['required'],
             'id_comunas' => ['required'],
         ]);
-        $comuna = Comuna::find($id_comunas);
+        $comuna = Comuna::find($request->id_comunas);
         if($comuna  == NULL){
             return response()->json([
                 "message"=>"No se encontró método de transacción",
@@ -82,11 +83,11 @@ class FeriaController extends Controller
     {
         $feria = Feria::find($id);
         if($feria!=NULL){
-            if($request->descipcion!=NULL){
-                $feria->descipcion = $request->descipcion;
+            if($request->descripcion!=NULL){
+                $feria->descripcion = $request->descripcion;
             }
             if($request->id_comunas!=NULL){
-                $comuna = comuna::find($id_comunas);
+                $comuna = Comuna::find($request->id_comunas);
                 if($comuna != NULL){
                     $feria->id_comunas = $request->id_comunas;
                 }

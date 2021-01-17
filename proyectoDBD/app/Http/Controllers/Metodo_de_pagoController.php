@@ -36,21 +36,21 @@ class Metodo_de_pagoController extends Controller
     {
         $validated = $request->validate([
             'numero_tarjeta' => ['required'],
-            'tipo_cuenta' => ['required'],
+            'tipo_de_cuenta_bancaria' => ['required'],
             'banco' => ['required'],
             'titular' => ['required'],
             'id_transaccions' => ['required'],
         ]);
-        $transaccion = Transaccion::find($id_transaccions);
+        $transaccion = Transaccion::find($request->id_transaccions);
         if($transaccion  == NULL){
             return response()->json([
-                "message"=>"No se encontró método de transacción",
+                "message"=>"No se encontró método",
                 "id"=>$transaccion->id,
             ],404);
         }
         $metodo_de_pago = new Metodo_de_pago();
         $metodo_de_pago->numero_tarjeta = $request->numero_tarjeta;
-        $metodo_de_pago->tipo_cuenta = $request->tipo_cuenta;
+        $metodo_de_pago->tipo_de_cuenta_bancaria = $request->tipo_de_cuenta_bancaria;
         $metodo_de_pago->banco = $request->banco;
         $metodo_de_pago->titular = $request->titular;
         $metodo_de_pago->id_transaccions = $request->id_transaccions;
@@ -94,8 +94,8 @@ class Metodo_de_pagoController extends Controller
             if($request->numero_tarjeta!=NULL){
                 $metodo_de_pago->numero_tarjeta = $request->numero_tarjeta;
             }
-            if($request->tipo_cuenta!=NULL){
-                $metodo_de_pago->tipo_cuenta = $request->tipo_cuenta;
+            if($request->tipo_de_cuenta_bancaria!=NULL){
+                $metodo_de_pago->tipo_de_cuenta_bancaria = $request->tipo_de_cuenta_bancaria;
             }
             if($request->banco!=NULL){
                 $metodo_de_pago->banco = $request->banco;
@@ -104,7 +104,7 @@ class Metodo_de_pagoController extends Controller
                 $metodo_de_pago->titular = $request->titular;
             }
             if($request->id_transaccions!=NULL){
-                $transaccion = Transaccion::find($id_transaccions);
+                $transaccion = Transaccion::find($request->id_transaccions);
                 if($transaccion != NULL){
                     $metodo_de_pago->id_transaccions = $request->id_transaccions;
                 }

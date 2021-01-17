@@ -39,20 +39,21 @@ class Transaccion_comprobanteController extends Controller
             'id_comprobantes' => ['required'],
             'id_transaccions' => ['required'],
         ]);
-        $comprobante = Comprobante::find($id_comprobantes);
+        $comprobante = Comprobante::find($request->id_comprobantes);
         if($comprobante  == NULL){
             return response()->json([
                 "message"=>"No se encontró comprobante",
                 "id"=>$comprobante->id,
             ],404);
         }
-        $transaccion = Transaccion::find($id_transaccions);
+        $transaccion = Transaccion::find($request->id_transaccions);
         if($transaccion  == NULL){
             return response()->json([
                 "message"=>"No se encontró método de transacción",
                 "id"=>$transaccion->id,
             ],404);
         }
+        $transaccion_comprobante = new Transaccion_comprobante();
         $transaccion_comprobante->id_comprobantes = $request->id_comprobantes;
         $transaccion_comprobante->id_transaccions = $request->id_transaccions;
         
@@ -95,13 +96,13 @@ class Transaccion_comprobanteController extends Controller
         $transaccion_comprobante = Transaccion_comprobante::find($id);
         if($transaccion_comprobante!=NULL){
             if($request->id_comprobantes!=NULL){
-                $comprobante = Comprobante::find($id_comprobantes);
+                $comprobante = Comprobante::find($request->id_comprobantes);
                 if($comprobante != NULL){
                     $transaccion_comprobante->id_transaccions = $request->id_transaccions;
                 }
             }
             if($request->id_transaccions!=NULL){
-                $transaccion = Transaccion::find($id_transaccions);
+                $transaccion = Transaccion::find($request->id_transaccions);
                 if($transaccion != NULL){
                     $transaccion_comprobante->id_transaccions = $request->id_transaccions;
                 }
