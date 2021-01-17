@@ -18,6 +18,7 @@ class CreateFeriasTable extends Migration
             $table->string('descripcion');
             $table->unsignedBigInteger('id_comunas');
             $table->foreign('id_comunas')->references('id')->on('comunas');
+            $table->boolean('delete');
             $table->timestamps();
         });
     }

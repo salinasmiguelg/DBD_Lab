@@ -21,6 +21,7 @@ class CreateMetodoDePagosTable extends Migration
             $table->string('titular');
             $table->unsignedBigInteger('id_transaccions');
             $table->foreign('id_transaccions')->references('id')->on('transaccions');
+            $table->boolean('delete');
             $table->timestamps();
         });
     }

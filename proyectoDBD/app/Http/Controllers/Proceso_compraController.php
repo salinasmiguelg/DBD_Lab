@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Proceso_compra;
+use App\Models\Proceso_pago;
+use App\Models\Proceso_despacho;
+use App\Models\Comprobante;
 
 class Proceso_compraController extends Controller
 {
@@ -13,18 +17,16 @@ class Proceso_compraController extends Controller
      */
     public function index()
     {
-        //
+        $proceso_compra = Proceso_compra::all()->where('delete',false);
+        if($proceso_compra != NULL){
+            return response()->json($proceso_compra);
+        }
+        return response()->json([
+            "message"=>"No se encontró proceso_compra",
+        ],404);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -45,31 +47,17 @@ class Proceso_compraController extends Controller
      */
     public function show($id)
     {
-        //
+        $proceso_compra = Proceso_compra::find($id);
+        if($proceso_compra != NULL && $proceso_compra->delete == false){
+            return response()->json($proceso_compra);
+        }
+        return response()->json([
+            "message"=>"No se encontró proceso_compra"
+        ],404);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+
 
     /**
      * Remove the specified resource from storage.
@@ -79,6 +67,17 @@ class Proceso_compraController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $proceso_compra = Proceso_compra::find($id);
+        if($proceso_compra != NULL){
+            $proceso_compra->delete = true;
+            $proceso_compra->save();
+            return response()->json([
+                "message"=> "SoftDelete a proceso_compra",
+                "id"=>$proceso_compra->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró el proceso_compra"
+        ],404);
     }
 }

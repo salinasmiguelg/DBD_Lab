@@ -27,7 +27,7 @@ class CreateProcesoComprasTable extends Migration
 
             $table->unsignedBigInteger('id_proceso_despachos');
             $table->foreign('id_proceso_despachos')->references('id')->on('proceso_despachos');
-
+            $table->boolean('delete');
             $table->timestamps();
         });
     }

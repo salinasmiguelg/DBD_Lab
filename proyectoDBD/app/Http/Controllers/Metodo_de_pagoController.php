@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Metodo_de_pago;
+use App\Models\Transaccion;
 
 class Metodo_de_pagoController extends Controller
 {
@@ -13,18 +15,16 @@ class Metodo_de_pagoController extends Controller
      */
     public function index()
     {
-        //
+        $metodo_de_pago = Metodo_de_pago::all()->where('delete',false);
+        if($metodo_de_pago != NULL){
+            return response()->json($metodo_de_pago);
+        }
+        return response()->json([
+            "message"=>"No se encontró metodo_de_pago",
+        ],404);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -34,7 +34,32 @@ class Metodo_de_pagoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'numero_tarjeta' => ['required'],
+            'tipo_cuenta' => ['required'],
+            'banco' => ['required'],
+            'titular' => ['required'],
+            'id_transaccions' => ['required'],
+        ]);
+        $transaccion = Transaccion::find($id_transaccions);
+        if($transaccion  == NULL){
+            return response()->json([
+                "message"=>"No se encontró método de transacción",
+                "id"=>$transaccion->id,
+            ],404);
+        }
+        $metodo_de_pago = new Metodo_de_pago();
+        $metodo_de_pago->numero_tarjeta = $request->numero_tarjeta;
+        $metodo_de_pago->tipo_cuenta = $request->tipo_cuenta;
+        $metodo_de_pago->banco = $request->banco;
+        $metodo_de_pago->titular = $request->titular;
+        $metodo_de_pago->id_transaccions = $request->id_transaccions;
+        $metodo_de_pago->delete = false;
+        $metodo_de_pago->save();
+        return response()->json([
+            "message"=>"Se ha creado metodo_de_pago",
+            "id"=>$metodo_de_pago->id
+        ],202);
     }
 
     /**
@@ -45,19 +70,15 @@ class Metodo_de_pagoController extends Controller
      */
     public function show($id)
     {
-        //
+        $metodo_de_pago = Metodo_de_pago::find($id);
+        if($metodo_de_pago != NULL && $metodo_de_pago->delete == false){
+            return response()->json($metodo_de_pago);
+        }
+        return response()->json([
+            "message"=>"No se encontró metodo_de_pago"
+        ],404);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -68,7 +89,35 @@ class Metodo_de_pagoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $metodo_de_pago = Metodo_de_pago::find($id);
+        if($metodo_de_pago!=NULL){
+            if($request->numero_tarjeta!=NULL){
+                $metodo_de_pago->numero_tarjeta = $request->numero_tarjeta;
+            }
+            if($request->tipo_cuenta!=NULL){
+                $metodo_de_pago->tipo_cuenta = $request->tipo_cuenta;
+            }
+            if($request->banco!=NULL){
+                $metodo_de_pago->banco = $request->banco;
+            }
+            if($request->titular!=NULL){
+                $metodo_de_pago->titular = $request->titular;
+            }
+            if($request->id_transaccions!=NULL){
+                $transaccion = Transaccion::find($id_transaccions);
+                if($transaccion != NULL){
+                    $metodo_de_pago->id_transaccions = $request->id_transaccions;
+                }
+            }
+            if($request->delete!=NULL){
+                $metodo_de_pago->delete = $request->delete;
+            }
+            $metodo_de_pago->save();
+            return response()->json($metodo_de_pago);
+        }
+        return response()->json([
+            "message"=>"No se encontró metodo_de_pago"
+        ],404);
     }
 
     /**
@@ -79,6 +128,17 @@ class Metodo_de_pagoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $metodo_de_pago = Metodo_de_pago::find($id);
+        if($metodo_de_pago != NULL){
+            $metodo_de_pago->delete = true;
+            $metodo_de_pago->save();
+            return response()->json([
+                "message"=> "SoftDelete a metodo_de_pago",
+                "id"=>$metodo_de_pago->id
+            ]);
+        }
+        return response()->json([
+            "message"=>"No se encontró el metodo_de_pago"
+        ],404);
     }
 }

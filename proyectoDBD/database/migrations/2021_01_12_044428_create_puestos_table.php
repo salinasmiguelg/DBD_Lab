@@ -27,7 +27,6 @@ class CreatePuestosTable extends Migration
 
             $table->unsignedBigInteger('id_users');
             $table->foreign('id_users')->references('id')->on('users');
-
             $table->timestamps();
         });
     }
