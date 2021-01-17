@@ -99,7 +99,7 @@ class ProductoController extends Controller
     public function show($id)
     {
         $producto = Producto::find($id);
-        if($producto != NULL && $producto->delete == false){
+        if($producto != NULL && $producto->delete == false && $producto->stock > 0){
             return response()->json($producto);
         }
         return response()->json([
