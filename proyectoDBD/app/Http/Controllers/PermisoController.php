@@ -33,22 +33,23 @@ class PermisoController extends Controller
     public function store(Request $request)
     {
         $permiso = new Permiso();
+
         $validatedData = $request->validate([
-            'nombre' => ['require' , 'min:2' , 'max:30'],
-            'delete' => ['require' , 'boolean'],
-            'id_rols' => ['require' , 'numeric']
+            'nombre' => ['required' , 'min:2' , 'max:30'],
+            'id_rols' => ['required' , 'numeric']
         ]);
 
         //Se verifican que las llaves foraneas del elemento a guardar existan como tal
-        $rol = Rol::find($request->id_users);
+        $rol = Rol::find($request->id_rols);
         if($rol == NULL){
-            return response()->jason([
+            return response()->json([
                 'message'=>'id Rol no existe'
             ]);
         }
         
         $permiso->nombre = $request->nombre;
-        $permiso->delete = $request->delete;
+        $permiso->id_rols = $request->id_rols;
+        $permiso->delete = false;
 
         $permiso->save();
 
@@ -109,7 +110,7 @@ class PermisoController extends Controller
            $permiso->save();
         }
         else{
-            return response()->jason([
+            return response()->json([
                 'message'=>'id permiso no existe'
             ]);
         }

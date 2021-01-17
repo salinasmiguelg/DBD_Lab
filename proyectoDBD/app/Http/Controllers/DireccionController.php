@@ -35,12 +35,11 @@ class DireccionController extends Controller
     {
         $direccion = new Direccion();
         $validatedData = $request->validate([
-            'calle' => ['require' , 'min:2' , 'max:30'],
-            'numero' => ['require' , 'min:0' , 'max:10000'],
-            'es_departamento' => ['require' , 'boolean'],
-            'delete' => ['require' , 'boolean'],
-            'id_users' => ['require' , 'numeric'],
-            'id_comunas' => ['require' , 'numeric']
+            'calle' => ['required' , 'min:2' , 'max:30'],
+            'numero' => ['required' , 'min:0' , 'max:10000'],
+            'es_departamento' => ['required' , 'boolean'],
+            'id_users' => ['required' , 'numeric'],
+            'id_comunas' => ['required' , 'numeric']
         ]);
         
         //Se verifican que las llaves foraneas del elemento a guardar existan como tal
@@ -62,7 +61,10 @@ class DireccionController extends Controller
         $direccion->calle = $request->calle;
         $direccion->numero = $request->numero;
         $direccion->es_departamento = $request->es_departamento;
-        $direccion->delete = $request->delete;
+        $direccion->id_users = $request->id_users;
+        $direccion->id_comunas = $request->id_comunas;
+
+        $direccion->delete = false;
 
         $direccion->save();
 
@@ -98,7 +100,7 @@ class DireccionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $direccion = User::find($id);
+        $direccion = Direccion::find($id);
         if($request->calle != NULL){
             $direccion->calle = $request->calle;
         }

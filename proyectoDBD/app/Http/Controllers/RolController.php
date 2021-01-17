@@ -33,10 +33,10 @@ class RolController extends Controller
     public function store(Request $request)
     {
         $rol = new Rol();
+
         $validatedData = $request->validate([
-            'nombre' => ['require' , 'min:2' , 'max:30'],
-            'delete' => ['require' , 'boolean'],
-            'id_users' => ['require' , 'boolean']
+            'nombre' => ['required' , 'min:2' , 'max:30'],
+            'id_users' => ['required']
         ]);
 
         //Se verifican que las llaves foraneas del elemento a guardar existan como tal
@@ -45,10 +45,11 @@ class RolController extends Controller
             return response()->json([
                 "message"=>"No existe usuario con esa id"
             ]);
-            }
+        }
         
         $rol->nombre = $request->nombre;
-        $rol->delete = $request->delete;
+        $rol->id_users = $request->id_users;
+        $rol->delete = false;
 
         $rol->save();
         

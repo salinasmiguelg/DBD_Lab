@@ -34,26 +34,27 @@ class Proceso_despachoController extends Controller
     {
         $proceso_despacho = new Proceso_despacho();
         $validatedData = $request->validate([
-            'tipo_despacho' => ['require' , 'min:2' , 'max:30'],
-            'fecha_despacho' => ['require'],
-            'elementos_despachados' => ['require' , "min:1"],
-            'coste_despacho' => ['require' , "min:1"],
-            'id_direccions' => ['require' , "numeric"],
-            'delete' => ['require' , 'boolean']
+            'tipo_despacho' => ['required' , 'min:2' , 'max:30'],
+            'fecha_despacho' => ['required'],
+            'elementos_despachados' => ['required' , "min:1"],
+            'coste_despacho' => ['required' , "min:1"],
+            'id_direccions' => ['required' , "numeric"],
         ]);
 
         //Se verifican que las llaves foraneas del elemento a guardar existan como tal
-        $direccion = Direccion::find($request->id_users);
+        $direccion = Direccion::find($request->id_direccions);
         if($direccion == NULL){
             return response()->json([
                 'message'=>'No existe direccion con esa id'
             ]);
         }
         
-        $proceso_despacho->calle = $request->calle;
-        $proceso_despacho->numero = $request->numero;
-        $proceso_despacho->es_departamento = $request->es_departamento;
-        $proceso_despacho->delete = $request->delete;
+        $proceso_despacho->tipo_despacho = $request->tipo_despacho;
+        $proceso_despacho->fecha_despacho = $request->fecha_despacho;
+        $proceso_despacho->elementos_despachados = $request->elementos_despachados;
+        $proceso_despacho->coste_despacho = $request->coste_despacho;
+        $proceso_despacho->id_direccions = $request->id_direccions;
+        $proceso_despacho->delete = false;
 
         $proceso_despacho->save();
 

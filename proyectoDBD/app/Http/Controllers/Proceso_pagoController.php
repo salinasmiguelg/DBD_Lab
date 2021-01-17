@@ -34,11 +34,10 @@ class Proceso_pagoController extends Controller
     {
         $proceso_pago = new Proceso_pago();
         $validatedData = $request->validate([
-            'tipoPago' => ['require' , 'min:0' ],
-            'costeTotal' => ['require', 'min:0'],
-            'fechaPago' => ['require'],
-            'delete' => ['require' , 'boolean'],
-            'id_metodo_de_pagos' => ['require' , 'numeric']
+            'tipoPago' => ['required' , 'min:0' ],
+            'costeTotal' => ['required', 'min:0'],
+            'fechaPago' => ['required'],
+            'id_metodo_de_pagos' => ['required' , 'numeric']
         ]);
 
         //Se verifican que las llaves foraneas del elemento a guardar existan como tal
@@ -50,15 +49,16 @@ class Proceso_pagoController extends Controller
         }
 
         //Se guarda el nuevo elemento
-        $proceso_pago->calle = $request->calle;
-        $proceso_pago->numero = $request->numero;
-        $proceso_pago->es_departamento = $request->es_departamento;
-        $proceso_pago->delete = $request->delete;
+        $proceso_pago->tipoPago = $request->tipoPago;
+        $proceso_pago->costeTotal = $request->costeTotal;
+        $proceso_pago->fechaPago = $request->fechaPago;
+        $proceso_pago->id_metodo_de_pagos = $request->id_metodo_de_pagos;
+        $proceso_pago->delete = false;
 
         $proceso_pago->save();
 
         return response()->json([
-            "message"=>"Se ha creado un nuevo Proceso de Despacho",
+            "message"=>"Se ha creado un nuevo proceso de pago",
             "id" => $proceso_pago->id
         ],202);
     }
