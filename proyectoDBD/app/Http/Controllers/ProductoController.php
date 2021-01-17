@@ -16,7 +16,7 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $producto = Producto::all()->where('delete',false);
+        $producto = Producto::all()->where('stock','>',0)->where('delete',false);
         if($producto != NULL){
             return response()->json($producto);
         }
