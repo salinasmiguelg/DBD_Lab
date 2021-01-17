@@ -38,32 +38,31 @@ class PuestoController extends Controller
         //
         $puesto = new Puesto();
         $validatedData = $request->validate([
-            'categoria' => ['require' , 'min:2' , 'max:30'],
-            'descripcion' => ['require' , 'min:2' , 'max:150'],
-            'delete' => ['require' , 'boolean'],
-            'id_ferias' => ['require' , 'numeric'],
-            'id_rols' => ['require' , 'numeric'],
-            'id_users' => ['require' , 'numeric']
+            'categoria' => ['required' , 'min:2' , 'max:30'],
+            'descripcion' => ['required' , 'min:2' , 'max:150'],
+            'id_ferias' => ['required' , 'numeric'],
+            'id_rols' => ['required' , 'numeric'],
+            'id_users' => ['required' , 'numeric']
         ]);
         //verificar las llaves foraneas
         $user = User::find($request->id_users);
         if($user == NULL){
             return response()->json([
-                'message'=>'No existe usuario con esa id'
+                'message'=>'No existe usuario con esa id']);
         }
         $feria = Feria::find($request->id_ferias);
         if($feria == NULL){
             return response()->json([
-                'message'=>'No existe usuario con esa id'
+                'message'=>'No existe usuario con esa id']);
         }
         $rol = Rol::find($request->id_rols);
         if($rol == NULL){
             return response()->json([
-                'message'=>'No existe usuario con esa id'
+                'message'=>'No existe usuario con esa id']);
         }
         $puesto->categoria = $request->categoria;
         $puesto->descripcion = $request->descripcion;
-        $puesto->delete = $request->delete;
+        $puesto->delete = false;
         $puesto->save();
         return response()->json([
         "mesage"=>"Se ha creado una region",
@@ -112,7 +111,7 @@ class PuestoController extends Controller
             $puesto->delete = $request->delete;
         }
         $puesto->save();
-        return response()->jason($puesto);
+        return response()->json($puesto);
     }
 
     /**
@@ -128,9 +127,14 @@ class PuestoController extends Controller
         if($puesto != NULL){
            $puesto->delete = true; 
            $puesto->save();
+           return response()->json([
+            "message"=> "SoftDelete a puesto",
+            "id"=>$puesto->id
+        ]);
         }
         else{
-            "message" => "id Puesto inexistente"
+            return response()->json([
+                "message" => "id Puesto inexistente"]);
         }
         return response()->json($puesto);
     }

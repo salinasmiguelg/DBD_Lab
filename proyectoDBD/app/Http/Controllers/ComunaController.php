@@ -36,19 +36,18 @@ class ComunaController extends Controller
         //
         $comuna = new Comuna();
         $validatedData = $request->validate([
-            'nombre' => ['require' , 'min:2' , 'max:30'],
-            'delete' => ['require' , 'boolean'],
-            'id_regions' => ['require' , 'numeric']
+            'nombre' => ['required' , 'min:2' , 'max:30'],
+            'id_regions' => ['required' , 'numeric']
         ]);
         //Se verifican que las llaves foraneas del elemento a guardar exitan como tal
         $region = Region::find($request->id_regions);
         if($region == NULL){
             return response()->json([
-                'message'=>'No existe Region con esa id'
+                'message'=>'No existe Region con esa id']);
         }
 
         $comuna->nombre = $request->nombre;
-        $comuna->delete = $request->delete;
+        $comuna->delete = false;
         $comuna->save();
         return response()->json([
         "mesage"=>"Se ha creado una Comuna",
@@ -94,7 +93,7 @@ class ComunaController extends Controller
             $comuna->delete = $request->delete;
         }
         $comuna->save();
-        return response()->jason($comuna);
+        return response()->json($comuna);
     }
 
     /**
@@ -110,9 +109,14 @@ class ComunaController extends Controller
         if($comuna != NULL){
            $comuna->delete = true; 
            $comuna->save();
+           return response()->json([
+            "message"=> "SoftDelete a comuna",
+            "id"=>$comuna->id
+        ]);
         }
         else{
-            "message" => "id Comuna inexistente"
+            return response()->json([
+                "message" => "id Comuna inexistente"]);
         }
         return response()->json($comuna);
     }

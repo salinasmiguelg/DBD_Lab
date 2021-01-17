@@ -18,7 +18,7 @@ class UserController extends Controller
         //
         $user = User::all()->where('delete',false);
         if($user != NULL){
-            return reponse()->json($user);
+            return response()->json($user);
         }
         return reponse()->json([
             "message" => "No se encontro User",
@@ -39,19 +39,18 @@ class UserController extends Controller
         //
         $user = new User();
         $validatedData = $request->validate([
-            'nombre' => ['require' , 'min:2' , 'max:30'],
-            'apellido' =>['require' , 'min:2' , 'max:30'],
-            'contraseña' => ['require' , 'min:8' , 'max:15'],
-            'numeroTelefono' => ['require' , 'min:9', 'max:11'],
-            'delete' => ['require' , 'numeric'],
-            'email' => ['require']
+            'nombre' => ['required' , 'min:2' , 'max:30'],
+            'apellido' =>['required' , 'min:2' , 'max:30'],
+            'contraseña' => ['required' , 'min:8' , 'max:100'],
+            'numeroTelefono' => ['required' , 'min:9', 'max:11'],
+            'email' => ['required'],
         ]);
         $user->nombre = $request->nombre;
         $user->apellido = $request->apellido;
         $user->contraseña = $request->contraseña;
         $user->numeroTelefono = $request->numeroTelefono;
         $user->email = $request->email;
-        $user->delete = $request->delete;
+        $user->delete = false;
         $user->save();
         return response()->json([
         "mesage"=>"Se ha creado un usuario",
@@ -89,26 +88,31 @@ class UserController extends Controller
     {
         //
         $user = User::find($id);
-        if($request->nombre != NULL){
-            $user->nombre = $request->nombre;
+        if($user!=NULL){
+            if($request->nombre != NULL){
+                $user->nombre = $request->nombre;
+            }
+            if($request->apellido != NULL){
+            $user->apellido = $request->apellido;  
+            }
+            if($request->contraseña != NULL){
+                $user->contraseña = $request->contraseña;
+            }
+            if($request->numeroTelefono != NULL){
+                $user->numeroTelefono = $request->numeroTelefono; 
+            }
+            if($request->email != NULL){
+                $user->email = $request->email;
+            }
+            if($request->delete != NULL){
+                $user->delete = $request->delete;
+            }
+            $user->save();
+            return response()->json($user);
         }
-        if($request->apellido != NULL){
-          $user->apellido = $request->apellido;  
-        }
-        if($request->contraseña != NULL){
-            $user->contraseña = $request->contraseña;
-        }
-        if($request->numeroTelefono != NULL){
-           $user->numeroTelefono = $request->numeroTelefono; 
-        }
-        if($request->email != NULL){
-            $user->email = $request->email;
-        }
-        if($request->delete != NULL){
-            $user->delete = $request->delete;
-        }
-        $user->save();
-        return response()->jason($user);
+        return response()->json([
+            "message"=>"No se encontró usuario"
+        ],404);
         
     }
 
@@ -126,11 +130,15 @@ class UserController extends Controller
         if($user != NULL){
            $user->delete = true; 
            $user->save();
+           return response()->json([
+            "message"=> "SoftDelete a user",
+            "id"=>$user->id
+        ]);
         }
         else{
-            "message" => "id inexistente"
+            return response()->json([
+                "message" => "id inexistente"]);
         }
-        return response()->json($user);
 
     }
 }

@@ -17,7 +17,7 @@ class RegionController extends Controller
         //
         $region = Region::all()->where('delete',false);
         if($region != NULL){
-            return reponse()->json($region);
+            return response()->json($region);
         }
         return reponse()->json([
             "message" => "No se encontro Region",
@@ -35,19 +35,18 @@ class RegionController extends Controller
         //
         $region = new Region();
         $validatedData = $request->validate([
-            'nombre' => ['require' , 'min:2' , 'max:30'],
-            'delete' => ['require' , 'boolean'],
-            'id_users' => ['require' , 'numeric']
+            'nombre' => ['required' , 'min:2' , 'max:30'],
+            'id_users' => ['required' , 'numeric']
         ]);
         //Se verifican las llaves foraneas
         $user = User::find($request->id_users);
         if($user == NULL){
             return response()->json([
-                'message'=>'No existe usuario con esa id'
+                'message'=>'No existe usuario con esa id']);
         }
 
         $region->nombre = $request->nombre;
-        $region->delete = $request->delete;
+        $region->delete = false;
         $region->save();
         return response()->json([
         "mesage"=>"Se ha creado una region",
@@ -93,7 +92,7 @@ class RegionController extends Controller
             $region->delete = $request->delete;
         }
         $region->save();
-        return response()->jason($region);
+        return response()->json($region);
     }
 
     /**
@@ -109,10 +108,14 @@ class RegionController extends Controller
         if($region != NULL){
            $region->delete = true; 
            $region->save();
+           return response()->json([
+            "message"=> "SoftDelete a region",
+            "id"=>$region->id
+        ]);
         }
         else{
-            "message" => "id Region inexistente"
+            return response()->json([
+                "message" => "id inexistente"]);
         }
-        return response()->json($region);
     }
 }

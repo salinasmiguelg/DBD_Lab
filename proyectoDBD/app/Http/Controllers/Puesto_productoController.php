@@ -36,22 +36,21 @@ class Puesto_productoController extends Controller
         //
         $puesto_producto = new Puesto_producto();
         $validatedData = $request->validate([
-            'delete' => ['require' , 'boolean'],
-            'id_productos' => ['require' , 'numeric'],
-            'id_puestos' => ['require' , 'numeric']
+            'id_productos' => ['required' , 'numeric'],
+            'id_puestos' => ['required' , 'numeric']
         ]);
         $producto = Producto::find($request->id_productos);
         if($producto == NULL){
             return response()->json([
-                'message'=>'No existe producto con esa id'
+                'message'=>'No existe producto con esa id']);
         }
 
         $puesto = Puesto::find($request->id_puestos);
         if($puesto == NULL){
             return response()->json([
-                'message'=>'No existe puesto con esa id'
+                'message'=>'No existe puesto con esa id']);
         }
-        $puesto_producto->delete = $request->delete;
+        $puesto_producto->delete = false;
         $puesto_producto->save();
         return response()->json([
             "message"=>"Se ha creado un nuevo puesto_producto",
@@ -93,7 +92,7 @@ class Puesto_productoController extends Controller
             $puesto_producto->delete = $request->delete;
         }
         $puesto_producto->save();
-        return response()->jason($puesto_producto);
+        return response()->json($puesto_producto);
 
     }
 
@@ -110,9 +109,14 @@ class Puesto_productoController extends Controller
         if($puesto_producto != NULL){
            $puesto_producto->delete = true; 
            $puesto_producto->save();
+           return response()->json([
+            "message"=> "SoftDelete a puesto_producto",
+            "id"=>$puesto_producto->id
+        ]);
         }
         else{
-            "message" => "id puesto_producto inexistente"
+            return response()->json([
+                "message" => "id puesto_producto inexistente"]);
         }
         return response()->json($puesto_producto);
     }
