@@ -7,27 +7,51 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-
     <title>Feriinf</title>
   </head>
   <body>
-    <h1>Feriinf</h1>
+
     <!-- apartado superior -->
-    <div>
-        <div class = "row color1">
-            <div class = "col button text-center">
-                <button type = "button" class = "btn btn-default margen_up color2" >
-                Iniciar Sesion </button>
-            </div>
-            <div class = "col button ">
-                <button type = "button" class = "btn btn-default margen_up color2" >
-                Registrarse </button>
-            </div>
+
+    <div class = "container-fluid">
+        <div class="row color1">
+            <nav class="navbar navbar-dark ">
+                <a class="navbar-brand" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Feriinf</a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse" id="navbarsExample01" style="">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Registrarse </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Loguerse</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link disabled" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Hogar <span class="sr-only">(current)</span></a>
+                    </li>
+                    <!--
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="http://example.com/" id="dropdown01" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                      <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Action</a>
+                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Another action</a>
+                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Something else here</a>
+                      </div>
+                    </li>
+                    -->
+                  </ul>
+                  <form class="form-inline my-2 my-md-0">
+                    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                  </form>
+                </div>
+              </nav>
+
         </div>
-    </div>
-    <!-- apartado productos -->
-    <div class="container-fluid">
-        <div class="row text-center">
+        <!-- barras de navegacion-->
+        <div class="row  text-center color1">
             <div class="col-sm border border-dark">
                 Fruta
             </div>
@@ -45,12 +69,24 @@
             </div>
         </div>
     </div>
+
+
+
+    <section id="showcase">
+        <div class = "container">
+            <h1>No necesitas salir para obtener la mejor fruta</h1>
+            <p> Nos aseguramos de que nuestros productos sean frescos y seguros</p>
+        </div>
+    </section>
     <div class = "container-fluid">
         <div class ="row center">
         <img src="https://i.ibb.co/L5mx9H3/HKMFWLPZ2-FDXPETCBS4-EG5-GE6-I.jpg" alt="HKMFWLPZ2-FDXPETCBS4-EG5-GE6-I" border="0">
         </div>
 
     </div>
+
+
+
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -66,10 +102,37 @@
 </html>
 
 <style>
+
     .color1{
-        color:blue;
+        background-color:#3a7658;
+        color: #ffffff;
+
     }
     .color2{
-        color:green;
+        background-color:#235434;
+        color: #ffffff;
     }
+    .color3{
+        background-color:#032107;
+        color: #ffffff;
+    }
+    .color4{
+        background-color:#a7dcb2;
+        color: #ffffff;
+    }
+    .color5{
+        background-color:#81be4d;
+        color: #ffffff;
+    }
+    .color6{
+        background-color:#3a7658;
+    }
+    body {
+        padding-bottom: 20px;
+    }
+
+    .navbar {
+        margin-bottom: 20px;
+    }
+
 </style>
