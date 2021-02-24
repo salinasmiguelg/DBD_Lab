@@ -23,6 +23,12 @@ Route::get('/perfil', function () {
 Route::get('/perfil/edit', function () {
     return view('edit');
 });
+
+//Pagina de Pago
+Route::get('/pago', function () {
+    return view('pago');
+});
+
 //cantidad
 Route::get('/cantidad','CantidadController@index');
 Route::post('/cantidad/create','CantidadController@store');
