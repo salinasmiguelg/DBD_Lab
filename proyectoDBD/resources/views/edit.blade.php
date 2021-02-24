@@ -6,19 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 
-    <title>Perfil</title>
+    <title>Editar Perfil</title>
   </head>
   <body>
-    <h1 class = "first-title">Perfil</h1>
+    <h1 class = "first-title">Editar Perfil</h1>
     <div class = "container-text">
-    <form>
-      <imput type = "number">Número Telefónico:</p><!--se puede cambiar-->
-      <p>Región:</p><!--se puede cambiar-->
-      <p>Comuna:</p><!--se puede cambiar-->
-      <p>Dirección:</p><!--se puede cambiar-->
-        <!---->
-      <!--if rol == feriante-->
-        <p>Puestos de feria:</p>
+    <form class = "container-form">
+      <label for="disabledTextInput" class="form-label">Número Telefónico</label>
+      <input type="text" class="form-control" value="Número actual">
+      <label for="disabledTextInput" class="form-label">Región</label>
+      <input type="text" class="form-control" value="Región actual">
+      <label for="disabledTextInput" class="form-label">Comuna</label>
+      <input type="text" class="form-control" value="Comuna actual">
+      <label for="disabledTextInput" class="form-label">Dirección</label>
+      <input type="text" class="form-control" value="Dirección actual">
     </form>
     </div>
     <a href="/perfil" class="btn btn-success">Guardar Cambios</a>
@@ -69,7 +70,10 @@
     }
     .btn{
       margin-top: 3%;
-      margin-left: 45%;
+      margin-left: 44%;
+    }
+    .form-control{
+      margin-top:1%;
     }
 
 
