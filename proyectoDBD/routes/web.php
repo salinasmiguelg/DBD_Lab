@@ -28,6 +28,10 @@ Route::get('/perfil/edit', function () {
 Route::get('/pago', function () {
     return view('pago');
 });
+//Pagina de comprobante de pago
+Route::get('/pago/comprobante', function () {
+    return view('comprobante');
+});
 
 //cantidad
 Route::get('/cantidad','CantidadController@index');

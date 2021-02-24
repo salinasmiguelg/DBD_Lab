@@ -26,7 +26,7 @@
                     <input type="nombre" class="form-control" id="ejemploNombre" placeholder="Victor Pérez">
                 </div>
                 <div class="mb-3">
-                    <label for="ejemploCorreo" class="form-label">Correo Electronico</label>
+                    <label for="ejemploCorreo" class="form-label">Correo Electrónico</label>
                     <input type="correo" class="form-control" id="ejemploCorreo" placeholder="name@ejemplo.com">
                 </div>
                 <div class="mb-3">
@@ -34,11 +34,11 @@
                     <input type="correo" class="form-control" id="ejemploRut" placeholder="12.345.678-9">
                 </div>
                 <div class="mb-3">
-                    <label for="ejemploTelefono" class="form-label">Telefono</label>
+                    <label for="ejemploTelefono" class="form-label">Teléfono</label>
                     <input type="telefono" class="form-control" id="ejemploTelefono" placeholder="+56 9 12 34 56 78">
                 </div>
                 <div class="mb-3">
-                    <label for="ejemploDireccionDespacho" class="form-label">Direccion Despacho</label>
+                    <label for="ejemploDireccionDespacho" class="form-label">Dirección Despacho</label>
                     <input type="direccionDespacho" class="form-control" id="ejemploDireccionDespacho" placeholder="Calle/Pasaje">
                 </div>
 
@@ -52,8 +52,8 @@
                 <select class="form-select" aria-label="seleccion metodo pago">
                     <option selected>Método de Pago</option>
                     <option value="1">Efectivo</option>
-                    <option value="2">Debito/credito</option>
-                    <option value="3">Deposito</option>
+                    <option value="2">Débito/Crédito</option>
+                    <option value="3">Depósito</option>
                 </select>
                 <!-- Selector 2 -->
                 <select class="form-select" aria-label="Seleccion retiro/despacho">
@@ -74,7 +74,7 @@
                     <legend>Elementos a comprar</legend>
                     <div class="form-floating">
                         <textarea class="form-control" placeholder="Elementos del carrito!" id="floatingTextarea"></textarea>
-                        <label for="floatingTextarea">Acá podria ir el total</label>
+                        <label for="floatingTextarea">Total: </label>
                     </div>
                 </div>
             </form>
@@ -86,7 +86,7 @@
 
             <div class="row">
                 <div class="col">
-                    <button type="submit" class="btn btn-primary">Pagar</button>
+                    <a href="/pago/comprobante" class="btn btn-success">Ordenar y Pagar</a>
                 </div>
             </div>
     </div>
