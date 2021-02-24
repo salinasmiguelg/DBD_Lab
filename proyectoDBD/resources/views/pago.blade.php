@@ -10,41 +10,52 @@
   </head>
 
   <body>
+    <!-- titulo Pagina Pago -->
     <h1 class = "first-title">Proceso de Pago</h1>
 
+    <!-- Grilla de 3 secciones -->
     <div class="container">
 
+        <!-- Primera Seccion -->
         <div class="col-sm-4">Datos Personales
             
+            <!-- formularios de texto con la informacion del comprador -->
             <form>
                 <div class="mb-3">
                     <label for="ejemploNombre" class="form-label">Nombre</label>
-                    <input type="nombre" class="form-control" id="ejemploNombre" aria-describedby="emailHelp">
+                    <input type="nombre" class="form-control" id="ejemploNombre" placeholder="Victor Pérez">
                 </div>
                 <div class="mb-3">
                     <label for="ejemploCorreo" class="form-label">Correo Electronico</label>
-                    <input type="correo" class="form-control" id="ejemploCorreo" aria-describedby="emailHelp">
+                    <input type="correo" class="form-control" id="ejemploCorreo" placeholder="name@ejemplo.com">
+                </div>
+                <div class="mb-3">
+                    <label for="ejemploRut" class="form-label">Rut</label>
+                    <input type="correo" class="form-control" id="ejemploRut" placeholder="12.345.678-9">
                 </div>
                 <div class="mb-3">
                     <label for="ejemploTelefono" class="form-label">Telefono</label>
-                    <input type="telefono" class="form-control" id="ejemploTelefono" aria-describedby="emailHelp">
+                    <input type="telefono" class="form-control" id="ejemploTelefono" placeholder="+56 9 12 34 56 78">
                 </div>
                 <div class="mb-3">
                     <label for="ejemploDireccionDespacho" class="form-label">Direccion Despacho</label>
-                    <input type="direccionDespacho" class="form-control" id="ejemploDireccionDespacho" aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                    <label for="ejemploNotas" class="form-label">Notas Adicionales</label>
-                    <input type="Notas" class="form-control" id="ejemploNotas" aria-describedby="emailHelp">
+                    <input type="direccionDespacho" class="form-control" id="ejemploDireccionDespacho" placeholder="Calle/Pasaje">
                 </div>
 
+                <!-- Cuadro de texto para informacion adicional -->
+                <div class="form-floating">
+                <label for="NotasAdicionales" class="form-label">Notas Adicionales</label>
+                    <textarea class="form-control" placeholder="Notas adicionales para entrega" id="floatingTextarea"></textarea>
+                </div>
+
+                <!-- Selector 1 -->
                 <select class="form-select" aria-label="seleccion metodo pago">
                     <option selected>Método de Pago</option>
                     <option value="1">Efectivo</option>
                     <option value="2">Debito/credito</option>
                     <option value="3">Deposito</option>
                 </select>
-
+                <!-- Selector 2 -->
                 <select class="form-select" aria-label="Seleccion retiro/despacho">
                     <option selected>Tipo Entrega</option>
                     <option value="1">Retiro Personal</option>
@@ -54,17 +65,34 @@
             </form>
         
         </div>
-
-            <div class="col-sm-4">Elementos a comprar
-                <div class = "container-text">
-                
+            <!-- Segunda seccion de Grilla -->
+            <div class="col-sm-4">
+            
+            <!-- Cuadro de texto no modificable que muestra elementos que serna comprados -->
+            <form>
+                <fieldset disabled>
+                    <legend>Elementos a comprar</legend>
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Elementos del carrito!" id="floatingTextarea"></textarea>
+                        <label for="floatingTextarea">Acá podria ir el total</label>
+                    </div>
                 </div>
+            </form>
+
+            <!-- Tercera seccion de Grilla -->
+            <div class="col-sm-4">   
+                <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/0e/c9/a6/0ec9a6b1-7398-4621-04cc-9d3739fab718/source/256x256bb.jpg  " class="img-fluid" alt="...">
             </div>
 
-            
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary">Pagar</button>
+                </div>
+            </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Pagar</button>
+    
+    
 
   </body>
 
