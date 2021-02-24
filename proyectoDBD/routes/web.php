@@ -16,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('prueba');
 });
+
+Route::get('/perfil', function () {
+    return view('perfil');
+});
+Route::get('/perfil/edit', function () {
+    return view('edit');
+});
 //cantidad
 Route::get('/cantidad','CantidadController@index');
 Route::post('/cantidad/create','CantidadController@store');
