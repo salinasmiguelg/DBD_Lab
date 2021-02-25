@@ -13,12 +13,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Vista principal
 Route::get('/', function () {
     return view('prueba');
 });
+//Vista Login
 Route::get('/login', function () {
     return view('login');
 });
+//Vista Perfil
+Route::get('/perfil', function () {
+    return view('perfil');
+});
+//Vista Edicion de perfil
+Route::get('/perfil/edit', function () {
+    return view('edit');
+});
+//Vista de pago
+Route::get('/pago', function () {
+    return view('pago');
+});
+//Vista comprobante de pago
+Route::get('/pago/comprobante', function () {
+    return view('comprobante');
+});
+
+
 //cantidad
 Route::get('/cantidad','CantidadController@index');
 Route::post('/cantidad/create','CantidadController@store');
