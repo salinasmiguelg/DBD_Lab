@@ -13,24 +13,24 @@
 
     <!-- apartado superior -->
 
-    <div class = "container-fluid">
+    <div class = "container-fluid ">
         <div class="row color1">
             <nav class="navbar navbar-dark ">
-                <a class="navbar-brand" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Feriinf</a>
+                <a class="navbar-brand" href="/">Feriinf</a>
                 <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="navbar-collapse collapse" id="navbarsExample01" style="">
+                <div class="navbar-collapse collapse" id="navbarsExample01" >
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                       <a class="nav-link" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Registrarse </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Loguerse</a>
+                      <a class="nav-link" href="/login">Loguerse</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link disabled" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Hogar <span class="sr-only">(current)</span></a>
+                      <a class="nav-link disabled" href="/">Hogar <span class="sr-only">(current)</span></a>
                     </li>
                     <!--
                     <li class="nav-item dropdown">
@@ -72,8 +72,8 @@
 
 
 
-    <section id="showcase">
-        <div class = "container">
+    <section id="showcase" >
+        <div class = "container text-xl-center">
             <h1>No necesitas salir para obtener la mejor fruta</h1>
             <p> Nos aseguramos de que nuestros productos sean frescos y seguros</p>
         </div>
@@ -83,6 +83,11 @@
         <img src="https://i.ibb.co/L5mx9H3/HKMFWLPZ2-FDXPETCBS4-EG5-GE6-I.jpg" alt="HKMFWLPZ2-FDXPETCBS4-EG5-GE6-I" border="0">
         </div>
 
+    </div>
+    <div class = "end-50 bottom text-center">
+        <p class = "text-muted padding_up">
+            FERIINF - Online Market - 2021
+        </p>
     </div>
 
 
@@ -102,6 +107,8 @@
 </html>
 
 <style>
+
+
 
     .color1{
         background-color:#3a7658;
@@ -123,9 +130,6 @@
     .color5{
         background-color:#81be4d;
         color: #ffffff;
-    }
-    .color6{
-        background-color:#3a7658;
     }
     body {
         padding-bottom: 20px;

@@ -16,23 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('prueba');
 });
-
-Route::get('/perfil', function () {
-    return view('perfil');
+Route::get('/login', function () {
+    return view('login');
 });
-Route::get('/perfil/edit', function () {
-    return view('edit');
-});
-
-//Pagina de Pago
-Route::get('/pago', function () {
-    return view('pago');
-});
-//Pagina de comprobante de pago
-Route::get('/pago/comprobante', function () {
-    return view('comprobante');
-});
-
 //cantidad
 Route::get('/cantidad','CantidadController@index');
 Route::post('/cantidad/create','CantidadController@store');
