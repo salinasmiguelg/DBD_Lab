@@ -67,11 +67,7 @@
                                 <input type = "password" id = "inputPassword" class = "form-control rounded-pill" placeholder="Contraseña" required="" autofocus="">
 
                                 <input type = "password" id = "inputPassword" class = "form-control rounded-pill" placeholder="Repita la contraseña" required="" autofocus="">
-                                <div class = "checkbox mb-4">
-                                    <label>
-                                        <input type = "checkbox" value = "remember-me"> Guardar Sesion
-                                    </label>
-                                </div>
+
                                 <div class = "boton text-center">
                                     <button type="button" class="btn color3">Registrarse</button>
                                 </div>
@@ -148,6 +144,9 @@
         width: 350px;
         margin-left: 75px;
 
+    }
+    .boton{
+        margin-top: 20px;
     }
 
     .form-control input[type='text'],
