@@ -21,6 +21,10 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login');
 });
+//Vista Registro
+Route::get('/registro', function () {
+    return view('registro');
+});
 //Vista Perfil
 Route::get('/perfil', function () {
     return view('perfil');

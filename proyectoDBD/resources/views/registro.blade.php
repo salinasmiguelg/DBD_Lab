@@ -1,3 +1,4 @@
+
 <html lang="es">
     <head>
         <meta http-equiv= "Content-Type" content = "text/html; charset=URF-8">
@@ -25,10 +26,10 @@
                         <div class="navbar-collapse collapse" id="navbarsExample01" >
                           <ul class="navbar-nav mr-auto">
                             <li class="nav-item active">
-                              <a class="nav-link  " href="/registro">Registrarse </a>
+                              <a class="nav-link disabled " href="/registro">Registrarse<span class="sr-only">(current)</span> </a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link disabled " href="/login">Loguerse <span class="sr-only">(current)</span> </a>
+                              <a class="nav-link " href="/login">Loguerse</a>
                             </li>
                             <li class="nav-item">
                               <a class="nav-link" href="/">Hogar </a>
@@ -57,19 +58,22 @@
 
                         <form class = "form-sigin bg-white position-relative">
                             <div class = "form-group  ">
-                                <h3 class= "card-title position-relative">Iniciar Sesion</h3>
+                                <h3 class= "card-title position-relative">Registrarse</h3>
+                                <input type = "nombre" id="inputNombre" class="form-control rounded-pill" placeholder="Nombre" required="" autofocus="">
+                                <input type = "apellido" id="inputNombre" class="form-control rounded-pill" placeholder="Apellido" required="" autofocus="">
+                                <input type = "numeroTelefono" id="inputNombre" class="form-control rounded-pill" placeholder="Numero de telefono" required="" autofocus="">
                                 <input type = "email" id="inputEmail" class="form-control rounded-pill" placeholder="Correo Electronico" required="" autofocus="">
 
                                 <input type = "password" id = "inputPassword" class = "form-control rounded-pill" placeholder="Contraseña" required="" autofocus="">
 
-
+                                <input type = "password" id = "inputPassword" class = "form-control rounded-pill" placeholder="Repita la contraseña" required="" autofocus="">
                                 <div class = "checkbox mb-4">
                                     <label>
                                         <input type = "checkbox" value = "remember-me"> Guardar Sesion
                                     </label>
                                 </div>
                                 <div class = "boton text-center">
-                                    <button type="button" class="btn color3">Iniciar</button>
+                                    <button type="button" class="btn color3">Registrarse</button>
                                 </div>
                             </div>
                         </form>
@@ -128,7 +132,6 @@
         background-color:#a7dcb2;
     }
     .form-group{
-
         position: absolute;
         color: #ffffff;
         background-color: #81be4d;

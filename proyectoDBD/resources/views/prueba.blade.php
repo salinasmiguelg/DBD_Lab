@@ -24,7 +24,7 @@
                 <div class="navbar-collapse collapse" id="navbarsExample01" >
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                      <a class="nav-link" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Registrarse </a>
+                      <a class="nav-link" href="/registro">Registrarse </a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="/login">Loguerse</a>
@@ -78,8 +78,8 @@
             <p> Nos aseguramos de que nuestros productos sean frescos y seguros</p>
         </div>
     </section>
-    <div class = "container-fluid">
-        <div class ="row center">
+    <div class = "container-fluid text-center">
+        <div class ="row center imagen">
         <img src="https://i.ibb.co/L5mx9H3/HKMFWLPZ2-FDXPETCBS4-EG5-GE6-I.jpg" alt="HKMFWLPZ2-FDXPETCBS4-EG5-GE6-I" border="0">
         </div>
 
@@ -109,7 +109,25 @@
 <style>
 
 
+body{
+        background-color:#a7dcb2;
+    }
+    .imagen{
 
+
+        border-radius: 5px;
+        height: 70%;
+        width: 1000px;
+        text-align: center;
+        font-size: 20px;
+        position: relative;
+        margin-top: center;
+        margin-bottom: center;
+        margin-left: 425px;
+        margin-right: center;
+
+
+    }
     .color1{
         background-color:#3a7658;
         color: #ffffff;
