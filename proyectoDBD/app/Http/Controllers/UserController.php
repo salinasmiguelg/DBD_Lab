@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Comuna;
+use App\Models\Region;
+use App\Models\Direccion;
+use App\Models\Rol;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -18,7 +23,7 @@ class UserController extends Controller
         //
         $user = User::all()->where('delete',false);
         if($user != NULL){
-            return view("feriantes",compact("user"));
+            return response()->json($user);
         }
         return reponse()->json([
             "message" => "No se encontro User",
@@ -74,6 +79,21 @@ class UserController extends Controller
                 'message' => 'No se encontro User']);
         }
         return response()->json($user);
+    }
+
+    public function showPerfil($id)
+    {
+        //
+        $user = User::find($id);
+        $region = Region::all()->where('id_users',$id)->where('delete',false);
+        $direccion = Direccion::all()->where('id_users',$id)->where('delete',false);
+        $rol = Rol::all()->where('id_users',$id)->where('delete',false);
+        if($user == NULL or $user->delete == true){
+            return response()->json([
+                'message' => 'No se encontro User']);
+        }
+        
+        return view('perfil',compact('user','region','direccion','rol'));
     }
 
     /**

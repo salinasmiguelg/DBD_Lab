@@ -11,16 +11,32 @@
   <body>
     <h1 class = "first-title">Perfil</h1>
     <div class = "container-text">
-      <p>Nombre:</p>
-      <p>Apellido:</p>
-      <p>Número Telefónico:</p><!--se puede cambiar-->
-      <p>Email:</p>
-      <p>Región:</p><!--se puede cambiar-->
+      <p>Nombre: {{$user->nombre}}</p>
+      <p>Apellido: {{$user->apellido}}</p>
+      <p>Número Telefónico: {{$user->numeroTelefono}}</p><!--se puede cambiar-->
+      <p>Email: {{$user->email}}</p>
+
+      @forelse($direccion as $direccion)
+      <p>Dirección: {{$direccion->nombre}} </p>
+      @empty
+      <p>Dirección: No posee dirección </p>
+      @endforelse
+
+      @forelse($region as $region)
+      <p>Región: {{$region->nombre}} </p>
+      @empty
+      <p>Región: No posee región </p>
+      @endforelse
+
+
       <p>Comuna:</p><!--se puede cambiar-->
-      <p>Dirección:</p><!--se puede cambiar-->
-        <!---->
-      <!--if rol == feriante-->
-        <p>Puestos de feria:</p>
+
+      @forelse($rol as $rol)
+      <p>Rol: {{$rol->nombre}} </p>
+      @empty
+      <p>Rol: No posee rol </p>
+      @endforelse
+
     </div>
     <a href="/perfil/edit" class="btn btn-success">Editar Perfil</a>
   </body>
