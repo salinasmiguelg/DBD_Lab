@@ -18,7 +18,7 @@ class UserController extends Controller
         //
         $user = User::all()->where('delete',false);
         if($user != NULL){
-            return response()->json($user);
+            return view("feriantes",compact("user"));
         }
         return reponse()->json([
             "message" => "No se encontro User",

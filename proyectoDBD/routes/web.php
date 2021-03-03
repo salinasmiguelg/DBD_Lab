@@ -42,7 +42,6 @@ Route::get('/pago/comprobante', function () {
     return view('comprobante');
 });
 
-
 //cantidad
 Route::get('/cantidad','CantidadController@index');
 Route::post('/cantidad/create','CantidadController@store');
