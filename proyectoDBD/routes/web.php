@@ -157,9 +157,8 @@ Route::get('/transaccion/{id}','TransaccionController@show');
 Route::put('/transaccion/{id}','TransaccionController@update');
 Route::delete('/transaccion/{id}','TransaccionController@destroy');
 //user
-Route::get('/user','UserController@index');
-Route::post('/user/create','UserController@store');
-Route::get('/user/{id}','UserController@show');
-Route::put('/user/{id}','UserController@update');
-Route::delete('/user/{id}','UserController@destroy');
-Route::get('/perfil/{id}','UserController@showPerfil');
+Route::get('/user','UserController@index')->name('userAll');
+Route::post('/user/create','UserController@store')->name('userStore');
+Route::get('/user/{id}','UserController@show')->name('userGet');
+Route::put('/user/{id}','UserController@update')->name('userUpdate');
+Route::delete('/user/{id}','UserController@destroy')->name('userDelete');

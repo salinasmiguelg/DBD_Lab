@@ -53,26 +53,28 @@
 
                 </div>
 
-                <div class = "col">
+                <div class = "col ">
                     <div class = "container fluid">
 
-                        <form class = "form-sigin bg-white position-relative">
-                            <div class = "form-group  ">
-                                <h3 class= "card-title position-relative">Registrarse</h3>
-                                <input type = "nombre" id="inputNombre" class="form-control rounded-pill" placeholder="Nombre" required="" autofocus="">
-                                <input type = "apellido" id="inputNombre" class="form-control rounded-pill" placeholder="Apellido" required="" autofocus="">
-                                <input type = "numeroTelefono" id="inputNombre" class="form-control rounded-pill" placeholder="Numero de telefono" required="" autofocus="">
-                                <input type = "email" id="inputEmail" class="form-control rounded-pill" placeholder="Correo Electronico" required="" autofocus="">
 
-                                <input type = "password" id = "inputPassword" class = "form-control rounded-pill" placeholder="Contraseña" required="" autofocus="">
+                            <form class = "form-sigin bg-white position-relative" action = "{{route('userStore')}}" method = "POST">
+                                <div class = "form-group">
+                                    <h3 class= "card-title position-relative">Registrarse</h3>
+                                    <input type = "nombre" id="inputNombre" class="form-control rounded-pill" placeholder="Nombre" required="" autofocus="">
+                                    <input type = "apellido" id="inputNombre" class="form-control rounded-pill" placeholder="Apellido" required="" autofocus="">
+                                    <input type = "numeroTelefono" id="inputNombre" class="form-control rounded-pill" placeholder="Numero de telefono" required="" autofocus="">
+                                    <input type = "email" id="inputEmail" class="form-control rounded-pill" placeholder="Correo Electronico" required="" autofocus="">
 
-                                <input type = "password" id = "inputPassword" class = "form-control rounded-pill" placeholder="Repita la contraseña" required="" autofocus="">
+                                    <input type = "contraseña" id = "inputPassword" class = "form-control rounded-pill" placeholder="Contraseña" required="" autofocus="">
 
-                                <div class = "boton text-center">
-                                    <button type="button" class="btn color3">Registrarse</button>
+                                    <input type = "contraseña" id = "inputPassword" class = "form-control rounded-pill" placeholder="Repita la contraseña" required="" autofocus="">
+
+                                    <div class = "boton text-center">
+                                        <button type="submit" class="btn color3">Registrarse</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+
                         <!--
                         <p class = "mt-4 text-center">¿No posees cuenta?
                             <a href="/register">Registrarse</a>
