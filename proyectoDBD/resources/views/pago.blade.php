@@ -21,46 +21,50 @@
             
             <!-- formularios de texto con la informacion del comprador -->
             <form>
-                <div class="mb-3">
-                    <label for="ejemploNombre" class="form-label">Nombre</label>
-                    <input type="nombre" class="form-control" id="ejemploNombre" placeholder="Victor Pérez">
-                </div>
-                <div class="mb-3">
-                    <label for="ejemploCorreo" class="form-label">Correo Electrónico</label>
-                    <input type="correo" class="form-control" id="ejemploCorreo" placeholder="name@ejemplo.com">
-                </div>
-                <div class="mb-3">
-                    <label for="ejemploRut" class="form-label">Rut</label>
-                    <input type="correo" class="form-control" id="ejemploRut" placeholder="12.345.678-9">
-                </div>
-                <div class="mb-3">
-                    <label for="ejemploTelefono" class="form-label">Teléfono</label>
-                    <input type="telefono" class="form-control" id="ejemploTelefono" placeholder="+56 9 12 34 56 78">
-                </div>
+                <fieldset disabled>
+                    <div class="mb-3">
+                        <label for="ejemploNombre" class="form-label">Nombres</label>
+                        <input type="nombre" class="form-control" id="ejemploNombre" placeholder="Victor Manuel">
+                    </div>
+                    <div class="mb-3">
+                        <label for="ejemploNombre" class="form-label">Apellidos</label>
+                        <input type="nombre" class="form-control" id="ejemploNombre" placeholder="Alarcón Gonzalez">
+                    </div>
+                    <div class="mb-3">
+                        <label for="ejemploCorreo" class="form-label">Correo Electrónico</label>
+                        <input type="correo" class="form-control" id="ejemploCorreo" placeholder="name@ejemplo.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="ejemploTelefono" class="form-label">Teléfono</label>
+                        <input type="telefono" class="form-control" id="ejemploTelefono" placeholder="+56 9 12 34 56 78">
+                    </div>
+                </fieldset>
+            </form>
+            <form>
                 <div class="mb-3">
                     <label for="ejemploDireccionDespacho" class="form-label">Dirección Despacho</label>
                     <input type="direccionDespacho" class="form-control" id="ejemploDireccionDespacho" placeholder="Calle/Pasaje">
                 </div>
 
-                <!-- Cuadro de texto para informacion adicional -->
-                <div class="form-floating">
-                <label for="NotasAdicionales" class="form-label">Notas Adicionales</label>
-                    <textarea class="form-control" placeholder="Notas adicionales para entrega" id="floatingTextarea"></textarea>
-                </div>
-
                 <!-- Selector 1 -->
-                <select class="form-select" aria-label="seleccion metodo pago">
-                    <option selected>Método de Pago</option>
-                    <option value="1">Efectivo</option>
-                    <option value="2">Débito/Crédito</option>
-                    <option value="3">Depósito</option>
+                <select class="form-select" id="validationCustom04" required>
+                    <option selected disabled value="">Método Pago </option>
+                    <option>Efectivo</option>
+                    <option>Debito/Crédito</option>
+                    <option>Déposito</option>
                 </select>
+
                 <!-- Selector 2 -->
-                <select class="form-select" aria-label="Seleccion retiro/despacho">
-                    <option selected>Tipo Entrega</option>
-                    <option value="1">Retiro Personal</option>
-                    <option value="2">Despacho a Domicilio</option>
+                <select class="form-select" id="validationCustom04" required>
+                    <option selected disabled value="">Metodo Despacho </option>
+                    <option>Tipo Entrega</option>
+                    <option>Retiro Personal</option>
+                    <option>Despacho a Domicilio</option>
                 </select>
+
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit">Ordenar y pagar</button>
+                </div>
 
             </form>
         
@@ -68,27 +72,43 @@
             <!-- Segunda seccion de Grilla -->
             <div class="col-sm-4">
             
-            <!-- Cuadro de texto no modificable que muestra elementos que serna comprados -->
-            <form>
-                <fieldset disabled>
-                    <legend>Elementos a comprar</legend>
-                    <div class="form-floating">
-                        <textarea class="form-control" placeholder="Elementos del carrito!" id="floatingTextarea"></textarea>
-                        <label for="floatingTextarea">Total: </label>
-                    </div>
-                </div>
-            </form>
+            <!-- Tabal con elementos que estan en el carrito de compra del usuario -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Precio Unitario</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>esta</td>
+                            <td>tabla</td>
+                            <td>Hay que</td>
+                            <td>Rellenarla</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>con</td>
+                            <td>datos</td>
+                            <td>de</td>
+                            <td>Carrito</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h4>Total: </h4> <h4> Numero! BD </h4>                
+            </div>
 
             <!-- Tercera seccion de Grilla -->
             <div class="col-sm-4">   
                 <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/0e/c9/a6/0ec9a6b1-7398-4621-04cc-9d3739fab718/source/256x256bb.jpg  " class="img-fluid" alt="...">
             </div>
 
-            <div class="row">
-                <div class="col">
-                    <a href="/pago/comprobante" class="btn btn-success">Ordenar y Pagar</a>
-                </div>
-            </div>
+            
     </div>
 
     
