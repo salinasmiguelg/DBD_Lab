@@ -85,12 +85,21 @@ class UserController extends Controller
         $region = Region::all()->where('id_users',$id)->where('delete',false);
         $direccion = Direccion::all()->where('id_users',$id)->where('delete',false);
         $rol = Rol::all()->where('id_users',$id)->where('delete',false);
+        
+        $comuna_user = DB::table('comunas')
+            ->join('regions','regions.id','=','comunas.id_regions')
+            ->select('comunas.nombre')
+            ->where('comunas.delete',false)
+            ->where('regions.id_users',$id)
+            ->get();
+
+        
         if($user == NULL or $user->delete == true){
             return response()->json([
                 'message' => 'No se encontro User']);
         }
         
-        return view('perfil',compact('user','region','direccion','rol'));
+        return view('perfil',compact('user','region','direccion','rol','comuna_user'));
     }
 
     /**

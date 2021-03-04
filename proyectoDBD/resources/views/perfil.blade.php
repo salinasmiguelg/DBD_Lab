@@ -17,7 +17,7 @@
       <p>Email: {{$user->email}}</p>
 
       @forelse($direccion as $direccion)
-      <p>Dirección: {{$direccion->nombre}} </p>
+      <p>Dirección: {{$direccion->calle}}, {{$direccion->numero}} </p>
       @empty
       <p>Dirección: No posee dirección </p>
       @endforelse
@@ -29,7 +29,11 @@
       @endforelse
 
 
-      <p>Comuna:</p><!--se puede cambiar-->
+      @forelse($comuna_user as $comuna_user)
+      <p>Comuna: {{$comuna_user->nombre}} </p>
+      @empty
+      <p>Comuna: No posee región </p>
+      @endforelse
 
       @forelse($rol as $rol)
       <p>Rol: {{$rol->nombre}} </p>
