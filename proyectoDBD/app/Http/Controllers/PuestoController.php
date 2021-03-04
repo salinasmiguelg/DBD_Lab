@@ -7,6 +7,8 @@ use App\Models\Puesto;
 use App\Models\User;
 use App\Models\Feria;
 use App\Models\Rol;
+use App\Models\Comuna;
+use Illuminate\Support\Facades\DB;
 class PuestoController extends Controller
 {
     /**
@@ -88,7 +90,24 @@ class PuestoController extends Controller
         return response()->json($puesto);
     }
 
-   
+    public function showPuestos($id)
+    {
+        //
+        $comuna = Comuna::find($id);
+        $ferias = Feria::all()->where('id_comunas',$id)->where('delete',false);
+        $ferias_puesto = DB::table('puestos')
+            ->join('ferias','ferias.id','=','puestos.id_ferias')
+            ->select('ferias.descripcion as descripcion_feria','puestos.*')
+            ->where('ferias.id_comunas',$id)
+            ->where('ferias.delete',false)
+            ->get();
+
+            if($comuna == NULL or $comuna->delete == true){
+                return response()->json([
+                    'message' => 'No se encontro Comuna']);
+            }
+        return view('puestos',compact('comuna','ferias_puesto'));
+    }   
 
     /**
      * Update the specified resource in storage.

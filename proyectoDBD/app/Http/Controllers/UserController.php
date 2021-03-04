@@ -121,18 +121,6 @@ class UserController extends Controller
             ->select('users.*')
             ->where('users.delete',false)
             ->get();
-            
-        /*
-        $puestoProducto_rol = DB::table('puesto_productos')
-            ->join('puestos','puestos.id','=','puesto_productos.id_puestos')
-            ->where('puestos.delete',false)
-            ->join('rols','rols.id','=','puesto_productos.id_rols')
-            ->where('rols.delete',false)
-            ->join('users','users.id','=','rols.id_users')
-            ->select('users.*')
-            ->where('users.delete',false)
-            ->get();
-        */
 
             if($producto == NULL or $producto->delete == true){
                 return response()->json([
