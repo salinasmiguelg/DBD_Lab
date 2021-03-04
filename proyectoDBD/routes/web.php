@@ -28,7 +28,7 @@ Route::get('/registro', function () {
 //Vista Perfil
 Route::get('/perfil/{id}','UserController@showPerfil');
 //Vista Edicion de perfil
-Route::put('/perfil/edit/{id}','UserController@updatePerfil')
+Route::put('/perfil/edit/{id}','UserController@updatePerfil');
 //Vista de pago
 Route::get('/pago', function () {
     return view('pago');
