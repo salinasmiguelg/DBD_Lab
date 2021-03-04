@@ -26,13 +26,9 @@ Route::get('/registro', function () {
     return view('registro');
 });
 //Vista Perfil
-Route::get('/perfil', function () {
-    return view('perfil');
-});
+Route::get('/perfil/{id}','UserController@showPerfil');
 //Vista Edicion de perfil
-Route::get('/perfil/edit', function () {
-    return view('edit');
-});
+Route::put('/perfil/edit/{id}','UserController@updatePerfil')
 //Vista de pago
 Route::get('/pago', function () {
     return view('pago');
