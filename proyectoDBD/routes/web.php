@@ -40,6 +40,7 @@ Route::get('/crearProducto',function(){
     return view('createProducto');
 });
 
+Route::get('/feriantes/{id}','UserController@showFeriante');
 //Vista de pago
 Route::get('/pago/{id}', 'UserController@showPerfilPago');
    

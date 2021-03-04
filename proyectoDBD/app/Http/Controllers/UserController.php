@@ -8,6 +8,9 @@ use App\Models\Comuna;
 use App\Models\Region;
 use App\Models\Direccion;
 use App\Models\Rol;
+use App\Models\Producto;
+use App\Models\Puesto_producto;
+use App\Models\Puesto;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -100,6 +103,40 @@ class UserController extends Controller
         }
         
         return view('perfil',compact('user','region','direccion','rol','comuna_user'));
+    }
+
+    public function showFeriante($id)
+    {
+        //
+        $producto = Producto::find($id);
+        $puesto_producto = Puesto_producto::all()->where('id_productos',$id)->where('delete',false);
+
+        $puestoProducto_puesto = DB::table('puesto_productos')
+            ->join('puestos','puestos.id','=','puesto_productos.id_puestos')
+            ->select('puestos.id_rols')
+            ->where('puesto_productos.id_productos',$id)
+            ->where('puestos.delete',false)
+            ->get();
+            
+        /*
+        $puestoProducto_rol = DB::table('puesto_productos')
+            ->join('puestos','puestos.id','=','puesto_productos.id_puestos')
+            ->where('puestos.delete',false)
+            ->join('rols','rols.id','=','puesto_productos.id_rols')
+            ->where('rols.delete',false)
+            ->join('users','users.id','=','rols.id_users')
+            ->select('users.*')
+            ->where('users.delete',false)
+            ->get();
+        */
+
+            if($producto == NULL or $producto->delete == true){
+                return response()->json([
+                    'message' => 'No se encontro Producto']);
+            }
+
+        
+        return view('feriantes',compact('producto','puesto_producto','puestoProducto_puesto'));
     }
 
     
