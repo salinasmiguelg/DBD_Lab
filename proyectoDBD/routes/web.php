@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,8 +27,15 @@ Route::get('/registro', function () {
 });
 //Vista Perfil
 Route::get('/perfil/{id}','UserController@showPerfil');
+//Vista Edicion de perfil borrar
+
+
 //Vista Edicion de perfil
-Route::put('/perfil/edit/{id}','UserController@updatePerfil');
+Route::get('/perfil/edit/{id}',function($id){
+    $user = User::find($id);
+    return view('edit')->with('user',$user);
+});
+
 //Vista de pago
 Route::get('/pago', function () {
     return view('pago');

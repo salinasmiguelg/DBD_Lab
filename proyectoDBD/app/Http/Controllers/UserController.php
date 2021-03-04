@@ -114,6 +114,18 @@ class UserController extends Controller
     {
         //
         $user = User::find($id);
+
+        $region = Region::all()->where('id_users',$id)->where('delete',false);
+        $direccion = Direccion::all()->where('id_users',$id)->where('delete',false);
+        $rol = Rol::all()->where('id_users',$id)->where('delete',false);
+        
+        $comuna_user = DB::table('comunas')
+            ->join('regions','regions.id','=','comunas.id_regions')
+            ->select('comunas.nombre')
+            ->where('comunas.delete',false)
+            ->where('regions.id_users',$id)
+            ->get();
+
         if($user!=NULL){
             if($request->nombre != NULL){
                 $user->nombre = $request->nombre;
@@ -134,7 +146,39 @@ class UserController extends Controller
                 $user->delete = $request->delete;
             }
             $user->save();
-            return response()->json($user);
+            return view('perfil',compact('user','region','direccion','rol','comuna_user'));
+        }
+        return response()->json([
+            "message"=>"No se encontró usuario"
+        ],404);
+
+    }
+
+    public function updatePerfil(Request $request, $id)
+    {
+        //
+        $user = User::find($id);
+        if($user!=NULL){
+            if($request->nombre != NULL){
+                $user->nombre = $request->nombre;
+            }
+            if($request->apellido != NULL){
+            $user->apellido = $request->apellido;
+            }
+            if($request->contraseña != NULL){
+                $user->contraseña = $request->contraseña;
+            }
+            if($request->numeroTelefono != NULL){
+                $user->numeroTelefono = $request->numeroTelefono;
+            }
+            if($request->email != NULL){
+                $user->email = $request->email;
+            }
+            if($request->delete != NULL){
+                $user->delete = $request->delete;
+            }
+            $user->save();
+            return view('edit',compact('user'));
         }
         return response()->json([
             "message"=>"No se encontró usuario"

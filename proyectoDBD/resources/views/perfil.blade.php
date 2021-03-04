@@ -42,7 +42,7 @@
       @endforelse
 
     </div>
-    <a href="/perfil/edit" class="btn btn-success">Editar Perfil</a>
+    <a href="/perfil/edit/{{$user->id}}" class="btn btn-success">Editar Perfil</a>
   </body>
 </html>
 
