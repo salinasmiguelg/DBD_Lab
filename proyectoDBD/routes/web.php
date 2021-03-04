@@ -36,6 +36,10 @@ Route::get('/perfil/edit/{id}',function($id){
     return view('edit')->with('user',$user);
 });
 
+Route::get('/crearProducto',function(){
+    return view('createProducto');
+});
+
 //Vista de pago
 Route::get('/pago', function () {
     return view('pago');
@@ -107,7 +111,7 @@ Route::put('/proceso_pago/{id}','Proceso_pagoController@update');
 Route::delete('/proceso_pago/{id}','Proceso_pagoController@destroy');
 //producto
 Route::get('/producto','ProductoController@index');
-Route::post('/producto/create','ProductoController@store');
+Route::post('/producto/create','ProductoController@store')->name('crearProducto');
 Route::get('/producto/{id}','ProductoController@show');
 Route::put('/producto/{id}','ProductoController@update');
 Route::delete('/producto/{id}','ProductoController@destroy');

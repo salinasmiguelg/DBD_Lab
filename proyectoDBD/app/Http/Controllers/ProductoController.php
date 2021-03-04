@@ -38,9 +38,12 @@ class ProductoController extends Controller
             'precioUnitario' => ['required'],
             'stock' => ['required'],
             'categoria' => ['required'],
+            /*
             'id_cantidads' => ['required'],
             'id_proceso_compras' => ['required'],
+            */
         ]);
+        /*
         if(!is_integer($request->precioUnitario)){
             return response()->json([
                 "message"=>"El precioUnitario debe ser un valor entero",
@@ -56,6 +59,7 @@ class ProductoController extends Controller
                 "message"=>"El id_cantidads debe ser un valor entero",
             ]);
         }
+        
         $cantidad = Cantidad::find($id_cantidads);
         if($cantidad  == NULL){
             return response()->json([
@@ -63,11 +67,14 @@ class ProductoController extends Controller
                 "id"=>$cantidad->id
             ],404);
         }
+        */
+        /*
         if(!is_integer($request->id_proceso_compras)){
             return response()->json([
                 "message"=>"El id_proceso_compras debe ser un valor entero",
             ]);
         }
+        
         $proceso_compra = Proceso_compra::find($id_proceso_compras);
         if($proceso_compra  == NULL){
             return response()->json([
@@ -75,19 +82,17 @@ class ProductoController extends Controller
                 "id"=>$proceso_compra->id,
             ],404);
         }
+        */
         $producto = new Producto();
         $producto->nombreProducto = $request->nombreProducto;
         $producto->precioUnitario = $request->precioUnitario;
         $producto->stock = $request->stock;
         $producto->categoria = $request->categoria;
-        $producto->id_cantidads = $request->id_cantidads;
-        $producto->id_proceso_compras = $request->id_proceso_compras;
+        $producto->id_cantidads = 1;
+        $producto->id_proceso_compras = 1;
         $producto->delete = false;
         $producto->save();
-        return response()->json([
-            "message"=>"Se ha creado producto",
-            "id"=>$producto->id
-        ],202);
+        return view('createProducto', compact('producto'));
     }
 
     /**
