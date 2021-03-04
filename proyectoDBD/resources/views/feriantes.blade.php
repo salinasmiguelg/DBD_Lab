@@ -53,25 +53,21 @@
                     <div class = "container fluid">
 
                       <h1 class = "first-title">Feriantes que venden: {{$producto->nombreProducto}}</h1>
-                      @forelse($puestoProducto_puesto as $puestoProducto_puesto)
-                        <p>{{$puestoProducto_puesto->id_rols}}</p>
-                      @empty
-                      <p>no existe id de puesto_producto</p>
-                      @endforelse
-
+                      @forelse($puestoProducto_user as $puestoProducto_user)
                       <div class = "card-columns">                     
                         <div class="card" style="width: 18rem;">
                           <div class="card-body">
-                            <h5 class="card-title">Nombre: </h5>
-                            <p class="card-text">Apellido: </p>
-                            <p class="card-text">Stock: </p>
+                            <h5 class="card-title">Nombre: {{$puestoProducto_user->nombre}} {{$puestoProducto_user->apellido}}</h5>
+                            <h5 class="card-title">Contacto: </h5>
+                            <p class="card-text">Telefono: {{$puestoProducto_user->numeroTelefono}}</p>
+                            <p class="card-text">Email: {{$puestoProducto_user->email}}</p>
                             <a href="#" class="btn btn-primary">Agregar</a>
                           </div>
                         </div>
-                        
-                        
-
                       </div>
+                      @empty
+                      <p>no existe id de puesto_producto</p>
+                      @endforelse
                         <!--
                         <p class = "mt-4 text-center">¿No posees cuenta?
                             <a href="/register">Registrarse</a>

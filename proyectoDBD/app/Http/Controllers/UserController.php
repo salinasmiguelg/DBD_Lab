@@ -111,11 +111,15 @@ class UserController extends Controller
         $producto = Producto::find($id);
         $puesto_producto = Puesto_producto::all()->where('id_productos',$id)->where('delete',false);
 
-        $puestoProducto_puesto = DB::table('puesto_productos')
+        $puestoProducto_user = DB::table('puesto_productos')
             ->join('puestos','puestos.id','=','puesto_productos.id_puestos')
-            ->select('puestos.id_rols')
             ->where('puesto_productos.id_productos',$id)
             ->where('puestos.delete',false)
+            ->join('rols','rols.id','=','puestos.id_rols')
+            ->where('rols.delete',false)
+            ->join('users','users.id','=','rols.id_users')
+            ->select('users.*')
+            ->where('users.delete',false)
             ->get();
             
         /*
@@ -136,7 +140,7 @@ class UserController extends Controller
             }
 
         
-        return view('feriantes',compact('producto','puesto_producto','puestoProducto_puesto'));
+        return view('feriantes',compact('producto','puesto_producto','puestoProducto_user'));
     }
 
     
