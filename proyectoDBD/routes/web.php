@@ -41,9 +41,8 @@ Route::get('/crearProducto',function(){
 });
 
 //Vista de pago
-Route::get('/pago', function () {
-    return view('pago');
-});
+Route::get('/pago/{id}', 'UserController@showPerfilPago');
+   
 //Vista comprobante de pago
 Route::get('/pago/comprobante', function () {
     return view('comprobante');

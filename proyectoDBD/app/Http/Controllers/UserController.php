@@ -102,6 +102,30 @@ class UserController extends Controller
         return view('perfil',compact('user','region','direccion','rol','comuna_user'));
     }
 
+    
+    public function showPerfilPago($id)
+    {
+        //
+        $user = User::find($id);
+        $region = Region::all()->where('id_users',$id)->where('delete',false);
+        $direccion = Direccion::all()->where('id_users',$id)->where('delete',false);
+        
+        $comuna_user = DB::table('comunas')
+            ->join('regions','regions.id','=','comunas.id_regions')
+            ->select('comunas.nombre')
+            ->where('comunas.delete',false)
+            ->where('regions.id_users',$id)
+            ->get();
+
+        
+        if($user == NULL or $user->delete == true){
+            return response()->json([
+                'message' => 'No se encontro User para proceso de pago']);
+        }
+        
+        return view('pago',compact('user','region','direccion','comuna_user'));
+    }
+
     /**
      * Update the specified resource in storage.
      *
