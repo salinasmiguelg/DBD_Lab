@@ -6,55 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 
+    <!-- Titulo de pagina -->
     <title>Comprobante</title>
   </head>
 
   <body>
-    <!-- titulo Pagina Pago -->
+    <!-- Cabecera de la pagina de Pago -->
     <div class="jumbotron">
       <h1 class="text-center">Compra completa</h1>
-      <p class="text-center"> A continuación, su comprobante y los detalles</p>
+      <p class="text-center">Muchas gracias!</p>
+      <div class="col bs-linebreak"></div>
+      <p class="text-center">A continuación su comprobante y los detalles</p>
     </div>
 
-    <!-- Contenedor texto con informacion -->
-    
-    <div class = "container-text">
-      <dl class="dl">
-        <dt>Nombre:</dt>
-        <dd>...</dd>
-        <dt>Correo electronico:</dt>
-        <dd>...</dd>
-        <dt>Rut:</dt>
-        <dd>...</dd>
-        <dt>Teléfono:</dt>
-        <dd>...</dd>
-        <dt>Direccion de Despacho:</dt>
-        <dd>...</dd>
-        <dt>Método de pago:</dt>
-        <dd>...</dd>
-        <dt>Tipo de Despacho:</dt>
-        <dd>...</dd>
-        <dt>Total:</dt>
-        <dd>...</dd>
-      </dl>
-    </div>
+    <!-- Contenedor texto con informacion del comprobante-->
+    <div class = "container">
+              
+          <!-- formularios de texto con la informacion del comprador -->
+          <div class="card" style="width: 100%;">
+              <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Nombres: </li>
+                  <li class="list-group-item">Correo Electronico: </li>
+                  <li class="list-group-item">Rut: </li>
+                  <li class="list-group-item">Telefono: </li>
+                  <li class="list-group-item">Dirección de Despacho: </li>
+                  <li class="list-group-item">Método de pago: </li>
+                  <li class="list-group-item">Tipo de despacho: </li>
+                  <li class="list-group-item">Total Pagado: </li>
+              </ul>
+          </div>
 
+    <!--Boton que lleva a la pagina principal -->
     <div class="row">
-  <div class="col-md-8">.col-md-8</div>
+  <div class="col-md-8"></div>
   <a href="/" class="btn btn-success">Página principal</a>
-      </div>
-  <div class="col-md-4">.col-md-4</div>
-</div>
+</div>    
 
-    <!-- Boton de retorno a Pagina Principal -->
-    
-    
-
+  <!--Footer de la pagina -->
     <div class = "footer">
             FERIINF - Online Market - 2021
     </div>
 
   </body>
+</html>
 
   <style>
 
@@ -92,8 +86,7 @@
       font-size: 20px;
       margin-left: 5%;
       margin-right: 5%;
-      margin-top: 1%
-      padding: 1%;
+      margin-top: 1%;
       border-radius: 5px;
     }
     .container{
@@ -101,6 +94,9 @@
         color: white;
         border-radius: 5px;
         padding: 1%;
+    }
+    .list-group-item{
+        color: black;
     }
     .footer {
         position: fixed;
@@ -117,12 +113,5 @@
     }
     .jumbotron{
         background-color:#ffffff;
-    .btn{
-      margin-top: 3%;
-      margin-left: 45%;
     }
-
-
 </style>
-
-</hmtl>

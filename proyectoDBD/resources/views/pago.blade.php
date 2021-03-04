@@ -1,46 +1,44 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 
+    <title>Proceso de pago</title>
+  </head>
+
+<body>
+
+    
     <!-- titulo Pagina Pago -->
     <div class="jumbotron">
-      <h1 class="text-center">Proceso de pagoasdasdasd</h1>
+      <h1 class="text-center">Proceso de pago</h1>
       <p class="text-center"> Confirme su datos</p>
     </div>
 
     <!-- Grilla de 3 secciones -->
     <div class="container">
 
-        <!-- Primera Seccion -->
+        <!-- Primera Seccion: Datos personales -->
         <div class="col-sm-4">
             <h4>Datos Personales</h4>
             
             <!-- formularios de texto con la informacion del comprador -->
-            <form>
-                <fieldset disabled="">
-                    <div class="mb-3">
-                        <label for="ejemploNombre" class="form-label">Nombres</label>
-                        <input type="text" class="form-control" id="ejemploNombre" placeholder="Victor Manuel">
-                    </div>
-                    <div class="mb-3">
-                        <label for="ejemploNombre" class="form-label">Apellidos</label>
-                        <input type="text" class="form-control" id="ejemploNombre" placeholder="Alarcón Gonzalez">
-                    </div>
-                    <div class="mb-3">
-                        <label for="ejemploCorreo" class="form-label">Correo Electrónico</label>
-                        <input type="email" class="form-control" id="ejemploCorreo" placeholder="name@ejemplo.com">
-                    </div>
-                    <div class="mb-3">
-                        <label for="ejemploTelefono" class="form-label">Teléfono</label>
-                        <input type="phone" class="form-control" id="ejemploTelefono" placeholder="+56 9 12 34 56 78">
-                    </div>
-                </fieldset>
-            </form>
-        
+            <div class="card" style="width: 100%;">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Nombres: </li>
+                    <li class="list-group-item">Apellidos: </li>
+                    <li class="list-group-item">Correo: </li>
+                    <li class="list-group-item">Telefono: </li>
+                    <li class="list-group-item">Dirección: </li>
+                </ul>
+            </div>
 
+            <!-- Selectores -->
             <form>
-                <div class="mb-3">
-                    <label for="ejemploDireccionDespacho" class="form-label">Dirección Despacho</label>
-                    <input type="direccionDespacho" class="form-control" id="ejemploDireccionDespacho" placeholder="Calle/Pasaje">
-                </div>
-
+            <div class="container-fluid">
                 <!-- Selector 1 -->
                 <select class="form-select" id="validationCustom04" required="">
                     <option selected="" disabled="" value="">Método Pago </option>
@@ -48,7 +46,6 @@
                     <option>Debito/Crédito</option>
                     <option>Déposito</option>
                 </select>
-
                 <!-- Selector 2 -->
                 <select class="form-select" id="validationCustom04" required="">
                     <option selected="" disabled="" value="">Metodo Despacho </option>
@@ -56,18 +53,18 @@
                     <option>Retiro Personal</option>
                     <option>Despacho a Domicilio</option>
                 </select>
-
+            </div>
+                <!--Boton de formulario para finalizar la compra. Deben servira si se han seleccionado opciones en anteriores selectores-->
                 <div class="row">
-                    <button class="btn btn-primary btn-lg active    " type="submit">Ordenar y pagar</button>
+                    <button class="btn btn-primary btn-lg active" type="submit">Ordenar y pagar</button>
                 </div>
-
             </form>
-        
+
         </div>
-            <!-- Segunda seccion de Grilla -->
+            <!-- Segunda seccion de Grilla: Elementos a comprar -->
             <div class="col-sm-4">
             
-            <!-- Tabal con elementos que estan en el carrito de compra del usuario -->
+            <!-- Tabla con elementos que estan en el carrito de compra del usuario -->
                 <table class="table table-hoved">
                     <thead>
                         <tr>
@@ -81,35 +78,38 @@
                     <tbody>
                         <tr>
                             <th scope="row">1</th>
-                            <td>esta</td>
-                            <td>tabla</td>
-                            <td>Hay que</td>
-                            <td>Rellenarla</td>
+                            <td>Zanahoria</td>
+                            <td>100</td>
+                            <td>1</td>
+                            <td>100</td>
                         </tr>
                         <tr>
                             <th scope="row">2</th>
-                            <td>con</td>
-                            <td>datos</td>
-                            <td>de</td>
-                            <td>Carrito</td>
+                            <td>Manzana</td>
+                            <td>150</td>
+                            <td>2</td>
+                            <td>300</td>
                         </tr>
                     </tbody>
                 </table>
-                <h4>Total: </h4> <h4> Numero! BD </h4>                
+                <h4>Total a pagar: 400 <h4>               
             </div>
 
-            <!-- Tercera seccion de Grilla -->
+            <!-- Tercera seccion de Grilla: Foto de pagina y boton de retorno -->
             <div class="col-sm-4">   
                 <img src="https://static.vecteezy.com/system/resources/previews/000/812/118/non_2x/grocery-shopping-cart-with-vegetables-and-fruits-photo.jpg" class="img-responsive" alt="img.rounded">
                 <a href="/" class="btn btn-primary btn-lg active" role="button">Pagina Principal</a>
             </div>
-
             
-    </div>
+        </div>
 
-    <div class="footer">
-            FERIINF - Online Market - 2021
-    </div>
+        <!-- Footer de la pagina-->
+        <div class="footer">
+                FERIINF - Online Market - 2021
+        </div>
+
+    </body>
+</html>
 
   
 
@@ -138,6 +138,12 @@
     }
     .color6{
         background-color:#3a7658;
+    }
+    .list-group-item{
+        color: black;
+    }
+    .form-select{
+        color: black;
     }
     body {
         padding-bottom: 20px;
@@ -177,6 +183,7 @@
       margin-top: 3%;
       margin-left: 45%;
     }
+
 
 
 </style>
