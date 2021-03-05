@@ -25,7 +25,7 @@ class ProductoFactory extends Factory
     {
         return [
             //
-            'nombreProducto'=>$this->faker->word,
+            'nombreProducto'=>$this->faker->randomElement($array = array ('Papa' , 'Acelga' , 'Lechuga','Tomate','Pala','Escoba')),
             'precioUnitario'=>$this->faker->randomNumber,
             'stock'=>$this->faker->randomNumber,
             'categoria'=>$this->faker->word,

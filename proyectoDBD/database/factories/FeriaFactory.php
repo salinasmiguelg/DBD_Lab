@@ -23,7 +23,7 @@ class FeriaFactory extends Factory
     public function definition()
     {
         return [
-            'descripcion' => $this->faker->text,
+            'descripcion' => $this->faker->randomElement($array = array ('Feria Aconcagua' , 'Lo Valledor' , 'La Vega','Feria Nocedal','Feria Tocornal')),
             'id_comunas' => Comuna::all()->random()->id,
             'delete' => $this->faker->boolean
         ];
