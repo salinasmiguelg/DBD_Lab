@@ -31,9 +31,14 @@ class ProductoController extends Controller
     }
     public function showProduct($id)
     {
+
         $producto = Producto::all()->where('stock','>',0)->where('delete',false);
+        $user = User::find($id);
         if($producto == NULL){
-            return view('carro',compact('producto'));
+            return view('carro',compact('user','producto'));
+        }
+        if($user == NULL){
+            return view('principal',compact('producto'));
         }
         $transaccion_user = DB::table('transaccion_users')
         ->join('users','users.id','=','transaccion_users.id_users')
@@ -46,7 +51,7 @@ class ProductoController extends Controller
         ->where('transaccion_productos.delete',false)
         ->get();
 
-        return view('carro',compact('producto','transaccion_user'));
+        return view('carro',compact('user','producto','transaccion_user'));
     }
     /**
      * Store a newly created resource in storage.

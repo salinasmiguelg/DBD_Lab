@@ -125,7 +125,6 @@ class UserController extends Controller
             if($user->email == $request->email && $user->contraseña == $request->contraseña){
                 return redirect()->action([UserController::class, 'continueSession'], ['id' => $user->id]);
                 //return view('home',compact('user','producto'));
-
             }
             else{
                 echo '<div class="alert alert-danger">Email o clave incorrecta.</div>';
