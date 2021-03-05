@@ -53,20 +53,19 @@
         <!-- barras de navegacion-->
         <div class="row  text-center color1">
             <div class="col-sm border border-dark">
-                Fruta
+                <div class="dropdown">
+                <a class="nav-link dropdown-toggle" href="http://example.com/" id="dropdown01" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                      <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Action</a>
+                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Another action</a>
+                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Something else here</a>
+                      </div>
+                </div>
             </div>
             <div class="col-sm border border-dark">
                 Verdura
             </div>
-            <div class="col-sm border border-dark">
-                Herramientas
-            </div>
-            <div class="col-sm border border-dark">
-                Limpieza
-            </div>
-            <div class="col-sm border border-dark">
-                Cocina
-            </div>
+
         </div>
     </div>
 
@@ -84,23 +83,23 @@
         </div>
 
         <div class = "col ">
-                    <div class = "container fluid">
-                            <div class="row">
-                                @forelse($producto as $producto)
-                                <div class="col-sm">
-                                    <div class="card" style="width: 18rem;">
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{$producto->nombreProducto}}</h5>
-                                            <p class="card-text">Descripción del producto</p>
-                                            <a href="#" class="btn btn-primary">Ver producto</a>
-                                        </div>
-                                    </div>
+            <div class = "container fluid">
+                    <div class="row">
+                        @forelse($producto as $producto)
+                        <div class="col-sm">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{$producto->nombreProducto}}</h5>
+                                    <p class="card-text">Descripción del producto</p>
+                                    <a href="#" class="btn btn-primary">Ver producto</a>
                                 </div>
-                                @empty
-                                <p>El carro se encuentra vacío</p>
-                                @endforelse
                             </div>
-                          </div>
+                        </div>
+                        @empty
+                        <p>El carro se encuentra vacío</p>
+                        @endforelse
+                    </div>
+                </div>
 
     </div>
     <div class = "end-50 bottom text-center">

@@ -81,9 +81,11 @@ class UserController extends Controller
         }
     }
     */
+
     public function userValidate(Request $request){
 
         $user= User::all()->where('email',$request->email);
+        $producto = Producto::all()->where('delete',false)->where('stock','>',0);
 
 
         if($user==NULL){
@@ -103,7 +105,7 @@ class UserController extends Controller
             }
             //cuando se logea correctamente
             if($user->email == $request->email && $user->contraseña == $request->contraseña){
-                return view('home',compact('user'));
+                return view('home',compact('user','producto'));
 
             }
             else{

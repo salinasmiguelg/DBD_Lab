@@ -56,7 +56,7 @@
                     <div class = "container fluid">
 
                         <form class = "form-sigin bg-white position-relative" action = "{{route('userValidate')}}" method = "GET">
-                            <div class = "form-group  ">
+                            <div class = "form-group position-relative ">
 
                                 <h3 class= "card-title position-relative">Iniciar Sesión</h3>
                                 <input name = "email" id="inputEmail" class="form-control rounded-pill" placeholder="Correo Electrónico" required="" autofocus="">
@@ -117,31 +117,36 @@
         margin: 300px;
         }
     }
-    @media (min-width: 250px) {
+    @media (min-width: 580px) {
         .form-sigin{
             margin-top: 80px;
             margin-bottom: 80px;
             padding: 80px;
+
+            height: 40%;
+
+        }
+    }
+
+    @media (min-width: 250px) {
+        .form-group{
+            margin-top: 180px;
+            margin-bottom: 180px;
+            padding: 180px;
+            color: #ffffff;
+            background-color: #81be4d;
+            border-radius: 5px;
+            height: 200px;
+            /*width: 500px;*/
+            text-align: center;
+            font-size: 20px;
 
         }
     }
     body{
         background-color:#a7dcb2;
     }
-    .form-group{
 
-        position: absolute;
-        color: #ffffff;
-        background-color: #81be4d;
-        border-radius: 5px;
-        height: 50%;
-        width: 500px;
-        text-align: center;
-        font-size: 20px;
-        position: relative;
-
-
-    }
     .rounded-pill{
         width: 350px;
         margin-left: 75px;

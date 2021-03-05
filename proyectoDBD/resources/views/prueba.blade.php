@@ -53,7 +53,14 @@
         <!-- barras de navegacion-->
         <div class="row  text-center color1">
             <div class="col-sm border border-dark">
-                Fruta
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com/" id="dropdown01" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                      <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Action</a>
+                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Another action</a>
+                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Something else here</a>
+                      </div>
+                </div>
             </div>
             <div class="col-sm border border-dark">
                 Verdura
