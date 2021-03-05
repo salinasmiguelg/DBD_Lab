@@ -24,13 +24,13 @@
                 <div class="navbar-collapse collapse" id="navbarsExample01" >
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                      <a class="nav-link" href="/registro">Registrarse </a>
+                      <a class="nav-link" href="/registro">Registrarse</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="/login">Loguerse</a>
+                      <a class="nav-link" href="/login">Inicio de sesión</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link disabled" href="/">Hogar <span class="sr-only">(current)</span></a>
+                      <a class="nav-link disabled" href="/">Página principal <span class="sr-only">(current)</span></a>
                     </li>
                     <!--
                     <li class="nav-item dropdown">

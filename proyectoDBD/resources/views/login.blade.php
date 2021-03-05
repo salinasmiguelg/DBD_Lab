@@ -28,10 +28,10 @@
                               <a class="nav-link  " href="/registro">Registrarse </a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link disabled " href="/login">Loguerse <span class="sr-only">(current)</span> </a>
+                              <a class="nav-link disabled " href="/login">Inicio de sesión<span class="sr-only">(current)</span> </a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="/">Hogar </a>
+                              <a class="nav-link" href="/">Página principal </a>
                             </li>
                             <!--
                             <li class="nav-item dropdown">
@@ -57,15 +57,15 @@
 
                         <form class = "form-sigin bg-white position-relative">
                             <div class = "form-group  ">
-                                <h3 class= "card-title position-relative">Iniciar Sesion</h3>
-                                <input type = "email" id="inputEmail" class="form-control rounded-pill" placeholder="Correo Electronico" required="" autofocus="">
+                                <h3 class= "card-title position-relative">Iniciar Sesión</h3>
+                                <input type = "email" id="inputEmail" class="form-control rounded-pill" placeholder="Correo Electrónico" required="" autofocus="">
 
                                 <input type = "password" id = "inputPassword" class = "form-control rounded-pill" placeholder="Contraseña" required="" autofocus="">
 
 
                                 <div class = "checkbox mb-4">
                                     <label>
-                                        <input type = "checkbox" value = "remember-me"> Guardar Sesion
+                                        <input type = "checkbox" value = "remember-me"> Guardar Sesión
                                     </label>
                                 </div>
                                 <div class = "boton text-center">

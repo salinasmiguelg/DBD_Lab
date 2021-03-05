@@ -29,10 +29,10 @@
                               <a class="nav-link disabled " href="/registro">Registrarse<span class="sr-only">(current)</span> </a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link " href="/login">Loguerse</a>
+                              <a class="nav-link " href="/login">Inicio de sesión</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="/">Hogar </a>
+                              <a class="nav-link" href="/">Página principal</a>
                             </li>
                             <!--
                             <li class="nav-item dropdown">
@@ -62,8 +62,8 @@
                                     <h3 class= "card-title position-relative">Registrarse</h3>
                                     <input type = "nombre" id="inputNombre" class="form-control rounded-pill" placeholder="Nombre" required="" autofocus="">
                                     <input type = "apellido" id="inputNombre" class="form-control rounded-pill" placeholder="Apellido" required="" autofocus="">
-                                    <input type = "numeroTelefono" id="inputNombre" class="form-control rounded-pill" placeholder="Numero de telefono" required="" autofocus="">
-                                    <input type = "email" id="inputEmail" class="form-control rounded-pill" placeholder="Correo Electronico" required="" autofocus="">
+                                    <input type = "numeroTelefono" id="inputNombre" class="form-control rounded-pill" placeholder="Número de teléfono" required="" autofocus="">
+                                    <input type = "email" id="inputEmail" class="form-control rounded-pill" placeholder="Correo Electrónico" required="" autofocus="">
 
                                     <input type = "contraseña" id = "inputPassword" class = "form-control rounded-pill" placeholder="Contraseña" required="" autofocus="">
 
