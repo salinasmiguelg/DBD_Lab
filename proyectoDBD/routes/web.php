@@ -72,11 +72,8 @@ Route::get('/home', function(){
 Route::get('/home/{id}','UserController@continueSession');
 
 
-//Vista carro de compra
-Route::get('/carro', function () {
-    return view('carro');
-});
-Route::get('/carro/productos/{id}','ProductoController@index');
+
+Route::get('/carro/{id}','ProductoController@showProduct');
 
 
 

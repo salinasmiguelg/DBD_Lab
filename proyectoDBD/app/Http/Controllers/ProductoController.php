@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\Producto;
 use App\Models\Cantidad;
 use App\Models\Proceso_compra;
-
+use App\Models\Transaccion;
+use App\Models\Transaccion_user;
+use App\Models\Transaccion_producto;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 class ProductoController extends Controller
 {
     /**
@@ -20,11 +24,31 @@ class ProductoController extends Controller
         if($producto != NULL){
             return view('carro',compact('producto'));
                     }
+        
         return response()->json([
             "message"=>"No se encontró producto",
         ],404);
     }
+    public function showProduct($id)
+    {
 
+        $producto = Producto::all()->where('stock','>',0)->where('delete',false);
+        if($producto == NULL){
+            return view('carro',compact('producto'));
+        }
+        $transaccion_user = DB::table('transaccion_users')
+        ->join('users','users.id','=','transaccion_users.id_users')
+        ->where('transaccion_users.delete',false)
+        ->where('transaccion_users.id_users',$id)
+        ->join('transaccions','transaccions.id','=','transaccion_users.id_transaccions')
+        ->where('transaccions.delete',false)
+        ->join('transaccion_productos','transaccion_productos.id_transaccions','=','transaccions.id')
+        ->select('transaccion_productos.*')
+        ->where('transaccion_productos.delete',false)
+        ->get();
+
+        return view('carro',compact('producto','transaccion_user'));
+    }
     /**
      * Store a newly created resource in storage.
      *

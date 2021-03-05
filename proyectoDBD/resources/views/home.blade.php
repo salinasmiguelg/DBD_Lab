@@ -27,7 +27,10 @@
                       <a class="nav-link" href="/perfil/{{$user->id}}">Perfil</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="/principal">Cerrar sesión</a>
+                      <a class="nav-link" href="/carro/{{$user->id}}">Carrito</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/">Cerrar sesión</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link disabled" href="/home/{{$user->id}}">Página principal <span class="sr-only">(current)</span></a>

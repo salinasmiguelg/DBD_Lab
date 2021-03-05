@@ -1,3 +1,6 @@
+<?php
+use App\Models\Producto;
+?>
 <!doctype html>
 <html lang="es">
     <head>
@@ -56,13 +59,17 @@
                 <div class = "col ">
                     <div class = "container fluid">
                             <div class="row">
-                                @forelse($producto as $producto)
+                                @forelse($transaccion_user as $transaccion_user)
+                                <?php
+                                    $idT = $transaccion_user->id_productos;
+                                    $product = Producto::find($idT);
+                                ?>
                                 <div class="col-sm">
                                     <div class="card" style="width: 18rem;">
                                         <div class="card-body">
-                                            <h5 class="card-title">{{$producto->nombreProducto}}</h5>
-                                            <p class="card-text">Descripción del producto</p>
-                                            <a href="#" class="btn btn-primary">Ver producto</a>
+                                            <h5 class="card-title">{{$product->nombreProducto}}</h5>
+                                            <p class="card-text">Precio: {{$product->precioUnitario}}</p>
+                                            <p class="card-text">Cantidad: {{$transaccion_user->cantidad}}</p>
                                         </div>
                                     </div>
                                 </div>
