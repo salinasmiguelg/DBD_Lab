@@ -37,7 +37,7 @@ class ComprobanteController extends Controller
             'nombre' => ['required'],
             'apellido' => ['required'],
             'direccionDespacho' => ['required'],
-            'metodoDespacho' => ['required'],
+            'metodoPago' => ['required'],
             'tipoDespacho' => ['required'],
             'total' => ['required'],
             'id_users' => ['required'],

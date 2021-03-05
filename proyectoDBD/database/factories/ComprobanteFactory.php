@@ -27,8 +27,8 @@ class ComprobanteFactory extends Factory
             'nombre' => $this->faker->firstName,
             'apellido' => $this->faker->lastName,
             'direccionDespacho' => $this->faker->streetName,
-            'metodoPago' => $this->faker->randomElement($array = array ('personal','domicilio')),
-            'tipoDespacho' => $this->faker->randomElement($array = array ('efectivo','tarjeta')),
+            'metodoPago' => $this->faker->randomElement($array = array ('efectivo','tarjeta')),
+            'tipoDespacho' => $this->faker->randomElement($array = array ('personal','domicilio')),
             'total' =>$this->faker->randomNumber,
             'delete' => $this->faker->boolean,
             'id_users' => User::all()->random()->id
