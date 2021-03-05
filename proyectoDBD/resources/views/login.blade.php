@@ -70,7 +70,7 @@
                                     </label>
                                 </div>
                                 <div class = "boton text-center">
-                                    <button type="button" class="btn color3">Iniciar</button>
+                                    <button type="submit" class="btn color3">Iniciar</button>
                                 </div>
                             </div>
                         </form>

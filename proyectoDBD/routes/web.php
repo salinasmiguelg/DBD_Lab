@@ -40,6 +40,14 @@ Route::get('/crearProducto',function(){
     return view('createProducto');
 });
 
+Route::get('/validate','UserController@userValidate')->name("userValidate");
+
+/*
+Route::get('/crearUsuario',function(){
+    return view('registro');
+});*/
+
+
 Route::get('/feriantes/{id}','UserController@showFeriante');
 
 

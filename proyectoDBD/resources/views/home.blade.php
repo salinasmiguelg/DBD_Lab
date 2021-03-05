@@ -16,7 +16,7 @@
     <div class = "container-fluid ">
         <div class="row color1">
             <nav class="navbar navbar-dark ">
-                <a class="navbar-brand" href="/">Feriinf</a>
+                <a class="navbar-brand" href="/home">Feriinf</a>
                 <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
@@ -24,13 +24,13 @@
                 <div class="navbar-collapse collapse" id="navbarsExample01" >
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                      <a class="nav-link" href="/registro">Registrarse</a>
+                      <a class="nav-link" href="/perfil">Perfil</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="/login">Inicio de sesión</a>
+                      <a class="nav-link" href="/">Cerrar sesión</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link disabled" href="/">Página principal <span class="sr-only">(current)</span></a>
+                      <a class="nav-link disabled" href="/home">Página principal <span class="sr-only">(current)</span></a>
                     </li>
                     <!--
                     <li class="nav-item dropdown">

@@ -62,12 +62,22 @@ class UserController extends Controller
         $user->save();
         return view ('prueba' , compact('user'));
     }
-    public function validate(Request $request){
-        $user = User::all()->where('email',$request->email)->where('constraseña',$request->contraseña);
-        if($user == NULL or $user->delete == TRUE){
-            return view('login');
+    public function userValidate(Request $request){
+        $idM = $request->email;
+        $idA = $request->contraseña;
+        $idE = User::where('email' , $idM)->get(['id']);
+        $idC = User::where('contraseña' , $idA)->get(['id']);
+        $user = User::find($idE);
+        $user2 = User::find($idC);
+        if($idE->pluck('id')->first() != $idC->pluck('id')->first()){
+            return response()->json([
+                "message"=> "La contraseña es: ",
+                "id"=>$idE->pluck('id')->first()
+            ]);
         }
-        return view('home' ,compact('user'));
+        else{
+            return view('home' ,compact('user'));
+        }
     }
     /**
      * Display the specified resource.
@@ -86,9 +96,7 @@ class UserController extends Controller
         }
         return response()->json($user);
     }
-    public function showUser($id){
 
-    }
 
     public function showPerfil($id)
     {
