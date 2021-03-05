@@ -73,7 +73,15 @@
                                         <button type="submit" class="btn color3">Registrarse</button>
                                     </div>
                                 </div>
+                                <div class="form-group" action = "" >
+                                    <select class="form-control roll" id="exampleFormControlSelect1">
+                                      <option name = "nombre">Comprador</option>
+                                      <option>Vendedor</option>
+                                      <option>Ambos</option>
+                                    </select>
+                                </div>
                             </form>
+
                             <div class="modal fade" id="myModal" role="dialog">
                                 <div class="modal-dialog modal-sm">
 
@@ -175,7 +183,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 500px;
-            height: 60%;
+            height: 65%;
             background-color: #81be4d;
             border-radius: 20px;
             text-align: center;
@@ -201,10 +209,17 @@
         margin-right: auto;
         }
 
+        .roll{
+            width: 350px;
+            margin-top: 230px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
 
     }
     .boton{
-        margin-top: 20px;
+        margin-top: 40px;
     }
     body{
         background-color:#a7dcb2;

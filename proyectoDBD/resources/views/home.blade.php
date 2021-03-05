@@ -27,24 +27,13 @@
                       <a class="nav-link" href="/perfil/{{$user->id}}">Perfil</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="/carro/{{$user->id}}">Carrito</a>
-                    </li>
-                    <li class="nav-item">
                       <a class="nav-link" href="/">Cerrar sesión</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link disabled" href="/home/{{$user->id}}">Página principal <span class="sr-only">(current)</span></a>
+                      <a class="nav-link disabled" href="/home/{{$user->id}}">Página principal <!--span class="sr-only">(current)</span--></a>
                     </li>
-                    <!--
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="http://example.com/" id="dropdown01" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                      <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Action</a>
-                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Another action</a>
-                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Something else here</a>
-                      </div>
-                    </li>
-                    -->
+
+
                   </ul>
                   <form class="form-inline my-2 my-md-0">
                     <input class="form-control" type="text" placeholder="Search" aria-label="Search">
@@ -57,16 +46,28 @@
         <div class="row  text-center color1">
             <div class="col-sm border border-dark">
                 <div class="dropdown">
-                <a class="nav-link dropdown-toggle" href="http://example.com/" id="dropdown01" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                      <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Action</a>
-                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Another action</a>
-                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Something else here</a>
-                      </div>
+                    <a class="nav-link dropdown-toggle color7" href="http://example.com/" id="dropdown01" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Comunas</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        @forelse($comuna as $comuna)
+                        <a class="dropdown-item" href="/puestos/{{$comuna->id}}">{{$comuna->nombre}}</a>
+                        @empty
+                        <p>No Funciona</p>
+                        @endforelse
+
+                    </div>
                 </div>
             </div>
             <div class="col-sm border border-dark">
-                Verdura
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle color7" href="http://example.com/" id="dropdown01" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Productos</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    @forelse($producto as $producto)
+                    <a class="dropdown-item" href="/puestos/{{$producto->id}}">{{$producto->nombreProducto}}</a>
+                    @empty
+                    <p>No Funciona</p>
+                    @endforelse
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -88,13 +89,13 @@
         <div class = "col ">
             <div class = "container fluid">
                     <div class="row">
-                        @forelse($producto as $producto)
+                        @forelse($producto1 as $producto1)
                         <div class="col-sm">
                             <div class="card" style="width: 18rem;">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{$producto->nombreProducto}}</h5>
-                                    <p class="card-text">Descripción del producto</p>
-                                    <a href="#" class="btn btn-primary">Ver producto</a>
+                                    <h5 class="card-title">{{$producto1->nombreproducto}}</h5>
+                                    <p class="card-text">Descripción del producto1</p>
+                                    <a href="#" class="btn btn-primary">Ver producto1</a>
                                 </div>
                             </div>
                         </div>
@@ -172,6 +173,14 @@ body{
     }
     .color5{
         background-color:#81be4d;
+        color: #ffffff;
+    }
+    .color6{
+        background-color:#3a7658;
+        color: #000000;
+
+    }
+    .color7{
         color: #ffffff;
     }
     body {
