@@ -26,6 +26,7 @@ class Transaccion_productoFactory extends Factory
         return [
             'id_transaccions' => Transaccion::all()->random()->id,
             'id_productos' => Producto::all()->random()->id,
+            'cantidad'=>$this->faker->randomNumber,
             'delete' => $this->faker->boolean
         ];
     }

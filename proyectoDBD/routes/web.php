@@ -63,6 +63,11 @@ Route::get('/pago/comprobante', function () {
     return view('comprobante');
 });
 
+// Vista carro de compra
+Route::get('/carro', function () {
+    return view('carro');
+});
+
 //cantidad
 Route::get('/cantidad','CantidadController@index');
 Route::post('/cantidad/create','CantidadController@store');
