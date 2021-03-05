@@ -25,10 +25,10 @@
                               <a class="nav-link disabled  " href="/registro">Registrarse </a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link disabled " href="/login">Loguerse</a>
+                              <a class="nav-link disabled " href="/login">Inicio de sesión</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="/">Hogar </a>
+                              <a class="nav-link" href="/">Página principal </a>
                             </li>
 
                           </ul>

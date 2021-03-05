@@ -28,7 +28,7 @@
                               <a class="nav-link disabled " href="/login">Loguerse</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="/">Hogar </a>
+                              <a class="nav-link" href="/">Página principal </a>
                             </li>
                             <!--
                             <li class="nav-item dropdown">

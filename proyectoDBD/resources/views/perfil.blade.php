@@ -25,10 +25,10 @@
                               <a class="nav-link disabled  " href="/registro">Registrarse </a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link disabled " href="/login">Loguerse</a>
+                              <a class="nav-link disabled " href="/login">Iniciar Sesión</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="/home/{{$user->id}}">Hogar </a>
+                              <a class="nav-link" href="/home/{{$user->id}}">Página principal </a>
                             </li>
                             <!--
                             <li class="nav-item dropdown">
