@@ -1,77 +1,175 @@
-<?php
-// initializ shopping cart class
-include 'Cart.php';
-$cart = new Cart;
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>View Cart - PHP Shopping Cart Tutorial</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <style>
-    .container{padding: 50px;}
-    input[type="number"]{width: 20%;}
-    </style>
-    <script>
-    function updateCartItem(obj,id){
-        $.get("cartAction.php", {action:"updateCartItem", id:id, qty:obj.value}, function(data){
-            if(data == 'ok'){
-                location.reload();
-            }else{
-                alert('Cart update failed, please try again.');
-            }
-        });
-    }
-    </script>
-</head>
-</head>
-<body>
-<div class="container">
-    <h1>Shopping Cart</h1>
-    <table class="table">
-    <thead>
-        <tr>
-            <th>Product</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Subtotal</th>
-            <th> </th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        if($cart->total_items() > 0){
-            //get cart items from session
-            $cartItems = $cart->contents();
-            foreach($cartItems as $item){
-        ?>
-        <tr>
-            <td><?php echo $item["name"]; ?></td>
-            <td><?php echo '$'.$item["price"].' USD'; ?></td>
-            <td><input type="number" class="form-control text-center" value="<?php echo $item["qty"]; ?>" onchange="updateCartItem(this, '<?php echo $item["rowid"]; ?>')"></td>
-            <td><?php echo '$'.$item["subtotal"].' USD'; ?></td>
-            <td>
-                <a href="cartAction.php?action=removeCartItem&id=<?php echo $item["rowid"]; ?>" class="btn btn-danger" onclick="return confirm('Are you sure?')"><i class="glyphicon glyphicon-trash"></i></a>
-            </td>
-        </tr>
-        <?php } }else{ ?>
-        <tr><td colspan="5"><p>Your cart is empty.....</p></td>
-        <?php } ?>
-    </tbody>
-    <tfoot>
-        <tr>
-            <td><a href="index.php" class="btn btn-warning"><i class="glyphicon glyphicon-menu-left"></i> Continue Shopping</a></td>
-            <td colspan="2"></td>
-            <?php if($cart->total_items() > 0){ ?>
-            <td class="text-center"><strong>Total <?php echo '$'.$cart->total().' USD'; ?></strong></td>
-            <td><a href="checkout.php" class="btn btn-success btn-block">Checkout <i class="glyphicon glyphicon-menu-right"></i></a></td>
-            <?php } ?>
-        </tr>
-    </tfoot>
-    </table>
-</div>
-</body>
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta http-equiv= "Content-Type" content = "text/html; charset=URF-8">
+        <!-- Required meta tags -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <link rel= "canonical" href = "https://getbootstrap.com/docs/4.0/examples/sig-in/">
+        <title>Feriinf</title>
+    </head>
+    <body>
+
+        <div class = "container-fluid ">
+            <div class = "row">
+                <div class="color1">
+                    <nav class="navbar navbar-dark ">
+                        <a class="navbar-brand" href="/">Feriinf</a>
+                        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="navbar-collapse collapse" id="navbarsExample01" >
+                          <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                              <a class="nav-link disabled " href="/registro">Registrarse<span class="sr-only">(current)</span> </a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link " href="/login">Inicio de sesión</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="/">Página principal</a>
+                            </li>
+                            <!--
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="http://example.com/" id="dropdown01" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                              <div class="dropdown-menu" aria-labelledby="dropdown01">
+                                <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Action</a>
+                                <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Another action</a>
+                                <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Something else here</a>
+                              </div>
+                            </li>
+                            -->
+                          </ul>
+                          <form class="form-inline my-2 my-md-0">
+                            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                          </form>
+                        </div>
+                      </nav>
+
+                </div>
+
+                <div class = "col ">
+                    <div class = "container fluid">
+                            <div class="row">
+                                @forelse($producto as $producto)
+                                <div class="col-sm">
+                                    <div class="card" style="width: 18rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{$producto->nombreProducto}}</h5>
+                                            <p class="card-text">Descripción del producto</p>
+                                            <a href="#" class="btn btn-primary">Ver producto</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                @empty
+                                <p>El carro se encuentra vacío</p>
+                                @endforelse
+                            </div>
+                        <!--
+                        <p class = "mt-4 text-center">¿No posees cuenta?
+                            <a href="/register">Registrarse</a>
+                        </p>
+                        -->
+
+                        <!--
+                        <div class = "container-fluid">
+                            <div class ="row center">
+                            <img src="https://i.ibb.co/L5mx9H3/HKMFWLPZ2-FDXPETCBS4-EG5-GE6-I.jpg" alt="HKMFWLPZ2-FDXPETCBS4-EG5-GE6-I" border="0">
+                            </div>
+
+                        </div>
+                        -->
+
+                        <div class = "end-50 bottom text-center">
+                            <p class = "text-muted padding_up">
+                                FERIINF - Online Market - 2021
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    </body>
 </html>
+
+<style>
+
+    .form-sigin{
+        -webkit-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+        padding: 30px 25px;
+        background-color: #ffffff;
+    }
+    @media (min-width: 580px) {
+        .form-sigin {
+        margin: 300px;
+        }
+    }
+    @media (min-width: 250px) {
+        .form-sigin{
+            margin-top: 80px;
+            margin-bottom: 80px;
+            padding: 80px;
+
+        }
+    }
+    body{
+        background-color:#a7dcb2;
+    }
+    .form-group{
+        position: absolute;
+        color: #ffffff;
+        background-color: #81be4d;
+        border-radius: 5px;
+        height: 50%;
+        width: 500px;
+        text-align: center;
+        font-size: 20px;
+        position: relative;
+
+
+    }
+    .rounded-pill{
+        width: 350px;
+        margin-left: 75px;
+
+    }
+    .boton{
+        margin-top: 20px;
+    }
+
+    .form-control input[type='text'],
+    .form-control input[type='email'],
+    .form-control input[type='contraseña'] {
+        padding-left: 60px;
+    }
+    .color1{
+        background-color:#3a7658;
+        color: #ffffff;
+
+    }
+    .color2{
+        background-color:#235434;
+        color: #ffffff;
+    }
+    .color3{
+        background-color:#032107;
+        color: #ffffff;
+    }
+    .color4{
+        background-color:#a7dcb2;
+        color: #ffffff;
+    }
+    .color5{
+        background-color:#81be4d;
+        color: #ffffff;
+    }
+</style>

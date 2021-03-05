@@ -27,7 +27,6 @@ Route::get('/registro', function () {
 });
 //Vista Perfil
 Route::get('/perfil/{id}','UserController@showPerfil');
-
 //Vista Edicion de perfil borrar
 
 
@@ -41,32 +40,26 @@ Route::get('/crearProducto',function(){
     return view('createProducto');
 });
 
-Route::get('/validate','UserController@validate')->name("userValidate"){
-
-}
-
-/*
-Route::get('/crearUsuario',function(){
-    return view('registro');
-});*/
-
-
 Route::get('/feriantes/{id}','UserController@showFeriante');
 
 
 Route::get('/puestos/{id}','PuestoController@showPuestos');
 //Vista de pago
 Route::get('/pago/{id}', 'UserController@showPerfilPago');
-
+   
 //Vista comprobante de pago
 Route::get('/pago/comprobante', function () {
     return view('comprobante');
 });
 
-// Vista carro de compra
+//Vista carro de compra
 Route::get('/carro', function () {
     return view('carro');
 });
+Route::get('/carro/productos/{id}','ProductoController@index');
+
+
+
 
 //cantidad
 Route::get('/cantidad','CantidadController@index');
@@ -188,3 +181,6 @@ Route::post('/user/create','UserController@store')->name('userStore');
 Route::get('/user/{id}','UserController@show')->name('userGet');
 Route::put('/user/{id}','UserController@update')->name('userUpdate');
 Route::delete('/user/{id}','UserController@destroy')->name('userDelete');
+
+
+

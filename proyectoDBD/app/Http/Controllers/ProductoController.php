@@ -18,8 +18,8 @@ class ProductoController extends Controller
     {
         $producto = Producto::all()->where('stock','>',0)->where('delete',false);
         if($producto != NULL){
-            return response()->json($producto);
-        }
+            return view('carro',compact('producto'));
+                    }
         return response()->json([
             "message"=>"No se encontró producto",
         ],404);
