@@ -22,6 +22,7 @@ class CreateTransaccionProductosTable extends Migration
 
             $table->unsignedBigInteger('id_productos');
             $table->foreign('id_productos')->references('id')->on('productos');
+            $table->unsignedBigInteger('cantidad');
             $table->boolean('delete');
             $table->timestamps();
         });

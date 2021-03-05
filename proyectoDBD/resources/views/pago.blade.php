@@ -27,33 +27,20 @@
             
             <!-- formularios de texto con la informacion del comprador -->
             <div class="card" style="width: 100%;">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Nombres: {{$user->nombre}}</li>
-                    <li class="list-group-item">Apellidos: {{$user->apellido}}</li>
-                    <li class="list-group-item">Correo: {{$user->email}}</li>
-                    <li class="list-group-item">Telefono: {{$user->numeroTelefono}}</li>
 
-                    
-                    @forelse($direccion as $direccion)
-                    <li class="list-group-item">Dirección: {{$direccion->calle}}, {{$direccion->numero}} </li>
-                    @empty                
-                    <li class="list-group-item">Dirección: Sin direccion Registrada</li>
-                    @endforelse
+                <div class="card" style="width: 100%;">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Nombres: </li>
+                        <li class="list-group-item">Apellidos: </li>
+                        <li class="list-group-item">Correo: </li>
+                        <li class="list-group-item">Telefono: </li>
+                        <li class="list-group-item">Dirección: </li>
+                    </ul>
+                </div>
 
-                    @forelse($region as $region)
-                    <li class="list-group-item">Región: {{$region->nombre}} </li>
-                    @empty
-                    <li class="list-group-item">Región: Sin región registrada </li>
-                    @endforelse
-
-                    @forelse($comuna_user as $comuna_user)
-                    <li class="list-group-item">Comuna: {{$comuna_user->nombre}} </li>
-                    @empty
-                    <li class="list-group-item">Comuna: Sin comuna registrada </li>
-                    @endforelse
-                    
-                </ul>
-            </div>
+            
+        </div>  
+       
 
             <!-- Selectores -->
             <form>

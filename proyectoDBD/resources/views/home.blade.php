@@ -83,6 +83,25 @@
         <img src="https://i.ibb.co/L5mx9H3/HKMFWLPZ2-FDXPETCBS4-EG5-GE6-I.jpg" alt="HKMFWLPZ2-FDXPETCBS4-EG5-GE6-I" border="0">
         </div>
 
+        <div class = "col ">
+                    <div class = "container fluid">
+                            <div class="row">
+                                @forelse($producto as $producto)
+                                <div class="col-sm">
+                                    <div class="card" style="width: 18rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{$producto->nombreProducto}}</h5>
+                                            <p class="card-text">Descripción del producto</p>
+                                            <a href="#" class="btn btn-primary">Ver producto</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                @empty
+                                <p>El carro se encuentra vacío</p>
+                                @endforelse
+                            </div>
+                          </div>
+
     </div>
     <div class = "end-50 bottom text-center">
         <p class = "text-muted padding_up">

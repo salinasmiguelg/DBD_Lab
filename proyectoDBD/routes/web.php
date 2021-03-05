@@ -44,13 +44,23 @@ Route::get('/feriantes/{id}','UserController@showFeriante');
 
 
 Route::get('/puestos/{id}','PuestoController@showPuestos');
+
 //Vista de pago
-Route::get('/pago/{id}', 'UserController@showPerfilPago');
+Route::get('/pago', function(){
+    return view('pago');
+});
    
 //Vista comprobante de pago
-Route::get('/pago/comprobante', function () {
+Route::get('/comprobante', function () {
     return view('comprobante');
 });
+
+//Vista a Home
+Route::get('/home', function(){
+    return view('home');
+});
+Route::get('/home/{id}','ProductoController@index');
+
 
 //Vista carro de compra
 Route::get('/carro', function () {
