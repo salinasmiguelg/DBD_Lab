@@ -55,12 +55,13 @@
                 <div class = "col">
                     <div class = "container fluid">
 
-                        <form class = "form-sigin bg-white position-relative">
+                        <form class = "form-sigin bg-white position-relative" action = "{{route('userValidate')}}" method = "GET">
                             <div class = "form-group  ">
-                                <h3 class= "card-title position-relative">Iniciar Sesión</h3>
-                                <input type = "email" id="inputEmail" class="form-control rounded-pill" placeholder="Correo Electrónico" required="" autofocus="">
 
-                                <input type = "password" id = "inputPassword" class = "form-control rounded-pill" placeholder="Contraseña" required="" autofocus="">
+                                <h3 class= "card-title position-relative">Iniciar Sesión</h3>
+                                <input name = "email" id="inputEmail" class="form-control rounded-pill" placeholder="Correo Electrónico" required="" autofocus="">
+
+                                <input name = "contraseña" id = "inputPassword" class = "form-control rounded-pill" placeholder="Contraseña" required="" autofocus="">
 
 
                                 <div class = "checkbox mb-4">

@@ -50,7 +50,7 @@ class UserController extends Controller
             'nombre' => ['required' , 'min:2' , 'max:30'],
             'apellido' =>['required' , 'min:2' , 'max:30'],
             'contraseña' => ['required' , 'min:8' , 'max:100'],
-            'numeroTelefono' => ['required' , 'min:9', 'max:11'],
+            'numeroTelefono' => ['required' , 'min:9', 'max:13'],
             'email' => ['required'],
         ]);
         $user->nombre = $request->nombre;
@@ -60,9 +60,15 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->delete = false;
         $user->save();
-        return redirect('/');
+        return view ('prueba' , compact('user'));
     }
-
+    public function validate(Request $request){
+        $user = User::all()->where('email',$request->email)->where('constraseña',$request->contraseña);
+        if($user == NULL or $user->delete == TRUE){
+            return view('login');
+        }
+        return view('home' ,compact('user'));
+    }
     /**
      * Display the specified resource.
      *
@@ -80,6 +86,9 @@ class UserController extends Controller
         }
         return response()->json($user);
     }
+    public function showUser($id){
+
+    }
 
     public function showPerfil($id)
     {
@@ -88,7 +97,7 @@ class UserController extends Controller
         $region = Region::all()->where('id_users',$id)->where('delete',false);
         $direccion = Direccion::all()->where('id_users',$id)->where('delete',false);
         $rol = Rol::all()->where('id_users',$id)->where('delete',false);
-        
+
         $comuna_user = DB::table('comunas')
             ->join('regions','regions.id','=','comunas.id_regions')
             ->select('comunas.nombre')
@@ -96,12 +105,12 @@ class UserController extends Controller
             ->where('regions.id_users',$id)
             ->get();
 
-        
+
         if($user == NULL or $user->delete == true){
             return response()->json([
                 'message' => 'No se encontro User']);
         }
-        
+
         return view('perfil',compact('user','region','direccion','rol','comuna_user'));
     }
 
@@ -127,18 +136,18 @@ class UserController extends Controller
                     'message' => 'No se encontro Producto']);
             }
 
-        
+
         return view('feriantes',compact('producto','puesto_producto','puestoProducto_user'));
     }
 
-    
+
     public function showPerfilPago($id)
     {
         //
         $user = User::find($id);
         $region = Region::all()->where('id_users',$id)->where('delete',false);
         $direccion = Direccion::all()->where('id_users',$id)->where('delete',false);
-        
+
         $comuna_user = DB::table('comunas')
             ->join('regions','regions.id','=','comunas.id_regions')
             ->select('comunas.nombre')
@@ -146,12 +155,12 @@ class UserController extends Controller
             ->where('regions.id_users',$id)
             ->get();
 
-        
+
         if($user == NULL or $user->delete == true){
             return response()->json([
                 'message' => 'No se encontro User para proceso de pago']);
         }
-        
+
         return view('pago',compact('user','region','direccion','comuna_user'));
     }
 
@@ -171,7 +180,7 @@ class UserController extends Controller
         $region = Region::all()->where('id_users',$id)->where('delete',false);
         $direccion = Direccion::all()->where('id_users',$id)->where('delete',false);
         $rol = Rol::all()->where('id_users',$id)->where('delete',false);
-        
+
         $comuna_user = DB::table('comunas')
             ->join('regions','regions.id','=','comunas.id_regions')
             ->select('comunas.nombre')

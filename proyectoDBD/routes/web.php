@@ -27,6 +27,7 @@ Route::get('/registro', function () {
 });
 //Vista Perfil
 Route::get('/perfil/{id}','UserController@showPerfil');
+
 //Vista Edicion de perfil borrar
 
 
@@ -40,13 +41,23 @@ Route::get('/crearProducto',function(){
     return view('createProducto');
 });
 
+Route::get('/validate','UserController@validate')->name("userValidate"){
+
+}
+
+/*
+Route::get('/crearUsuario',function(){
+    return view('registro');
+});*/
+
+
 Route::get('/feriantes/{id}','UserController@showFeriante');
 
 
 Route::get('/puestos/{id}','PuestoController@showPuestos');
 //Vista de pago
 Route::get('/pago/{id}', 'UserController@showPerfilPago');
-   
+
 //Vista comprobante de pago
 Route::get('/pago/comprobante', function () {
     return view('comprobante');

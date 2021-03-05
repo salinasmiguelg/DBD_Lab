@@ -60,21 +60,36 @@
                             <form class = "form-sigin bg-white position-relative" action = "{{route('userStore')}}" method = "POST">
                                 <div class = "form-group">
                                     <h3 class= "card-title position-relative">Registrarse</h3>
-                                    <input type = "nombre" id="inputNombre" class="form-control rounded-pill" placeholder="Nombre" required="" autofocus="">
-                                    <input type = "apellido" id="inputNombre" class="form-control rounded-pill" placeholder="Apellido" required="" autofocus="">
-                                    <input type = "numeroTelefono" id="inputNombre" class="form-control rounded-pill" placeholder="Número de teléfono" required="" autofocus="">
-                                    <input type = "email" id="inputEmail" class="form-control rounded-pill" placeholder="Correo Electrónico" required="" autofocus="">
+                                    <input name = "nombre"  class="form-control rounded-pill" placeholder="Nombre" required=""  type =  "text">
+                                    <input name = "apellido"  class="form-control rounded-pill" placeholder="Apellido" required=""  type =  "text">
+                                    <input name = "numeroTelefono"  class="form-control rounded-pill" placeholder="Número de teléfono" required=""  type =  "text">
+                                    <input name = "email"  class="form-control rounded-pill" placeholder="Correo Electrónico" required=""  type =  "text">
 
-                                    <input type = "contraseña" id = "inputPassword" class = "form-control rounded-pill" placeholder="Contraseña" required="" autofocus="">
+                                    <input name = "contraseña"  class = "form-control rounded-pill" placeholder="Contraseña" required=""  type =  "text">
 
-                                    <input type = "contraseña" id = "inputPassword" class = "form-control rounded-pill" placeholder="Repita la contraseña" required="" autofocus="">
+                                    <input name = "contraseña"  class = "form-control rounded-pill" placeholder="Repita la contraseña" required=""  type =  "text">
 
                                     <div class = "boton text-center">
                                         <button type="submit" class="btn color3">Registrarse</button>
                                     </div>
                                 </div>
                             </form>
+                            <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog modal-sm">
 
+                                  <!-- Modal content-->
+                                  <div class="modal-content-sm">
+                                    <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                      <h3 class="modal-title" id="modal-title">Usuario creado correctamente</h3>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                  </div>
+
+                                </div>
+                            </div>
                         <!--
                         <p class = "mt-4 text-center">¿No posees cuenta?
                             <a href="/register">Registrarse</a>
