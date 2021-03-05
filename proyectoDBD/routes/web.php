@@ -54,9 +54,8 @@ Route::get('/feriantes/{id}','UserController@showFeriante');
 Route::get('/puestos/{id}','PuestoController@showPuestos');
 
 //Vista de pago
-Route::get('/pago', function(){
-    return view('pago');
-});
+
+Route::get('/pago/{id}', 'UserController@showPerfilPago');
 
 
 //Vista comprobante de pago

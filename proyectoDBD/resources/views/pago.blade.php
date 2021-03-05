@@ -107,7 +107,7 @@
             <!-- Tercera seccion de Grilla: Foto de pagina y boton de retorno -->
             <div class="col-sm-4">   
                 <img src="https://static.vecteezy.com/system/resources/previews/000/812/118/non_2x/grocery-shopping-cart-with-vegetables-and-fruits-photo.jpg" class="img-responsive" alt="img.rounded">
-                <a href="/" class="btn btn-primary btn-lg active" role="button">Pagina Principal</a>
+                <a href="/home/{{$user->id}}" class="btn btn-primary btn-lg active" role="button">Pagina Principal</a>
             </div>
             
         </div>

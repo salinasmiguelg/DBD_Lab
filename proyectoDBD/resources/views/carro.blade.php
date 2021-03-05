@@ -21,7 +21,7 @@ use App\Models\Producto;
             <div class = "row">
                 <div class="color1">
                     <nav class="navbar navbar-dark ">
-                        <a class="navbar-brand" href="/">Feriinf</a>
+                        <a class="navbar-brand" href="/home/1">Feriinf</a>
                         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
                           <span class="navbar-toggler-icon"></span>
                         </button>
@@ -35,7 +35,7 @@ use App\Models\Producto;
                               <a class="nav-link " href="/login">Inicio de sesión</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="/">Página principal</a>
+                              <a class="nav-link" href="/home/1">Página principal</a>
                             </li>
                             <!--
                             <li class="nav-item dropdown">

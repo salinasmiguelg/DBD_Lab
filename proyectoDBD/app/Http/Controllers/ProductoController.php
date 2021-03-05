@@ -31,7 +31,6 @@ class ProductoController extends Controller
     }
     public function showProduct($id)
     {
-
         $producto = Producto::all()->where('stock','>',0)->where('delete',false);
         if($producto == NULL){
             return view('carro',compact('producto'));

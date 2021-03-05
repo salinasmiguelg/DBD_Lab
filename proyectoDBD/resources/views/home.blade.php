@@ -16,7 +16,7 @@
     <div class = "container-fluid ">
         <div class="row color1">
             <nav class="navbar navbar-dark ">
-                <a class="navbar-brand" href="/home">Feriinf</a>
+                <a class="navbar-brand" href="/home/{{$user->id}}">Feriinf</a>
                 <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
