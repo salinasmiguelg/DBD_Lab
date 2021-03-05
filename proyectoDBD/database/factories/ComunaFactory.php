@@ -23,7 +23,7 @@ class ComunaFactory extends Factory
     public function definition()
     {
         return [
-            'nombre' => $this->faker->state,
+            'nombre' => $this->faker->randomElement($array = array ('Cerrillos','Cerro Navia','El Bosque','Estación Central','Huechuraba','Independencia','La Cisterna','La Florida','La Granja','La Pintana','La Reina','Las Condes','Lo Barnechea','Lo Espejo','Lo Prado','Macul','Maipú','Ñuñoa','Pedro Aguirre Cerda','Peñalolén','Providencia','Pudahuel','Quilicura','Quinta Normal','Recoleta','Renca','San Joaquín','San Miguel','San Ramón','Santiago','Vitacura')),
             'delete' => $this->faker->boolean,
             'id_regions' => Region::all()->random()->id
         ];

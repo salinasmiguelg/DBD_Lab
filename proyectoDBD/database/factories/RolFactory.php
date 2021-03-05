@@ -24,7 +24,7 @@ class RolFactory extends Factory
     {
         return [
             //
-            'nombre'=>$this->faker->word,
+            'nombre' => $this->faker->randomElement($array = array ('Comprador','Vendedor','Administrador')),
             'delete' => $this->faker->boolean,
             'id_users' => User::all()->random()->id
         ];
