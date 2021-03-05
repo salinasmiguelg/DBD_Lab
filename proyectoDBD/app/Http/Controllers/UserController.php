@@ -123,8 +123,13 @@ class UserController extends Controller
             }
             //cuando se logea correctamente
             if($user->email == $request->email && $user->contraseña == $request->contraseña){
+<<<<<<< Updated upstream
                 return redirect()->action([UserController::class, 'continueSession'], ['id' => $user->id]);
                 //return view('home',compact('user','producto'));
+=======
+
+                return view('home',compact('user','producto'));
+>>>>>>> Stashed changes
 
             }
             else{

@@ -58,16 +58,17 @@ Route::get('/pago', function(){
     return view('pago');
 });
 
-   
+
 //Vista comprobante de pago
 Route::get('/comprobante', function () {
     return view('comprobante');
 });
 
 //Vista a Home
+/*
 Route::get('/home', function(){
     return view('home');
-});
+});*/
 Route::get('/home/{id}','UserController@continueSession');
 
 

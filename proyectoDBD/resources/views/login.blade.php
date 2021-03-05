@@ -122,7 +122,6 @@
             margin-top: 80px;
             margin-bottom: 80px;
             padding: 80px;
-
             height: 40%;
 
         }
@@ -130,28 +129,39 @@
 
     @media (min-width: 250px) {
         .form-group{
-            margin-top: 180px;
-            margin-bottom: 180px;
+
+            margin-left: auto;
+            margin-right: auto;
             padding: 180px;
             color: #ffffff;
             background-color: #81be4d;
-            border-radius: 5px;
-            height: 200px;
-            /*width: 500px;*/
-            text-align: center;
-            font-size: 20px;
+            margin: auto;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            width: 50%;
+            height: 50%;
+            min-width: 200px;
+            max-width: 400px;
+            padding: 40px;
+
+        }
+        .rounded-pill{
+        width: 350px;
+        margin-left: auto;
+        margin-right: auto;
 
         }
     }
     body{
         background-color:#a7dcb2;
     }
-
+    /*
     .rounded-pill{
         width: 350px;
-        margin-left: 75px;
+        margin-left: auto;
+        margin-right: auto;
 
-    }
+    }*/
 
     .form-control input[type='text'],
     .form-control input[type='email'],
