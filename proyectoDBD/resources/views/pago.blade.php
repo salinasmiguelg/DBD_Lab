@@ -26,24 +26,27 @@
             <h4>Datos Personales</h4>
             
             <!-- formularios de texto con la informacion del comprador -->
-            <div class="card" style="width: 100%;">
+            <form>
 
-                <div class="card" style="width: 100%;">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Nombres: </li>
-                        <li class="list-group-item">Apellidos: </li>
-                        <li class="list-group-item">Correo: </li>
-                        <li class="list-group-item">Telefono: </li>
-                        <li class="list-group-item">Dirección: </li>
-                    </ul>
+                <div class="mb-3">
+                        <div>
+                            <label for="ejemploNombre" class="form-label"></label>
+                            <input type="nombre" class="form-control" id="ejemploNombre" placeholder="Nombres">
+                        </div>
+                        <div class="mb-3">
+                            <label for="ejemploNombre" class="form-label"></label>
+                            <input type="nombre" class="form-control" id="ejemploNombre" placeholder="Apellidos">
+                        </div>
+                        <div class="mb-3">
+                            <label for="ejemploCorreo" class="form-label"></label>
+                            <input type="correo" class="form-control" id="ejemploCorreo" placeholder="Correo Electrónico">
+                        </div>
+                        <div class="mb-3">
+                            <label for="ejemploTelefono" class="form-label"></label>
+                            <input type="telefono" class="form-control" id="ejemploTelefono" placeholder="Teléfono">
+                        </div>
                 </div>
 
-            
-        </div>  
-       
-
-            <!-- Selectores -->
-            <form>
             <div class="container-fluid">
                 <!-- Selector 1 -->
                 <select class="form-select" id="validationCustom04" required="">

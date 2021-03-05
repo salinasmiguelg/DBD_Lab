@@ -60,7 +60,7 @@ Route::get('/pago', function(){
 
 
 //Vista comprobante de pago
-Route::get('/comprobante', function () {
+Route::get('/pago/comprobante', function () {
     return view('comprobante');
 });
 
