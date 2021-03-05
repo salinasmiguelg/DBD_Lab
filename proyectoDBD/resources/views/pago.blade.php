@@ -196,7 +196,9 @@
       font-size: 30px;
     }
     .jumbotron{
-        background-color:#ffffff;
+        background-image: url("https://foodandtravel.mx/wp-content/uploads/2020/05/Frutas-y-verduras-de-temporada-Por.jpg");
+        background-size: cover;
+        color: white;
     }
     .btn{
       margin-top: 3%;
