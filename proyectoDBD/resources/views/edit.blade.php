@@ -57,8 +57,8 @@
                       <form  action="{!! route('userUpdate', ['id'=>$user->id]) !!}" method="POST"style="padding-top:30px">
                                       @method('PUT')
                                       <div class="mb-3">
-                                          <label for="formGroupExampleInput">Número telefónico</label>
-                                          <input class="form-control" type="text"  name="numeroTelefono" value="{{$user->numeroTelefono}}" required minlength="3">
+                                          <label for="formGroupExampleInput">Nombre</label>
+                                          <input class="form-control" type="text"  name="nombre" value="{{$user->nombre}}" required minlength="3">
                                       </div>
 
                                       <div class="mb-3">
@@ -67,8 +67,8 @@
                                       </div>
 
                                       <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Email</label>
-                                        <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$user->email}}">
+                                        <label for="exampleInputEmail1" class="form-label">Numero de teléfono</label>
+                                        <input type="number" class="form-control" name="numeroTelefono" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$user->numeroTelefono}}">
                                       </div>
 
                                       <button type="submit" class="btn btn-success" style="margin-left: 45%;">Listo</button>

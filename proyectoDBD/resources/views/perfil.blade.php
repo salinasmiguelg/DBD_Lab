@@ -62,26 +62,26 @@
                         @forelse($direccion as $direccion)
                         <p>-{{$direccion->calle}}, {{$direccion->numero}} </p>
                         @empty
-                        <p>Dirección: No posee dirección </p>
+                        <p>-No posee dirección </p>
                         @endforelse
                         <p>Región/es:</p>
                         @forelse($region as $region)
                         <p>-{{$region->nombre}} </p>
                         @empty
-                        <p>Región: No posee región </p>
+                        <p>-No posee región </p>
                         @endforelse
 
                         <p>Comuna/s:</p>
                         @forelse($comuna_user as $comuna_user)
                         <p>-{{$comuna_user->nombre}} </p>
                         @empty
-                        <p>Comuna: No posee región </p>
+                        <p>-No posee región </p>
                         @endforelse
                         <p>Rol/es:</p>
                         @forelse($rol as $rol)
                         <p>-{{$rol->nombre}} </p>
                         @empty
-                        <p>Rol: No posee rol </p>
+                        <p>-No posee rol </p>
                         @endforelse
 
                       </div>
