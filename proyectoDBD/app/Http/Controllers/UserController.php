@@ -40,7 +40,7 @@ class UserController extends Controller
         $user = User::find($id);
         $producto = Producto::all()->where('delete',false)->where('stock','>',0);
         if($user == NULL){
-            view('prueba');
+            view('prueba', compact('producto'));
         }
         return view('home',compact('user','producto'));
     }
@@ -123,7 +123,8 @@ class UserController extends Controller
             }
             //cuando se logea correctamente
             if($user->email == $request->email && $user->contraseña == $request->contraseña){
-                return view('home',compact('user','producto'));
+                return redirect()->action([UserController::class, 'continueSession'], ['id' => $user->id]);
+                //return view('home',compact('user','producto'));
 
             }
             else{
