@@ -55,7 +55,7 @@
                 <div class = "col">
                     <div class = "container fluid">
 
-                        <form class = "form-sigin bg-white position-relative" action = "{{route('userValidate')}}" method = "GET">
+                        <form class = "form-sigin  position-relative" action = "{{route('userValidate')}}" method = "GET">
                             <div class = "form-group position-relative ">
 
                                 <h3 class= "card-title position-relative">Iniciar Sesión</h3>
@@ -105,24 +105,22 @@
 
 <style>
 
-    .form-sigin{
-        -webkit-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.1);
-        box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.1);
-        border-radius: 20px;
-        padding: 30px 25px;
-        background-color: #ffffff;
-    }
-    @media (min-width: 580px) {
-        .form-sigin {
-        margin: 300px;
-        }
-    }
-    @media (min-width: 580px) {
+
+
+    @media (min-width: 500px) {
         .form-sigin{
-            margin-top: 80px;
+            margin-top: 300px;
             margin-bottom: 80px;
             padding: 80px;
-            height: 40%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 30%;
+            background-color: #81be4d;
+            border-radius: 20px;
+            text-align: center;
 
         }
     }
@@ -130,27 +128,22 @@
     @media (min-width: 250px) {
         .form-group{
 
-            margin-left: auto;
-            margin-right: auto;
-            padding: 180px;
-            color: #ffffff;
-            background-color: #81be4d;
-            margin: auto;
+            min-width: 500px;
             position: absolute;
-            top: 0; left: 0; bottom: 0; right: 0;
-            width: 50%;
-            height: 50%;
-            min-width: 200px;
-            max-width: 400px;
-            padding: 40px;
-
+            text-align: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
         }
+
         .rounded-pill{
         width: 350px;
         margin-left: auto;
         margin-right: auto;
-
         }
+
+
     }
     body{
         background-color:#a7dcb2;

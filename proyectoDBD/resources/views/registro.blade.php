@@ -57,7 +57,7 @@
                     <div class = "container fluid">
 
 
-                            <form class = "form-sigin bg-white position-relative" action = "{{route('userStore')}}" method = "POST">
+                            <form class = "form-sigin  position-relative" action = "{{route('userStore')}}" method = "POST">
                                 <div class = "form-group">
                                     <h3 class= "card-title position-relative">Registrarse</h3>
                                     <input name = "nombre"  class="form-control rounded-pill" placeholder="Nombre" required=""  type =  "text">
@@ -120,7 +120,7 @@
 </html>
 
 <style>
-
+    /*
     .form-sigin{
         -webkit-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.1);
         box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.1);
@@ -164,9 +164,50 @@
         width: 350px;
         margin-left: 75px;
 
+    } */
+    @media (min-width: 500px) {
+        .form-sigin{
+            margin-top: 300px;
+            margin-bottom: 80px;
+            padding: 80px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 60%;
+            background-color: #81be4d;
+            border-radius: 20px;
+            text-align: center;
+
+        }
+    }
+
+    @media (min-width: 250px) {
+        .form-group{
+
+            min-width: 500px;
+            position: absolute;
+            text-align: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+        }
+
+        .rounded-pill{
+        width: 350px;
+        margin-left: auto;
+        margin-right: auto;
+        }
+
+
     }
     .boton{
         margin-top: 20px;
+    }
+    body{
+        background-color:#a7dcb2;
     }
 
     .form-control input[type='text'],
