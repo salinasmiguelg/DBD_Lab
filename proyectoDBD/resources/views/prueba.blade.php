@@ -52,27 +52,25 @@
         </div>
         <!-- barras de navegacion-->
         <div class="row  text-center color1">
-            <div class="col-sm border border-dark">
-                <div class="dropdown">
-                    <a class="nav-link dropdown-toggle" href="http://example.com/" id="dropdown01" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                      <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Action</a>
-                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Another action</a>
-                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Something else here</a>
+            <div class="col-sm border border-dark ">
+                <div class="dropdown ">
+                    <a class="dropdown-toggle color7 " href="http://example.com/" id="dropdown01" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Productos</a>
+                      <div class="dropdown-menu " aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">palta</a>
+                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Tomate</a>
+                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Lechuga</a>
                       </div>
                 </div>
             </div>
-            <div class="col-sm border border-dark">
-                Verdura
-            </div>
-            <div class="col-sm border border-dark">
-                Herramientas
-            </div>
-            <div class="col-sm border border-dark">
-                Limpieza
-            </div>
-            <div class="col-sm border border-dark">
-                Cocina
+            <div class="col-sm border border-dark ">
+                <div class="dropdown ">
+                    <a class="dropdown-toggle color7 " href="http://example.com/" id="dropdown01" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Comunas</a>
+                      <div class="dropdown-menu " aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Lo Espejo</a>
+                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">La Cisterna</a>
+                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Hechuraba</a>
+                      </div>
+                </div>
             </div>
         </div>
     </div>
@@ -86,7 +84,7 @@
         </div>
     </section>
     <div class = "container-fluid text-center">
-        <div class ="row center imagen">
+        <div class ="row center imagen padding_up">
         <img src="https://i.ibb.co/L5mx9H3/HKMFWLPZ2-FDXPETCBS4-EG5-GE6-I.jpg" alt="HKMFWLPZ2-FDXPETCBS4-EG5-GE6-I" border="0">
         </div>
 
@@ -122,16 +120,18 @@ body{
     .imagen{
 
 
-        border-radius: 5px;
-        height: 70%;
-        width: 1000px;
-        text-align: center;
-        font-size: 20px;
+
+        display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 70%;
+        /*font-size: 20px;
         position: relative;
-        margin-top: center;
+        /*margin: 150px;*/
+       /* margin-top: center;
         margin-bottom: center;
-        margin-left: 425px;
-        margin-right: center;
+        margin-left: center;
+        margin-right: center;*/
 
 
     }
@@ -154,6 +154,14 @@ body{
     }
     .color5{
         background-color:#81be4d;
+        color: #ffffff;
+    }
+    .color6{
+        background-color:#3a7658;
+        color: #000000;
+
+    }
+    .color7{
         color: #ffffff;
     }
     body {

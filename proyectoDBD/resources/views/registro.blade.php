@@ -14,7 +14,7 @@
     </head>
     <body>
 
-        <div class = "container-fluid ">
+        <div class = "container-fluid position-relative ">
             <div class = "row">
                 <div class="color1">
                     <nav class="navbar navbar-dark ">
@@ -125,7 +125,7 @@
         -webkit-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.1);
         box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.1);
         border-radius: 20px;
-        padding: 30px 25px;
+        padding: 500px 500px;
         background-color: #ffffff;
     }
     @media (min-width: 580px) {
@@ -145,7 +145,10 @@
         background-color:#a7dcb2;
     }
     .form-group{
-        position: absolute;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+
         color: #ffffff;
         background-color: #81be4d;
         border-radius: 5px;
@@ -153,7 +156,7 @@
         width: 500px;
         text-align: center;
         font-size: 20px;
-        position: relative;
+
 
 
     }

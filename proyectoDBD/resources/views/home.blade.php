@@ -132,7 +132,11 @@ body{
     }
     .imagen{
 
-
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 70%;
+        /*
         border-radius: 5px;
         height: 70%;
         width: 1000px;
@@ -142,7 +146,7 @@ body{
         margin-top: center;
         margin-bottom: center;
         margin-left: 425px;
-        margin-right: center;
+        margin-right: center;*/
 
 
     }
