@@ -32,7 +32,7 @@
                               <a class="nav-link " href="/login">Inicio de sesión</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="/">Página principal</a>
+                              <a class="nav-link" href="/principal">Página principal</a>
                             </li>
                             <!--
                             <li class="nav-item dropdown">

@@ -28,7 +28,7 @@
                               <a class="nav-link disabled " href="/login">Inicio de sesión</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="/">Página principal </a>
+                              <a class="nav-link" href="/principal">Página principal </a>
                             </li>
 
                           </ul>
@@ -45,7 +45,7 @@
 
                       <h1 class = "first-title">Puestos en: {{$comuna->nombre}}</h1>
                       @forelse($ferias_puesto as $ferias_puesto)
-                      <div class = "card-columns">                     
+                      <div class = "card-columns">
                         <div class="card" style="width: 18rem;">
                           <div class="card-body">
                             <h5 class="card-title">Nombre de puesto: {{$ferias_puesto->descripcion}}</h5>

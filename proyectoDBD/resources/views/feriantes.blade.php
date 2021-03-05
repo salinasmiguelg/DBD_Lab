@@ -28,7 +28,7 @@
                               <a class="nav-link disabled " href="/login">Iniciar Sesión</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="/">Página principal </a>
+                              <a class="nav-link" href="/principal">Página principal </a>
                             </li>
                             <!--
                             <li class="nav-item dropdown">
@@ -54,7 +54,7 @@
 
                       <h1 class = "first-title">Feriantes que venden: {{$producto->nombreProducto}}</h1>
                       @forelse($puestoProducto_user as $puestoProducto_user)
-                      <div class = "card-columns">                     
+                      <div class = "card-columns">
                         <div class="card" style="width: 18rem;">
                           <div class="card-body">
                             <h5 class="card-title">Nombre: {{$puestoProducto_user->nombre}} {{$puestoProducto_user->apellido}}</h5>

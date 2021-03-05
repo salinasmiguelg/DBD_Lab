@@ -14,8 +14,8 @@ use App\Models\User;
 */
 
 //Vista principal
-Route::get('/', function () {
-    return view('prueba');
+Route::get('/principal', function () {
+    return view('principal');
 });
 //Vista Login
 Route::get('/login', function () {

@@ -28,7 +28,7 @@
                               <a class="nav-link disabled " href="/login">Loguerse</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="/">Página principal </a>
+                              <a class="nav-link" href="/principal">Página principal </a>
                             </li>
                             <!--
                             <li class="nav-item dropdown">
@@ -54,7 +54,7 @@
 
                       <h1 class = "first-title">Crear Producto</h1>
                       <div class = "container-text">
-                      <form action="{{route('crearProducto')}}" method="POST"> 
+                      <form action="{{route('crearProducto')}}" method="POST">
                       <div class="mb-3">
                         <label for="formGroupExampleInput">Nombre del producto</label>
                         <input class="form-control" type="text" name="nombreProducto">
@@ -72,7 +72,7 @@
                         <input class="form-control" type="text" name="categoria">
                       </div>
                         <button type="submit" class="btn btn-primary px-4 " >Agregar Producto</button>
-                      </form> 
+                      </form>
                       </div>
                         <!--
                         <p class = "mt-4 text-center">¿No posees cuenta?

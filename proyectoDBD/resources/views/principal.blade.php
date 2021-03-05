@@ -30,7 +30,7 @@
                       <a class="nav-link" href="/login">Inicio de sesión</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link disabled" href="/">Página principal <span class="sr-only">(current)</span></a>
+                      <a class="nav-link disabled" href="/principal">Página principal <span class="sr-only">(current)</span></a>
                     </li>
                     <!--
                     <li class="nav-item dropdown">
@@ -51,6 +51,7 @@
 
         </div>
         <!-- barras de navegacion-->
+        <!--
         <div class="row  text-center color1">
             <div class="col-sm border border-dark ">
                 <div class="dropdown ">
@@ -73,6 +74,7 @@
                 </div>
             </div>
         </div>
+        -->
     </div>
 
 
@@ -122,9 +124,9 @@ body{
 
 
         display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+        width: 70%;
         /*font-size: 20px;
         position: relative;
         /*margin: 150px;*/
