@@ -25,10 +25,8 @@
           <!-- formularios de texto con la informacion del comprador -->
           <div class="card" style="width: 100%;">
               <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Nombres: </li>
-                  <li class="list-group-item">Correo Electronico: </li>
-                  <li class="list-group-item">Rut: </li>
-                  <li class="list-group-item">Telefono: </li>
+                  <li class="list-group-item">Nombre: </li>
+                  <li class="list-group-item">Apellido: </li>
                   <li class="list-group-item">Dirección de Despacho: </li>
                   <li class="list-group-item">Método de pago: </li>
                   <li class="list-group-item">Tipo de despacho: </li>

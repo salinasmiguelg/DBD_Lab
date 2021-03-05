@@ -34,6 +34,12 @@ class ComprobanteController extends Controller
     {
         $validated = $request->validate([
             'tipo' => ['required'],
+            'nombre' => ['required'],
+            'apellido' => ['required'],
+            'direccionDespacho' => ['required'],
+            'metodoDespacho' => ['required'],
+            'tipoDespacho' => ['required'],
+            'total' => ['required'],
             'id_users' => ['required'],
         ]);
         if(!is_integer($request->id_users)){
@@ -51,6 +57,13 @@ class ComprobanteController extends Controller
         $comprobante = new Comprobante();
         $comprobante->tipo = $request->tipo;
         $comprobante->id_users = $request->id_users;
+        $comprobante->nombre = $request->nombre;
+        $comprobante->apellido = $request->apellido;
+        $comprobante->direccionDespacho = $request->direccionDespacho;
+        $comprobante->metodoPago = $request->metodoPago;
+        $comprobante->tipoDespacho = $request->tipoDespacho;
+        $comprobante->total = $request->total;
+
         $comprobante->delete = false;
         $comprobante->save();
         return response()->json([
@@ -90,6 +103,24 @@ class ComprobanteController extends Controller
         if($comprobante!=NULL){
             if($request->tipo!=NULL){
                 $comprobante->tipo = $request->tipo;
+            }
+            if($request->nombre!=NULL){
+                $comprobante->nombre = $request->nombre;
+            }
+            if($request->apellido!=NULL){
+                $comprobante->apellido = $request->apellido;
+            }
+            if($request->direccionDespacho!=NULL){
+                $comprobante->direccionDespacho = $request->direccionDespacho;
+            }
+            if($request->metodoPago!=NULL){
+                $comprobante->metodoPago = $request->metodoPago;
+            }
+            if($request->tipoDespacho!=NULL){
+                $comprobante->tipoDespacho = $request->tipoDespacho;
+            }
+            if($request->total!=NULL){
+                $comprobante->total = $request->total;
             }
             if($request->id_users!=NULL){
                 $user = User::find($id_users);

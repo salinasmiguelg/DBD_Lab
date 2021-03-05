@@ -18,6 +18,12 @@ class CreateComprobantesTable extends Migration
             $table->string('tipo');
             $table->unsignedBigInteger('id_users');
             $table->foreign('id_users')->references('id')->on('users');
+            $table->string('nombre');
+            $table->string('apellido');
+            $table->string('direccionDespacho');
+            $table->string('metodoPago');
+            $table->string('tipoDespacho');
+            $table->Biginteger('total');
             $table->boolean('delete');
             $table->timestamps();
         });

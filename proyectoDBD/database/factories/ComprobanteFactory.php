@@ -24,6 +24,12 @@ class ComprobanteFactory extends Factory
     {
         return [
             'tipo' => $this->faker->randomElement($array = array ('boleta','comprobante')),
+            'nombre' => $this->faker->firstName,
+            'apellido' => $this->faker->lastName,
+            'direccionDespacho' => $this->faker->streetName,
+            'metodoPago' => $this->faker->randomElement($array = array ('personal','domicilio')),
+            'tipoDespacho' => $this->faker->randomElement($array = array ('efectivo','tarjeta')),
+            'total' =>$this->faker->randomNumber,
             'delete' => $this->faker->boolean,
             'id_users' => User::all()->random()->id
             
