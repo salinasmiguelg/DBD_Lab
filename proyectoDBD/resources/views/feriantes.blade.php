@@ -28,7 +28,7 @@
                               <a class="nav-link disabled " href="/login">Iniciar Sesión</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="/principal">Página principal </a>
+                              <a class="nav-link" href="/">Página principal </a>
                             </li>
                             <!--
                             <li class="nav-item dropdown">

@@ -71,13 +71,13 @@
                         <p>Región: No posee región </p>
                         @endforelse
 
-                        <p>Comuna/s:</p> 
+                        <p>Comuna/s:</p>
                         @forelse($comuna_user as $comuna_user)
                         <p>-{{$comuna_user->nombre}} </p>
                         @empty
                         <p>Comuna: No posee región </p>
                         @endforelse
-                        <p>Rol/es:</p> 
+                        <p>Rol/es:</p>
                         @forelse($rol as $rol)
                         <p>-{{$rol->nombre}} </p>
                         @empty
