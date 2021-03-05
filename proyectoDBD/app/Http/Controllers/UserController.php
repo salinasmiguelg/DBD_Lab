@@ -62,6 +62,7 @@ class UserController extends Controller
         $user->save();
         return view ('prueba' , compact('user'));
     }
+    /*
     public function userValidate(Request $request){
         $idM = $request->email;
         $idA = $request->contraseña;
@@ -78,6 +79,41 @@ class UserController extends Controller
         else{
             return view('home' ,compact('user'));
         }
+    }
+    */
+    public function userValidate(Request $request){
+
+        $user= User::all()->where('email',$request->email);
+
+
+        if($user==NULL){
+            echo '<div class="alert alert-danger">Email o clave incorrecta.</div>';
+            return view('login');
+
+        }
+        if(count($user) <= 0){
+            echo '<div class="alert alert-danger">Email o clave incorrecta.</div>';
+            return view('login');
+        }
+
+        foreach($user as $user){
+            if($user->delete == true){
+                echo 'div class<="alert alert-danger">Email o clave incorrecta.</div>';
+                return view('login');
+            }
+            //cuando se logea correctamente
+            if($user->email == $request->email && $user->contraseña == $request->contraseña){
+                return view('home',compact('user'));
+
+            }
+            else{
+                echo '<div class="alert alert-danger">Email o clave incorrecta.</div>';
+                return view('login');
+            }
+        }
+
+        return view('login');
+
     }
     /**
      * Display the specified resource.
