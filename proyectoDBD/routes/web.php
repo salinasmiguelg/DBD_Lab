@@ -57,6 +57,7 @@ Route::get('/puestos/{id}','PuestoController@showPuestos');
 Route::get('/pago', function(){
     return view('pago');
 });
+
    
 //Vista comprobante de pago
 Route::get('/comprobante', function () {
@@ -67,7 +68,7 @@ Route::get('/comprobante', function () {
 Route::get('/home', function(){
     return view('home');
 });
-Route::get('/home/{id}','ProductoController@index');
+Route::get('/home/{id}','UserController@continueSession');
 
 
 //Vista carro de compra

@@ -35,6 +35,16 @@ class UserController extends Controller
 
     }
 
+    public function continueSession($id)
+    {
+        $user = User::find($id);
+        $producto = Producto::all()->where('delete',false)->where('stock','>',0);
+        if($user == NULL){
+            view('prueba');
+        }
+        return view('home',compact('user','producto'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -45,6 +55,14 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        $user1 = User::all();
+        $producto = Producto::all()->where('delete',false)->where('stock','>',0);
+        foreach($user1 as $user1){
+            if($user1->email == $request->email){
+                echo '<div class="alert alert-danger">Email ya existente.</div>';
+                return view('registro');
+            }
+        }
         $user = new User();
         $validatedData = $request->validate([
             'nombre' => ['required' , 'min:2' , 'max:30'],
@@ -60,7 +78,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->delete = false;
         $user->save();
-        return view ('prueba' , compact('user'));
+        return view ('home' , compact('user','producto'));
     }
     /*
     public function userValidate(Request $request){

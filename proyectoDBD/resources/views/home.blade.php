@@ -24,13 +24,13 @@
                 <div class="navbar-collapse collapse" id="navbarsExample01" >
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                      <a class="nav-link" href="/perfil">Perfil</a>
+                      <a class="nav-link" href="/perfil/{{$user->id}}">Perfil</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="/">Cerrar sesión</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link disabled" href="/home">Página principal <span class="sr-only">(current)</span></a>
+                      <a class="nav-link disabled" href="/home/{{$user->id}}">Página principal <span class="sr-only">(current)</span></a>
                     </li>
                     <!--
                     <li class="nav-item dropdown">
