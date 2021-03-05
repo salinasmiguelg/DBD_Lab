@@ -39,10 +39,12 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $producto = Producto::all()->where('delete',false)->where('stock','>',0);
+        $comuna = Comuna::all()->where('delete',false);
+        $producto1 = Producto::all()->where('delete',false)->where('stock','>',0);
         if($user == NULL){
             view('principal', compact('producto'));
         }
-        return view('home',compact('user','producto'));
+        return view('home',compact('user','producto','comuna','producto1'));
     }
 
     /**
