@@ -88,7 +88,7 @@
         <div class ="row center imagen">
         <img src="https://i.ibb.co/L5mx9H3/HKMFWLPZ2-FDXPETCBS4-EG5-GE6-I.jpg" alt="HKMFWLPZ2-FDXPETCBS4-EG5-GE6-I" border="0">
         </div>
-
+        <!--hola-->
         <div class="container">
             <div class="row row-cols-1 row-cols-md-4 g-4 px-4 py-4">
                 @forelse($producto1 as $producto1) 
