@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Transaccion_producto;
 use App\Models\Transaccion;
 use App\Models\Producto;
+use App\Models\Transaccion_user;
+use App\Models\User;
+use App\Models\Comuna;
+use Illuminate\Support\Facades\DB;
 
 
 class Transaccion_productoController extends Controller
@@ -40,6 +44,7 @@ class Transaccion_productoController extends Controller
             'id_transaccions' => ['required'],
             'id_productos' => ['required'],
         ]);
+        /*
         $producto = Producto::find($request->id_productos);
         if($producto  == NULL){
             return response()->json([
@@ -53,17 +58,29 @@ class Transaccion_productoController extends Controller
                 "message"=>"No se encontró método de transacción",
                 "id"=>$transaccion->id,
             ],404);
-        }
+        }*/
         $transaccion_producto = new Transaccion_producto();
-        $transaccion_producto->id_productos = $request->id_productos;
-        $transaccion_producto->id_transaccions = $request->id_transaccions;
-        
+        $transaccion_producto->id_productos = (int)$request->id_productos;
+
+        $id = $request->id_transaccions;
+/*
+        $transaccion_user = DB::table('users')
+            ->join('transaccion_users','transaccion_user.id_user','=','users.id')
+            ->where('users.id',$id)
+            ->where('delete',false)
+            ->get();*/
+        $user = User::find($id);
+        $producto = Producto::all()->where('delete',false)->where('stock','>',0);
+        $producto1 = Producto::all()->where('delete',false)->where('stock','>',0);
+        $comuna = Comuna::all()->where('delete',false);
+        $transaccion_user = Transaccion_user::all()->where('id_users',$id)->where('delete',false);
+        foreach($transaccion_user as $transaccion_user){
+            $transaccion_producto->id_transaccions = $transaccion_user->id_transaccions;
+        }
+        $transaccion_producto->cantidad = (int)$request->cantidad;
         $transaccion_producto->delete = false;
         $transaccion_producto->save();
-        return response()->json([
-            "message"=>"Se ha creado transaccion_producto",
-            "id"=>$transaccion_producto->id
-        ],202);
+        return view('home',compact('user','producto','comuna','producto1'));
     }
 
     /**

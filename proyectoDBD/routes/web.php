@@ -180,7 +180,7 @@ Route::put('/transaccion_comprobante/{id}','Transaccion_comprobanteController@up
 Route::delete('/transaccion_comprobante/{id}','Transaccion_comprobanteController@destroy');
 //transaccion_producto
 Route::get('/transaccion_producto','Transaccion_productoController@index');
-Route::post('/transaccion_producto/create','Transaccion_productoController@store');
+Route::post('/transaccion_producto/create','Transaccion_productoController@store')->name('agregarProducto');
 Route::get('/transaccion_producto/{id}','Transaccion_productoController@show');
 Route::put('/transaccion_producto/{id}','Transaccion_productoController@update');
 Route::delete('/transaccion_producto/{id}','Transaccion_productoController@destroy');
