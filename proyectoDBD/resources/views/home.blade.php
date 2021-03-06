@@ -27,6 +27,9 @@
                       <a class="nav-link" href="/perfil/{{$user->id}}">Perfil</a>
                     </li>
                     <li class="nav-item">
+                    <li class="nav-item"><!--si es vendedor-->
+                      <a class="nav-link" href="/crearProducto/{{$user->id}}">Crear Producto <!--span class="sr-only">(current)</span--></a>
+                    </li>
                       <a class="nav-link" href="/">Cerrar sesión</a>
                     </li>
                     <li class="nav-item">
