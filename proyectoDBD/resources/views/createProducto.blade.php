@@ -21,29 +21,32 @@
 
                         <div class="navbar-collapse collapse" id="navbarsExample01" >
                           <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                              <a class="nav-link disabled  " href="/registro">Registrarse </a>
+                            <h5 class = "nav-item">{{$user->nombre}}</h5>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/perfil/{{$user->id}}">Perfil</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link disabled " href="/login">Loguerse</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/carro/{{$user->id}}">Carrito</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="/">Página principal </a>
+                            @if($rol->nombre == "Vendedor")
+                            <li class="nav-item">
+                                <a class="nav-link disalbed" href="/crearProducto/{{$user->id}}">Crear Producto</a>
                             </li>
-                            <!--
-                            <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle" href="http://example.com/" id="dropdown01" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                              <div class="dropdown-menu" aria-labelledby="dropdown01">
-                                <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Action</a>
-                                <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Another action</a>
-                                <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Something else here</a>
-                              </div>
+                            @endif
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">Cerrar sesión</a>
                             </li>
-                            -->
-                          </ul>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/home/{{$user->id}}">Página principal</a>
+                            </li>
+                        </ul>
+                        <!--
                           <form class="form-inline my-2 my-md-0">
                             <input class="form-control" type="text" placeholder="Search" aria-label="Search">
                           </form>
+                          -->
                         </div>
                     </nav>
 
@@ -72,7 +75,7 @@
                         <input class="form-control" type="text" name="categoria">
                       </div>
                       <div class="mb-3"><!-- ocultar esto -->
-                        <input class="form-control" type="number disabled" name="id_cantidads" value = {{$user->id}}>
+                        <input class="hidden" type="hidden" name="id_cantidads" value = {{$user->id}}>
                       </div>
                         <button type="submit" class="btn btn-primary px-4 " >Agregar Producto</button>
                       </form>

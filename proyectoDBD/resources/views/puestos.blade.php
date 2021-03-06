@@ -20,21 +20,33 @@
                         </button>
 
                         <div class="navbar-collapse collapse" id="navbarsExample01" >
-                          <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                              <a class="nav-link disabled  " href="/registro">Registrarse </a>
+                        <ul class="navbar-nav mr-auto">
+                            <h5 class = "nav-item">{{$user->nombre}}</h5>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/perfil/{{$user->id}}">Perfil</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link disabled " href="/login">Inicio de sesión</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/carro/{{$user->id}}">Carrito</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" href="/">Página principal </a>
+                            @if($rol->nombre == "Vendedor")
+                            <li class="nav-item">
+                                <a class="nav-link" href="/crearProducto/{{$user->id}}">Crear Producto</a>
                             </li>
-
+                            @endif
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">Cerrar sesión</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/home/{{$user->id}}">Página principal</a>
+                            </li>
                           </ul>
+                          <!--
                           <form class="form-inline my-2 my-md-0">
                             <input class="form-control" type="text" placeholder="Search" aria-label="Search">
                           </form>
+                          -->
                         </div>
                     </nav>
 
@@ -53,7 +65,9 @@
                             <p class="card-text">Feria: {{$ferias_puesto->descripcion_feria}}</p>
                             <p class="card-text">Dueño: juanito </p>
                             <p class="card-text">Contacto: @usach.cl</p>
+                            <!--
                             <a href="#" class="btn btn-primary">Agregar</a>
+                            -->
                           </div>
                         </div>
                         @empty

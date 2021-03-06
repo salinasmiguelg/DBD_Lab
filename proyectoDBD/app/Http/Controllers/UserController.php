@@ -41,10 +41,18 @@ class UserController extends Controller
         $producto = Producto::all()->where('delete',false)->where('stock','>',0);
         $comuna = Comuna::all()->where('delete',false);
         $producto1 = Producto::all()->where('delete',false)->where('stock','>',0);
+        $rol_user = Rol::all()->where('id_users',$id)->where('delete',false);
+        $idR = 0;
+        foreach($rol_user as $rol_user){
+            if($rol_user->nombre == "Vendedor"){
+                $idR = $rol_user->id_users;
+            }
+        }
+        $rol = Rol::find($idR);
         if($user == NULL){
             view('principal', compact('producto'));
         }
-        return view('home',compact('user','producto','comuna','producto1'));
+        return view('home',compact('user','producto','comuna','producto1','rol'));
     }
 
     /**
@@ -82,7 +90,15 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->delete = false;
         $user->save();
-        return view ('home' , compact('user','producto','comuna','producto1'));
+        $rol_user = Rol::all()->where('id_users',$user->id)->where('delete',false);
+        $idR = 0;
+        foreach($rol_user as $rol_user){
+            if($rol_user->nombre == "Vendedor"){
+                $idR = $rol_user->id_users;
+            }
+        }
+        $rol = Rol::find($idR);
+        return view ('home' , compact('user','producto','comuna','producto1','rol'));
     }
     /*
     public function userValidate(Request $request){
@@ -177,12 +193,21 @@ class UserController extends Controller
         if($user == NULL or $user->delete == true){
             return response()->json([
                 'message' => 'No se encontro User']);
+        }        
+        $rol_user = Rol::all()->where('id_users',$id)->where('delete',false);
+        $idR = 0;
+        foreach($rol_user as $rol_user){
+            if($rol_user->nombre == "Vendedor"){
+                $idR = $rol_user->id_users;
+            }
         }
+        $rol1 = Rol::find($idR);
 
-        return view('perfil',compact('user','region','direccion','rol','comuna_user'));
-    }
 
-    public function showFeriante($id)
+        return view('perfil',compact('user','region','direccion','rol','comuna_user','rol1'));
+    }//acordarse que es en perfil rol1
+
+    public function showFeriante($id,$idU)
     {
         $producto = Producto::find($id);
         $puesto_producto = Puesto_producto::all()->where('id_productos',$id)->where('delete',false);
@@ -196,12 +221,21 @@ class UserController extends Controller
             ->select('users.*')
             ->where('users.delete',false)
             ->get();
-
-            if($producto == NULL or $producto->delete == true){
-                return response()->json([
-                    'message' => 'No se encontro Producto']);
+        $user = User::find($idU);
+        
+        $rol_user = Rol::all()->where('id_users',$idU)->where('delete',false);
+        $idR = 0;
+        foreach($rol_user as $rol_user){
+            if($rol_user->nombre == "Vendedor"){
+                $idR = $rol_user->id_users;
             }
-        return view('feriantes',compact('producto','puesto_producto','puestoProducto_user'));
+        }
+        $rol = Rol::find($idR);
+        if($producto == NULL or $producto->delete == true){
+            return response()->json([
+                'message' => 'No se encontro Producto']);
+        }
+        return view('feriantes',compact('user','producto','puesto_producto','puestoProducto_user','rol'));
     }
 
 
@@ -224,8 +258,16 @@ class UserController extends Controller
             return response()->json([
                 'message' => 'No se encontro User para proceso de pago']);
         }
+        $rol_user = Rol::all()->where('id_users',$id)->where('delete',false);
+        $idR = 0;
+        foreach($rol_user as $rol_user){
+            if($rol_user->nombre == "Vendedor"){
+                $idR = $rol_user->id_users;
+            }
+        }
+        $rol = Rol::find($idR);
 
-        return view('pago',compact('user','region','direccion','comuna_user'));
+        return view('pago',compact('user','region','direccion','comuna_user','rol'));
     }
 
     /**
@@ -272,7 +314,16 @@ class UserController extends Controller
                 $user->delete = $request->delete;
             }
             $user->save();
-            return view('perfil',compact('user','region','direccion','rol','comuna_user'));
+            $rol_user = Rol::all()->where('id_users',$id)->where('delete',false);
+            $idR = 0;
+            foreach($rol_user as $rol_user){
+                if($rol_user->nombre == "Vendedor"){
+
+                    $idR = $rol_user->id_users;
+                }
+            }
+            $rol1 = Rol::find($idR);
+            return view('perfil',compact('user','region','direccion','rol','comuna_user','rol1'));
         }
         return response()->json([
             "message"=>"No se encontró usuario"
@@ -304,7 +355,16 @@ class UserController extends Controller
                 $user->delete = $request->delete;
             }
             $user->save();
-            return view('edit',compact('user'));
+            $rol_user = Rol::all()->where('id_users',$id)->where('delete',false);
+            $idR = 0;
+            foreach($rol_user as $rol_user){
+                if($rol_user->nombre == "Vendedor"){
+
+                    $idR = $rol_user->id_users;
+                }
+            }
+            $rol = Rol::find($idR);
+            return view('edit',compact('user','rol'));
         }
         return response()->json([
             "message"=>"No se encontró usuario"

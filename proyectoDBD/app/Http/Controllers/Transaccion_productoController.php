@@ -9,6 +9,7 @@ use App\Models\Producto;
 use App\Models\Transaccion_user;
 use App\Models\User;
 use App\Models\Comuna;
+use App\Models\Rol;
 use Illuminate\Support\Facades\DB;
 
 
@@ -80,7 +81,16 @@ class Transaccion_productoController extends Controller
         $transaccion_producto->cantidad = (int)$request->cantidad;
         $transaccion_producto->delete = false;
         $transaccion_producto->save();
-        return view('home',compact('user','producto','comuna','producto1'));
+
+        $rol_user = Rol::all()->where('id_users',$id)->where('delete',false);
+        $idR = 0;
+        foreach($rol_user as $rol_user){
+            if($rol_user->nombre == "Vendedor"){
+                $idR = $rol_user->id_users;
+            }
+        }
+        $rol = Rol::find($idR);
+        return view('home',compact('user','producto','comuna','producto1','rol'));
     }
 
     /**

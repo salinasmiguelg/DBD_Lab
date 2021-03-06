@@ -22,25 +22,33 @@
                 </button>
 
                 <div class="navbar-collapse collapse" id="navbarsExample01" >
-                  <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                      <a class="nav-link" href="/perfil/{{$user->id}}">Perfil</a>
+                <ul class="navbar-nav mr-auto">
+                    <h5 class = "nav-item">{{$user->nombre}}</h5>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/perfil/{{$user->id}}">Perfil</a>
                     </li>
                     <li class="nav-item">
-                    <li class="nav-item"><!--si es vendedor-->
-                      <a class="nav-link" href="/crearProducto/{{$user->id}}">Crear Producto <!--span class="sr-only">(current)</span--></a>
-                    </li>
-                      <a class="nav-link" href="/">Cerrar sesión</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/carro/{{$user->id}}">Carrito</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link disabled" href="/home/{{$user->id}}">Página principal <!--span class="sr-only">(current)</span--></a>
+                    @if($rol->nombre == "Vendedor")
+                    <li class="nav-item">
+                        <a class="nav-link" href="/crearProducto/{{$user->id}}">Crear Producto</a>
                     </li>
-
-
-                  </ul>
+                    @endif
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Cerrar sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="/home/{{$user->id}}">Página principal</a>
+                    </li>
+                </ul>
+                <!--
                   <form class="form-inline my-2 my-md-0">
                     <input class="form-control" type="text" placeholder="Search" aria-label="Search">
                   </form>
+                  -->
                 </div>
               </nav>
 
@@ -52,7 +60,7 @@
                     <a class="nav-link dropdown-toggle color7" href="http://example.com/" id="dropdown01" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Comunas</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown01">
                         @forelse($comuna as $comuna)
-                        <a class="dropdown-item" href="/puestos/{{$comuna->id}}">{{$comuna->nombre}}</a>
+                        <a class="dropdown-item" href="/puestos/{{$comuna->id}}/{{$user->id}}">{{$comuna->nombre}}</a>
                         @empty
                         <p>No Funciona</p>
                         @endforelse
@@ -65,7 +73,7 @@
                     <a class="nav-link dropdown-toggle color7" href="http://example.com/" id="dropdown01" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Productos</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown01">
                     @forelse($producto as $producto)
-                    <a class="dropdown-item" href="/feriantes/{{$producto->id}}">{{$producto->nombreProducto}}</a>
+                    <a class="dropdown-item" href="/feriantes/{{$producto->id}}/{{$user->id}}">{{$producto->nombreProducto}}</a>
                     @empty
                     <p>No Funciona</p>
                     @endforelse

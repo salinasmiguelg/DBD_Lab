@@ -10,6 +10,7 @@ use App\Models\Transaccion;
 use App\Models\Transaccion_user;
 use App\Models\Transaccion_producto;
 use App\Models\User;
+use App\Models\Rol;
 use Illuminate\Support\Facades\DB;
 class ProductoController extends Controller
 {
@@ -41,17 +42,24 @@ class ProductoController extends Controller
             return view('principal',compact('producto'));
         }
         $transaccion_user = DB::table('transaccion_users')
-        ->join('users','users.id','=','transaccion_users.id_users')
-        ->where('transaccion_users.delete',false)
-        ->where('transaccion_users.id_users',$id)
-        ->join('transaccions','transaccions.id','=','transaccion_users.id_transaccions')
-        ->where('transaccions.delete',false)
-        ->join('transaccion_productos','transaccion_productos.id_transaccions','=','transaccions.id')
-        ->select('transaccion_productos.*')
-        ->where('transaccion_productos.delete',false)
-        ->get();
-
-        return view('carro',compact('user','producto','transaccion_user'));
+            ->join('users','users.id','=','transaccion_users.id_users')
+            ->where('transaccion_users.delete',false)
+            ->where('transaccion_users.id_users',$id)
+            ->join('transaccions','transaccions.id','=','transaccion_users.id_transaccions')
+            ->where('transaccions.delete',false)
+            ->join('transaccion_productos','transaccion_productos.id_transaccions','=','transaccions.id')
+            ->select('transaccion_productos.*')
+            ->where('transaccion_productos.delete',false)
+            ->get();
+        $rol_user = Rol::all()->where('id_users',$id)->where('delete',false);
+        $idR = 0;
+        foreach($rol_user as $rol_user){
+            if($rol_user->nombre == "Vendedor"){
+                $idR = $rol_user->id_users;
+            }
+        }
+        $rol = Rol::find($idR);
+        return view('carro',compact('user','producto','transaccion_user','rol'));
     }
     /**
      * Store a newly created resource in storage.

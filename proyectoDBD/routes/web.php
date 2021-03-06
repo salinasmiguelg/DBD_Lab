@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
+use App\Models\Rol;
 use App\Models\Comprobante;
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +40,15 @@ Route::get('/perfil/edit/{id}',function($id){
 
 Route::get('/crearProducto/{id}',function($id){
     $user = User::find($id);
-    return view('createProducto',compact('user'));
+    $rol_user = Rol::all()->where('id_users',$id)->where('delete',false);
+        $idR = 0;
+        foreach($rol_user as $rol_user){
+            if($rol_user->nombre == "Vendedor"){
+                $idR = $rol_user->id_users;
+            }
+        }
+        $rol = Rol::find($idR);
+    return view('createProducto',compact('user','rol'));
 });
 
 Route::get('/validate','UserController@userValidate')->name("userValidate");
@@ -50,10 +59,10 @@ Route::get('/crearUsuario',function(){
 });*/
 
 
-Route::get('/feriantes/{id}','UserController@showFeriante');
+Route::get('/feriantes/{id}/{idU}','UserController@showFeriante');
 
 
-Route::get('/puestos/{id}','PuestoController@showPuestos');
+Route::get('/puestos/{id}/{idU}','PuestoController@showPuestos');
 
 //Vista de pago
 

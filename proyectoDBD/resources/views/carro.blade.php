@@ -28,31 +28,34 @@ use App\Models\Producto;
 
                         <div class="navbar-collapse collapse" id="navbarsExample01" >
                           <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                              <a class="nav-link disabled " href="/registro">Registrarse<span class="sr-only">(current)</span> </a>
+                            <h5 class = "nav-item">{{$user->nombre}}</h5>
+                            <li class="nav-item">
+                              <a class="nav-link disabled" href="/perfil/{{$user->id}}">Perfil</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link " href="/login">Inicio de sesión</a>
+                            <li class="nav-item">
+                              <a class="nav-link disabled" href="/carro/{{$user->id}}">Carrito</a>
+                            </li>
+                            <li class="nav-item">
+                            @if($rol->nombre == "Vendedor")
+                            <li class="nav-item">
+                              <a class="nav-link" href="/crearProducto/{{$user->id}}">Crear Producto</a>
+                            </li>
+                            @endif
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">Cerrar sesión</a>
                             </li>
                             <li class="nav-item">
                               <a class="nav-link" href="/home/{{$user->id}}">Página principal</a>
                             </li>
-                            <!--
-                            <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle" href="http://example.com/" id="dropdown01" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                              <div class="dropdown-menu" aria-labelledby="dropdown01">
-                                <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Action</a>
-                                <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Another action</a>
-                                <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Something else here</a>
-                              </div>
-                            </li>
-                            -->
                           </ul>
+                          <!--
                           <form class="form-inline my-2 my-md-0">
                             <input class="form-control" type="text" placeholder="Search" aria-label="Search">
                           </form>
+                          -->
                         </div>
-                      </nav>
+                    </nav>
 
                 </div>
 

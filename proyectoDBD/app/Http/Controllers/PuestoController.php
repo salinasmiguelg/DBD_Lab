@@ -90,9 +90,10 @@ class PuestoController extends Controller
         return response()->json($puesto);
     }
 
-    public function showPuestos($id)
+    public function showPuestos($id,$idU)
     {
         //
+        $user = User::find($idU);
         $comuna = Comuna::find($id);
         $ferias = Feria::all()->where('id_comunas',$id)->where('delete',false);
         $ferias_puesto = DB::table('puestos')
@@ -101,12 +102,20 @@ class PuestoController extends Controller
             ->where('ferias.id_comunas',$id)
             ->where('ferias.delete',false)
             ->get();
+        $rol_user = Rol::all()->where('id_users',$idU)->where('delete',false);
+        $idR = 0;
+        foreach($rol_user as $rol_user){
+            if($rol_user->nombre == "Vendedor"){
+                $idR = $rol_user->id_users;
+            }
+        }
+        $rol = Rol::find($idR);
 
             if($comuna == NULL or $comuna->delete == true){
                 return response()->json([
                     'message' => 'No se encontro Comuna']);
             }
-        return view('puestos',compact('comuna','ferias_puesto'));
+        return view('puestos',compact('user','comuna','ferias_puesto','rol'));
     }   
 
     /**
