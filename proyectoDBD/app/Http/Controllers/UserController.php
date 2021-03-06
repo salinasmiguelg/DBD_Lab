@@ -94,6 +94,8 @@ class UserController extends Controller
         $user->save();
         $rol = new Rol();
         $rol->nombre = $request->nombreRol;
+        print_r($request->nombreRol);
+        print_r($rol->nombre);
         $rol->id_users = $user->id;
         $rol->delete = false;
         $rol->save();
@@ -103,7 +105,6 @@ class UserController extends Controller
         // ver forma de colocar la fecha actual
         $transaccion->fechaPago = "2021-03-06";
         $transaccion->delete = false;
-
         $transaccion->save();
 
         $transaccionUser = new Transaccion_user();

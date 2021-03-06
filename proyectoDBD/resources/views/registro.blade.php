@@ -71,6 +71,7 @@
 
                                     <input name = "contraseña"  class = "form-control rounded-pill" placeholder="Repita la contraseña" required=""  type =  "text" autofocus="">
 
+                                    <!--
                                     <div class="form-check-inline">
 
                                           <input name = "nombreRol" type="checkbox" class="form-check-input" value="Vendedor">
@@ -83,9 +84,30 @@
                                           <label class="form-check-label">Comprador</label>
 
                                       </div>
+                                    -->
+
+
+                                        <div class="form-check-inline">
+                                          <div class="form-check-inline">
+                                            <input name = "nombreRol" class="form-check-input" type="radio" id="gridRadios1" value="Vendedor" checked>
+                                            <label class="form-check-label">
+                                              Vendedor
+                                            </label>
+                                          </div>
+                                          <div class="form-check-inline">
+                                            <input name = "nombreRol" class="form-check-input" type="radio" id="gridRadios2" value="Comprador">
+                                            <label class="form-check-label">
+                                              Comprador
+                                            </label>
+                                          </div>
+                                        </div>
+
+
+
                                     <div class = "boton text-center">
                                         <button type="submit" class="btn color3">Registrarse</button>
                                     </div>
+
                                 </div>
 
 

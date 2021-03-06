@@ -109,7 +109,7 @@
                                 <h4 class="card-title">{{$producto1->nombreProducto}}</h4>
                                 <p class="card-text">El precio del producto1 es: {{$producto1->precioUnitario}} CLP</p>
                                 <p class="card-text">Stock: {{$producto1->stock}}</p>
-                                <input type="number" name="cantidad" value= "1">
+                                <input class="numeraco container-fluid"type="number" name="cantidad" value= "1">
                                 <button type="submit" class="btn btn-primary px-4">Agregar al Carrito</button>
                             </div>
                         </div>
@@ -169,6 +169,22 @@ body{
         margin-right: center;*/
 
 
+    }
+
+    .card{
+
+
+
+            text-align: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+
+
+
+
+        font-size: 20px;
     }
     .color1{
         background-color:#3a7658;
