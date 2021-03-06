@@ -21,7 +21,7 @@
 
     <!-- Contenedor texto con informacion del comprobante-->
     <div class = "container">
-              
+
           <!-- formularios de texto con la informacion del comprador -->
           <div class="card" style="width: 100%;">
               <ul class="list-group list-group-flush">
@@ -38,7 +38,7 @@
     <div class="row">
   <div class="col-md-8"></div>
   <a href="/" class="btn btn-success">Página principal</a>
-</div>    
+</div>
 
   <!--Footer de la pagina -->
     <div class = "footer">

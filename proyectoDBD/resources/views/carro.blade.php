@@ -30,9 +30,9 @@ use App\Models\Producto;
                           <ul class="navbar-nav mr-auto">
                             <h5 class = "nav-item">{{$user->nombre}}</h5>
                             <li class="nav-item">
-                              <a class="nav-link disabled" href="/perfil/{{$user->id}}">Perfil</a>
+                              <a class="nav-link" href="/perfil/{{$user->id}}">Perfil</a>
                             </li>
-                            <li class="nav-item">
+
                             <li class="nav-item">
                               <a class="nav-link disabled" href="/carro/{{$user->id}}">Carrito</a>
                             </li>

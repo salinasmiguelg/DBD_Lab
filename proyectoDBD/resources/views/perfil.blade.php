@@ -26,7 +26,6 @@
                                 <a class="nav-link" href="/perfil/{{$user->id}}">Perfil</a>
                             </li>
                             <li class="nav-item">
-                            <li class="nav-item">
                                 <a class="nav-link" href="/carro/{{$user->id}}">Carrito</a>
                             </li>
                             <li class="nav-item">

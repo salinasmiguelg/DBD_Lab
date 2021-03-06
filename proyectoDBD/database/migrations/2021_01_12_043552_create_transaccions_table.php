@@ -16,7 +16,7 @@ class CreateTransaccionsTable extends Migration
         Schema::create('transaccions', function (Blueprint $table) {
             $table->id();
             $table->integer('monto');
-            $table->date('fechaPago');            
+            $table->string('fechaPago');
             $table->boolean('delete');
             $table->timestamps();
         });

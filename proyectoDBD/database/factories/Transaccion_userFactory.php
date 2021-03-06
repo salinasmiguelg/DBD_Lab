@@ -24,7 +24,7 @@ class Transaccion_userFactory extends Factory
     public function definition()
     {
         return [
-            'delete' => $this->faker->boolean,
+            'delete' => $this->faker->randomElement($array = array (false)),
             'id_transaccions' => Transaccion::all()->random()->id,
             'id_users' => User::all()->random()->id
         ];

@@ -22,10 +22,10 @@ class CantidadFactory extends Factory
     public function definition()
     {
         return [
-            // 
+            //
             'tipoDeCantidad'=> $this->faker->randomElement($array = array ('Kilos' , 'Unidades' , 'Cajas')),
-            'delete' => $this->faker->boolean
-            
+            'delete' => $this->faker->randomElement($array = array (false))
+
         ];
     }
 }

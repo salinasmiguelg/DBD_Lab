@@ -11,6 +11,8 @@ use App\Models\Rol;
 use App\Models\Producto;
 use App\Models\Puesto_producto;
 use App\Models\Puesto;
+use App\Models\Transaccion;
+use App\Models\Transaccion_user;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -95,6 +97,21 @@ class UserController extends Controller
         $rol->id_users = $user->id;
         $rol->delete = false;
         $rol->save();
+        $transaccion = new Transaccion();
+        // hacer formula para calcular el monto
+        $transaccion->monto = 50;
+        // ver forma de colocar la fecha actual
+        $transaccion->fechaPago = "2021-03-06";
+        $transaccion->delete = false;
+
+        $transaccion->save();
+
+        $transaccionUser = new Transaccion_user();
+        $transaccionUser->id_users = $user->id;
+        $transaccionUser->id_transaccions = $transaccion->id;
+        $transaccionUser->delete = false;
+        $transaccionUser->save();
+
         return redirect()->action([UserController::class, 'continueSession'], ['id' => $user->id]);
     }
     /*
@@ -123,6 +140,7 @@ class UserController extends Controller
         $producto = Producto::all()->where('delete',false)->where('stock','>',0);
 
 
+
         if($user==NULL){
             echo '<div class="alert alert-danger">Email o clave incorrecta.</div>';
             return view('login');
@@ -140,6 +158,20 @@ class UserController extends Controller
             }
             //cuando se logea correctamente
             if($user->email == $request->email && $user->contraseña == $request->contraseña){
+                $transaccion = new Transaccion();
+                // hacer formula para calcular el monto
+                $transaccion->monto = 50;
+                // ver forma de colocar la fecha actual
+                $transaccion->fechaPago = "2021-03-06";
+                $transaccion->delete = false;
+                $transaccion->save();
+
+                $transaccionUser = new Transaccion_user();
+                $transaccionUser->id_users = $user->id;
+                $transaccionUser->id_transaccions = $transaccion->id;
+                $transaccionUser->delete = false;
+                $transaccionUser->save();
+
                 return redirect()->action([UserController::class, 'continueSession'], ['id' => $user->id]);
                 //return view('home',compact('user','producto'));
             }

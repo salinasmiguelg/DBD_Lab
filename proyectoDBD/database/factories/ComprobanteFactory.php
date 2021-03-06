@@ -30,9 +30,9 @@ class ComprobanteFactory extends Factory
             'metodoPago' => $this->faker->randomElement($array = array ('efectivo','tarjeta')),
             'tipoDespacho' => $this->faker->randomElement($array = array ('personal','domicilio')),
             'total' =>$this->faker->randomNumber,
-            'delete' => $this->faker->boolean,
+            'delete' => $this->faker->randomElement($array = array (false)),
             'id_users' => User::all()->random()->id
-            
+
         ];
     }
 }

@@ -29,7 +29,7 @@ class ProductoFactory extends Factory
             'precioUnitario'=>$this->faker->randomNumber,
             'stock'=>$this->faker->randomNumber,
             'categoria'=>$this->faker->word,
-            'delete' => $this->faker->boolean,
+            'delete' => $this->faker->randomElement($array = array (false)),
             'id_proceso_compras' => Proceso_compra::all()->random()->id,
             'id_cantidads' => Cantidad::all()->random()->id
         ];

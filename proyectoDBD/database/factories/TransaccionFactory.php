@@ -24,7 +24,7 @@ class TransaccionFactory extends Factory
         return [
             'monto' => $this->faker->randomNumber,
             'fechaPago' => $this->faker->date,
-            'delete' => $this->faker->boolean
+            'delete' => $this->faker->randomElement($array = array (false))
         ];
     }
 }

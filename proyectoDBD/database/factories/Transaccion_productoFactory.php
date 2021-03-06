@@ -27,7 +27,7 @@ class Transaccion_productoFactory extends Factory
             'id_transaccions' => Transaccion::all()->random()->id,
             'id_productos' => Producto::all()->random()->id,
             'cantidad'=>$this->faker->randomNumber,
-            'delete' => $this->faker->boolean
+            'delete' => $this->faker->randomElement($array = array (false)),
         ];
     }
 }

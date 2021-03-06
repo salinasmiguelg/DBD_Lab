@@ -24,7 +24,7 @@ class Puesto_productoFactory extends Factory
     public function definition()
     {
         return [
-            'delete' => $this->faker->boolean,
+            'delete' => $this->faker->randomElement($array = array (false)),
             'id_puestos' => Puesto::all()->random()->id,
             'id_productos' => Producto::all()->random()->id
         ];

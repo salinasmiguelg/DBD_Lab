@@ -26,7 +26,7 @@ class Transaccion_comprobanteFactory extends Factory
         return [
             'id_transaccions' => Transaccion::all()->random()->id,
             'id_comprobantes' => Comprobante::all()->random()->id,
-            'delete' => $this->faker->boolean
+            'delete' => $this->faker->randomElement($array = array (false))
         ];
     }
 }

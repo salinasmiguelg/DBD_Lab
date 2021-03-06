@@ -28,7 +28,7 @@ class UserFactory extends Factory
             'numeroTelefono' => $this->faker->e164PhoneNumber,
             'email' => $this->faker->unique()->freeEmail,
             'email_verified_at' => now(),
-            'delete' => $this->faker->boolean,
+            'delete' => $this->faker->randomElement($array = array (false)),
             'contraseña' => $this->faker->password, // password
             'remember_token' => Str::random(10)
         ];

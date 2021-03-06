@@ -28,7 +28,7 @@ class PuestoFactory extends Factory
             //
             'categoria'=>$this->faker->randomElement($array = array ('Verduras' , 'Frutas' , 'Accesorio de Aseo','Juguetes','Vestuario','Mariscos')),
             'descripcion'=>$this->faker->randomElement($array = array ('Marilu' , 'Pepita' , 'La Tomatera','Donde El Lolo','El Electrico')),
-            'delete' => $this->faker->boolean,
+            'delete' => $this->faker->randomElement($array = array (false)),
             'id_users' => User::all()->random()->id,
             'id_ferias' => Feria::all()->random()->id,
             'id_rols' => Rol::all()->random()->id
