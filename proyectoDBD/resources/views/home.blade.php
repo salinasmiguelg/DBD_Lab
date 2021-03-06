@@ -99,8 +99,8 @@
         <!--hola-->
         <div class="container">
             <div class="row row-cols-1 row-cols-md-4 g-4 px-4 py-4">
-                @forelse($producto1 as $producto1) 
-                <form action="{{route('agregarProducto')}}" method="POST"> 
+                @forelse($producto1 as $producto1)
+                <form action="{{route('agregarProducto')}}" method="POST">
                     <div class="col">
                         <div class="card">
                             <div class="card-body">
@@ -113,15 +113,15 @@
                                 <button type="submit" class="btn btn-primary px-4">Agregar al Carrito</button>
                             </div>
                         </div>
-                    </div>   
-                </form> 
+                    </div>
+                </form>
                 @empty
                 <div class="alert alert-info px-4" role="alert">
                     No hay productos
                 </div>
-                @endforelse     
+                @endforelse
             </div>
-        </div>  
+        </div>
     <div class = "end-50 bottom text-center">
         <p class = "text-muted padding_up">
             FERIINF - Online Market - 2021

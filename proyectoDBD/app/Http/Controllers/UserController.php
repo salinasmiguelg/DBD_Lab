@@ -45,7 +45,7 @@ class UserController extends Controller
         $idR = 0;
         foreach($rol_user as $rol_user){
             if($rol_user->nombre == "Vendedor"){
-                $idR = $rol_user->id_users;
+                $idR = $rol_user->id;
             }
         }
         $rol = Rol::find($idR);
@@ -90,15 +90,12 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->delete = false;
         $user->save();
-        $rol_user = Rol::all()->where('id_users',$user->id)->where('delete',false);
-        $idR = 0;
-        foreach($rol_user as $rol_user){
-            if($rol_user->nombre == "Vendedor"){
-                $idR = $rol_user->id_users;
-            }
-        }
-        $rol = Rol::find($idR);
-        return view ('home' , compact('user','producto','comuna','producto1','rol'));
+        $rol1 = new Rol();
+        $rol1->nombre = $request->nombreRol;
+        $rol1->id_users = $user->id;
+        $rol1->delete = false;
+        $rol1->save();
+        return view ('home' , compact('user','producto','comuna','producto1','rol1'));
     }
     /*
     public function userValidate(Request $request){
@@ -193,7 +190,7 @@ class UserController extends Controller
         if($user == NULL or $user->delete == true){
             return response()->json([
                 'message' => 'No se encontro User']);
-        }        
+        }
         $rol_user = Rol::all()->where('id_users',$id)->where('delete',false);
         $idR = 0;
         foreach($rol_user as $rol_user){
@@ -222,7 +219,7 @@ class UserController extends Controller
             ->where('users.delete',false)
             ->get();
         $user = User::find($idU);
-        
+
         $rol_user = Rol::all()->where('id_users',$idU)->where('delete',false);
         $idR = 0;
         foreach($rol_user as $rol_user){

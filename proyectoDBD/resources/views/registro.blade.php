@@ -60,26 +60,34 @@
                             <form class = "form-sigin  position-relative" action = "{{route('userStore')}}" method = "POST">
                                 <div class = "form-group">
                                     <h3 class= "card-title position-relative">Registrarse</h3>
-                                    <input name = "nombre"  class="form-control rounded-pill" placeholder="Nombre" required=""  type =  "text">
-                                    <input name = "apellido"  class="form-control rounded-pill" placeholder="Apellido" required=""  type =  "text">
-                                    <input name = "numeroTelefono"  class="form-control rounded-pill" placeholder="Número de teléfono" required=""  type =  "text">
-                                    <input name = "email"  class="form-control rounded-pill" placeholder="Correo Electrónico" required=""  type =  "text">
+                                    <input name = "nombre"  class="form-control rounded-pill" placeholder="Nombre" required=""  type =  "text" autofocus="">
+                                    <input name = "apellido"  class="form-control rounded-pill" placeholder="Apellido" required=""  type =  "text" autofocus="">
+                                    <input name = "numeroTelefono"  class="form-control rounded-pill" placeholder="Número de teléfono" required=""  type =  "text" autofocus="">
+                                    <input name = "email"  class="form-control rounded-pill" placeholder="Correo Electrónico" required=""  type =  "text" autofocus="">
 
-                                    <input name = "contraseña"  class = "form-control rounded-pill" placeholder="Contraseña" required=""  type =  "text">
+                                    <input name = "contraseña"  class = "form-control rounded-pill" placeholder="Contraseña" required=""  type =  "text" autofocus="">
 
-                                    <input name = "contraseña"  class = "form-control rounded-pill" placeholder="Repita la contraseña" required=""  type =  "text">
+                                    <input name = "contraseña"  class = "form-control rounded-pill" placeholder="Repita la contraseña" required=""  type =  "text" autofocus="">
 
+                                    <div class="form-check-inline">
+
+                                          <input name = "nombreRol" type="checkbox" class="form-check-input" value="Vendedor">
+                                          <label class="form-check-label">Vendedor</label>
+
+                                      </div>
+                                      <div class="form-check-inline">
+
+                                          <input name = "nombreRol" type="checkbox" class="form-check-input" value = "Comprador">
+                                          <label class="form-check-label">Comprador</label>
+
+                                      </div>
                                     <div class = "boton text-center">
                                         <button type="submit" class="btn color3">Registrarse</button>
                                     </div>
                                 </div>
-                                <div class="form-group" action = "" >
-                                    <select class="form-control roll" id="exampleFormControlSelect1">
-                                      <option name = "nombre">Comprador</option>
-                                      <option>Vendedor</option>
-                                      <option>Ambos</option>
-                                    </select>
-                                </div>
+
+
+
                             </form>
 
                             <div class="modal fade" id="myModal" role="dialog">
@@ -209,17 +217,9 @@
         margin-right: auto;
         }
 
-        .roll{
-            width: 350px;
-            margin-top: 230px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-
     }
     .boton{
-        margin-top: 40px;
+        margin-top: 10px;
     }
     body{
         background-color:#a7dcb2;
