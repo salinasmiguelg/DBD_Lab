@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 
-    <title>Feriinf</title>
+    <title>Proceso de Pago</title>
   </head>
 
 <body>
@@ -26,39 +26,56 @@
             <h4>Datos Personales</h4>
             
             <!-- formularios de texto con la informacion del comprador -->
-            <form>
+            <form class = "form-sigin" action = "{!! route('comprobanteStore') !!}" method = "POST">
 
                 <div class="mb-3">
                         <div>
                             <label for="ejemploNombre" class="form-label"></label>
-                            <input type="nombre" class="form-control" id="ejemploNombre" placeholder="Nombres">
+                            <input name="nombre" type="nombre" class="form-control" id="ejemploNombre" placeholder="Nombre">
                         </div>
                         <div class="mb-3">
                             <label for="ejemploNombre" class="form-label"></label>
-                            <input type="nombre" class="form-control" id="ejemploNombre" placeholder="Apellidos">
+                            <input name="apellido" type="nombre" class="form-control" id="ejemploNombre" placeholder="Apellidos">
                         </div>
                         <div class="mb-3">
                             <label for="ejemploCorreo" class="form-label"></label>
-                            <input type="correo" class="form-control" id="ejemploCorreo" placeholder="Correo Electrónico">
+                            <input name="direccionDespacho" type="correo" class="form-control" id="ejemploCorreo" placeholder="Direccion Despacho">
                         </div>
                         <div class="mb-3">
-                            <label for="ejemploTelefono" class="form-label"></label>
-                            <input type="telefono" class="form-control" id="ejemploTelefono" placeholder="Teléfono">
+                            <label for="ejemploCorreo" class="form-label"></label>
+                            <input name="total" type="nombre" class="form-control" id="ejemploNombre" placeholder="total">
                         </div>
+                        <div class="mb-3">
+                            <label for="ejemploCorreo" class="form-label"></label>
+                            <input name="tipo" type="nombre" class="form-control" id="ejemploNombre" placeholder="Boleta o comprobante">
+                        </div>
+
+
+                    <div class="form-check">
+                        <div class="mb-3">
+                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                        </div>
+                        
+                        <label class="form-check-label" for="invalidCheck">
+                            Todo en orden!
+                        </label>
+
+                    </div>
+
+
                 </div>
 
             <div class="container-fluid">
                 <!-- Selector 1 -->
-                <select class="form-select" id="validationCustom04" required="">
+                <select name="metodoPago" class="form-select" id="validationCustom04" required="">
                     <option selected="" disabled="" value="">Método Pago </option>
                     <option>Efectivo</option>
                     <option>Debito/Crédito</option>
                     <option>Déposito</option>
                 </select>
                 <!-- Selector 2 -->
-                <select class="form-select" id="validationCustom04" required="">
-                    <option selected="" disabled="" value="">Metodo Despacho </option>
-                    <option>Tipo Entrega</option>
+                <select name="tipoDespacho" class="form-select" id="validationCustom04" required="">
+                    <option selected="" disabled="" value="">Método Despacho </option>
                     <option>Retiro Personal</option>
                     <option>Despacho a Domicilio</option>
                 </select>

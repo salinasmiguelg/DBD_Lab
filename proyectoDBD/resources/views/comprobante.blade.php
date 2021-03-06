@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 
     <!-- Titulo de pagina -->
-    <title>Feriinf</title>
+    <title>Comprobante</title>
   </head>
 
   <body>
@@ -28,7 +28,7 @@
                   <li class="list-group-item">Nombre: </li>
                   <li class="list-group-item">Apellido: </li>
                   <li class="list-group-item">Dirección de Despacho: </li>
-                  <li class="list-group-item">Método de pago: </li>
+                  <li class="list-group-item">Método de despacho: </li>
                   <li class="list-group-item">Tipo de despacho: </li>
                   <li class="list-group-item">Total Pagado: </li>
               </ul>

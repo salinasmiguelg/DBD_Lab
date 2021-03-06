@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
+use App\Models\Comprobante;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,7 +56,10 @@ Route::get('/puestos/{id}','PuestoController@showPuestos');
 
 //Vista de pago
 
-Route::get('/pago/{id}', 'UserController@showPerfilPago');
+Route::get('/pago/{id}',function($id){
+    $user = User::find($id);
+    return view('pago')->with('user',$user);
+});
 
 
 //Vista comprobante de pago
@@ -85,7 +89,7 @@ Route::put('/cantidad/{id}','CantidadController@update');
 Route::delete('/cantidad/{id}','CantidadController@destroy');
 //comprobante
 Route::get('/comprobante','ComprobanteController@index');
-Route::post('/comprobante/create','ComprobanteController@store');
+Route::post('/comprobante/create','ComprobanteController@store')->name('comprobanteStore');
 Route::get('/comprobante/{id}','ComprobanteController@show');
 Route::put('/comprobante/{id}','ComprobanteController@update');
 Route::delete('/comprobante/{id}','ComprobanteController@destroy');
