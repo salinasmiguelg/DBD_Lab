@@ -26,7 +26,7 @@
             <h4>Datos Personales</h4>
             
             <!-- formularios de texto con la informacion del comprador -->
-            <form class = "form-sigin" action = "{{route('comprobanteStore')}}" method = "POST">
+            <form class = "form-sigin" action = "{{route('comprobanteStore', $user)}}" method = "POST">
 
                 <div class="mb-3">
                         <div>
@@ -43,15 +43,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="ejemploCorreo" class="form-label"></label>
-                            <input name="total" type="nombre" class="form-control" id="ejemploNombre" placeholder="total">
-                        </div>
-                        <div class="mb-3">
-                            <label for="ejemploCorreo" class="form-label"></label>
-                            <input name="tipo" type="nombre" class="form-control" id="ejemploNombre" placeholder="Boleta o comprobante">
+                            <input name="total" type="nombre" class="form-control" id="ejemploNombre" placeholder="Confirme Total">
                         </div>
                         <div class="mb-3">
                             <label for="id_user" class="form-label"></label>
-                            <input name="id_users" type="number disabled" class="form-control" id="ejemploNombre" placeholder="Boleta o comprobante" value = {{$user->id}}>
+                            <input name="id_users" type="numberdisabled" class="form-control" id="ejemploNombre" placeholder="" value = {{$user->id}}>
                         </div>
 
 
@@ -82,6 +78,12 @@
                     <option selected="" disabled="" value="">Método Despacho </option>
                     <option>Retiro Personal</option>
                     <option>Despacho a Domicilio</option>
+                </select>
+                <!-- Selector 2 -->
+                <select name="tipo" class="form-select" id="validationCustom04" required="">
+                    <option selected="" disabled="" value="">Boleta o Factura </option>
+                    <option>Boleta</option>
+                    <option>Factura</option>
                 </select>
             </div>
                 <!--Boton de formulario para finalizar la compra. Deben servira si se han seleccionado opciones en anteriores selectores-->
