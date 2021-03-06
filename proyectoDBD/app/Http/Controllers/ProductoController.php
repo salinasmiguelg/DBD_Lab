@@ -116,11 +116,15 @@ class ProductoController extends Controller
         $producto->precioUnitario = $request->precioUnitario;
         $producto->stock = $request->stock;
         $producto->categoria = $request->categoria;
-        $producto->id_cantidads = 1;
-        $producto->id_proceso_compras = 1;
+        $producto->id_cantidads = 1;//(int)$request->id_cantidads;
+        $producto->id_proceso_compras =1; //(int)$request->id_proceso_compras;
         $producto->delete = false;
         $producto->save();
-        return view('createProducto', compact('producto'));
+        $id = (int)$request->id_cantidads;
+        $user = User::find($id);
+        echo '<div class="alert alert-danger">Se a creado el producto.</div>';
+        return redirect()->action([UserController::class, 'continueSession'], ['id' => $user->id]);
+        //return view('createProducto', compact('user','producto'));
     }
 
     /**

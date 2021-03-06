@@ -40,6 +40,8 @@ class ComprobanteController extends Controller
             'metodoPago' => ['required'],
             'tipoDespacho' => ['required'],
             'total' => ['required'],
+            ]);
+            /*
             'id_users' => ['required'],
         ]);
         if(!is_integer($request->id_users)){
@@ -54,9 +56,10 @@ class ComprobanteController extends Controller
                 "id"=>$user->id,
             ],404);
         }
+        */
         $comprobante = new Comprobante();
         $comprobante->tipo = $request->tipo;
-        $comprobante->id_users = $request->id_users;
+        $comprobante->id_users = (int)$request->id_users;
         $comprobante->nombre = $request->nombre;
         $comprobante->apellido = $request->apellido;
         $comprobante->direccionDespacho = $request->direccionDespacho;
@@ -66,10 +69,11 @@ class ComprobanteController extends Controller
 
         $comprobante->delete = false;
         $comprobante->save();
-        return response()->json([
-            "message"=>"Se ha creado comprobante",
-            "id"=>$comprobante->id
-        ],202);
+        $id = (int)$request->id_users;
+        $user = User::find($id);
+        echo '<div class="alert alert-danger">Se a creado el comprobante</div>';
+        return redirect()->action([UserController::class, 'continueSession'], ['id' => $user->id]);
+        //return view('pago', compact('user','comprobante'));
         }
 
     /**

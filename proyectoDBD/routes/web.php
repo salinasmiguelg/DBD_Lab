@@ -37,8 +37,9 @@ Route::get('/perfil/edit/{id}',function($id){
     return view('edit')->with('user',$user);
 });
 
-Route::get('/crearProducto',function(){
-    return view('createProducto');
+Route::get('/crearProducto/{id}',function($id){
+    $user = User::find($id);
+    return view('createProducto',compact('user'));
 });
 
 Route::get('/validate','UserController@userValidate')->name("userValidate");
@@ -58,7 +59,7 @@ Route::get('/puestos/{id}','PuestoController@showPuestos');
 
 Route::get('/pago/{id}',function($id){
     $user = User::find($id);
-    return view('pago')->with('user',$user);
+    return view('pago',compact('user'));
 });
 
 
@@ -89,7 +90,7 @@ Route::put('/cantidad/{id}','CantidadController@update');
 Route::delete('/cantidad/{id}','CantidadController@destroy');
 //comprobante
 Route::get('/comprobante','ComprobanteController@index');
-Route::post('/comprobante/create','ComprobanteController@store')->name('comprobanteStore');
+Route::post('/comprobante/create/{id}','ComprobanteController@store')->name('comprobanteStore');
 Route::get('/comprobante/{id}','ComprobanteController@show');
 Route::put('/comprobante/{id}','ComprobanteController@update');
 Route::delete('/comprobante/{id}','ComprobanteController@destroy');

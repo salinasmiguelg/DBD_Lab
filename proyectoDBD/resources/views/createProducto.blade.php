@@ -71,6 +71,9 @@
                         <label for="formGroupExampleInput">Categoria</label>
                         <input class="form-control" type="text" name="categoria">
                       </div>
+                      <div class="mb-3"><!-- ocultar esto -->
+                        <input class="form-control" type="number disabled" name="id_cantidads" value = {{$user->id}}>
+                      </div>
                         <button type="submit" class="btn btn-primary px-4 " >Agregar Producto</button>
                       </form>
                       </div>

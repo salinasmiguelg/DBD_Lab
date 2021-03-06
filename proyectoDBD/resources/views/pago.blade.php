@@ -26,7 +26,7 @@
             <h4>Datos Personales</h4>
             
             <!-- formularios de texto con la informacion del comprador -->
-            <form class = "form-sigin" action = "{!! route('comprobanteStore') !!}" method = "POST">
+            <form class = "form-sigin" action = "{{route('comprobanteStore')}}" method = "POST">
 
                 <div class="mb-3">
                         <div>
@@ -48,6 +48,10 @@
                         <div class="mb-3">
                             <label for="ejemploCorreo" class="form-label"></label>
                             <input name="tipo" type="nombre" class="form-control" id="ejemploNombre" placeholder="Boleta o comprobante">
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_user" class="form-label"></label>
+                            <input name="id_users" type="number disabled" class="form-control" id="ejemploNombre" placeholder="Boleta o comprobante" value = {{$user->id}}>
                         </div>
 
 

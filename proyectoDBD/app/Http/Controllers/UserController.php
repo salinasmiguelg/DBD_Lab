@@ -120,7 +120,7 @@ class UserController extends Controller
 
         foreach($user as $user){
             if($user->delete == true){
-                echo 'div class<="alert alert-danger">Email o clave incorrecta.</div>';
+                echo '<div class="alert alert-danger">Email o clave incorrecta.</div>';
                 return view('login');
             }
             //cuando se logea correctamente
