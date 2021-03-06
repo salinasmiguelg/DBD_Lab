@@ -59,6 +59,8 @@ class UserController extends Controller
         //
         $user1 = User::all();
         $producto = Producto::all()->where('delete',false)->where('stock','>',0);
+        $comuna = Comuna::all()->where('delete',false);
+        $producto1 = Producto::all()->where('delete',false)->where('stock','>',0);
         foreach($user1 as $user1){
             if($user1->email == $request->email){
                 echo '<div class="alert alert-danger">Email ya existente.</div>';
@@ -80,7 +82,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->delete = false;
         $user->save();
-        return view ('home' , compact('user','producto'));
+        return view ('home' , compact('user','producto','comuna','producto1'));
     }
     /*
     public function userValidate(Request $request){

@@ -89,26 +89,31 @@
         <img src="https://i.ibb.co/L5mx9H3/HKMFWLPZ2-FDXPETCBS4-EG5-GE6-I.jpg" alt="HKMFWLPZ2-FDXPETCBS4-EG5-GE6-I" border="0">
         </div>
 
-        <div class = "col ">
-            <div class = "container fluid">
-                    <div class="row">
-                        @forelse($producto1 as $producto1)
-                        <div class="col-sm">
-                            <div class="card" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{$producto1->nombreproducto}}</h5>
-                                    <p class="card-text">Descripción del producto1</p>
-                                    <a href="#" class="btn btn-primary">Ver producto1</a>
-                                </div>
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-4 g-4 px-4 py-4">
+                @forelse($producto1 as $producto1) 
+                <form action="{{route('agregarProducto')}}" method="POST"> 
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <input type="hidden" name="id_productos" value= "{{$producto1->id}}">
+                                <input type="hidden" name="id_transaccions" value= "{{$user->id}}">
+                                <h4 class="card-title">{{$producto1->nombreProducto}}</h4>
+                                <p class="card-text">El precio del producto1 es: {{$producto1->precioUnitario}} CLP</p>
+                                <p class="card-text">Stock: {{$producto1->stock}}</p>
+                                <input type="number" name="cantidad" value= "1">
+                                <button type="submit" class="btn btn-primary px-4">Agregar al Carrito</button>
                             </div>
                         </div>
-                        @empty
-                        <p>El carro se encuentra vacío</p>
-                        @endforelse
-                    </div>
+                    </div>   
+                </form> 
+                @empty
+                <div class="alert alert-info px-4" role="alert">
+                    No hay productos
                 </div>
-
-    </div>
+                @endforelse     
+            </div>
+        </div>  
     <div class = "end-50 bottom text-center">
         <p class = "text-muted padding_up">
             FERIINF - Online Market - 2021
