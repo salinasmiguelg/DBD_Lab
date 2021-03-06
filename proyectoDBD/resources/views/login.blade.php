@@ -44,9 +44,11 @@
                             </li>
                             -->
                           </ul>
+                          <!--
                           <form class="form-inline my-2 my-md-0">
                             <input class="form-control" type="text" placeholder="Search" aria-label="Search">
                           </form>
+                        -->
                         </div>
                     </nav>
 
@@ -69,6 +71,7 @@
                                         <input type = "checkbox" value = "remember-me"> Guardar Sesión
                                     </label>
                                 </div>
+
                                 <div class = "boton text-center">
                                     <button type="submit" class="btn color3">Iniciar</button>
                                 </div>

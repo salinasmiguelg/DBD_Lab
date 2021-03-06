@@ -90,12 +90,12 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->delete = false;
         $user->save();
-        $rol1 = new Rol();
-        $rol1->nombre = $request->nombreRol;
-        $rol1->id_users = $user->id;
-        $rol1->delete = false;
-        $rol1->save();
-        return view ('home' , compact('user','producto','comuna','producto1','rol1'));
+        $rol = new Rol();
+        $rol->nombre = $request->nombreRol;
+        $rol->id_users = $user->id;
+        $rol->delete = false;
+        $rol->save();
+        return redirect()->action([UserController::class, 'continueSession'], ['id' => $user->id]);
     }
     /*
     public function userValidate(Request $request){
