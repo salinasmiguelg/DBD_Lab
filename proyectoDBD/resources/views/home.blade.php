@@ -65,7 +65,7 @@
                     <a class="nav-link dropdown-toggle color7" href="http://example.com/" id="dropdown01" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Productos</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown01">
                     @forelse($producto as $producto)
-                    <a class="dropdown-item" href="/puestos/{{$producto->id}}">{{$producto->nombreProducto}}</a>
+                    <a class="dropdown-item" href="/feriantes/{{$producto->id}}">{{$producto->nombreProducto}}</a>
                     @empty
                     <p>No Funciona</p>
                     @endforelse

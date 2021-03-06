@@ -182,10 +182,8 @@ class UserController extends Controller
 
     public function showFeriante($id)
     {
-        //
         $producto = Producto::find($id);
         $puesto_producto = Puesto_producto::all()->where('id_productos',$id)->where('delete',false);
-
         $puestoProducto_user = DB::table('puesto_productos')
             ->join('puestos','puestos.id','=','puesto_productos.id_puestos')
             ->where('puesto_productos.id_productos',$id)
@@ -201,8 +199,6 @@ class UserController extends Controller
                 return response()->json([
                     'message' => 'No se encontro Producto']);
             }
-
-
         return view('feriantes',compact('producto','puesto_producto','puestoProducto_user'));
     }
 
