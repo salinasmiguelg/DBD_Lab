@@ -47,10 +47,13 @@
 
                 </div>
 
+                <!-- titulo Pagina Pago -->
+                <div class="jumbotron">
+                    <h1 class="text-center">Edite datos de su Perfil</h1>
+                </div>
+
                 <div class = "col">
                     <div class = "container fluid">
-
-                      <h1 class = "first-title">Editar Perfil</h1>
                       <div class = "container-text">
                       <form  action="{!! route('userUpdate', ['id'=>$user->id]) !!}" method="POST"style="padding-top:30px">
                                       @method('PUT')
@@ -87,10 +90,9 @@
                         </div>
                         -->
 
-                        <div class = "end-50 bottom text-center">
-                            <p class = "text-muted padding_up">
+                        <!-- Footer de la pagina-->
+                        <div class="footer">
                                 FERIINF - Online Market - 2021
-                            </p>
                         </div>
 
                     </div>
@@ -151,6 +153,20 @@
     }
     .form-control{
       margin-top:1%;
+    }
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #032107;
+        color: white;
+        text-align: center;
+    }
+    .jumbotron{
+        background-image: url("https://foodandtravel.mx/wp-content/uploads/2020/05/Frutas-y-verduras-de-temporada-Por.jpg");
+        background-size: cover;
+        color: white;
     }
 
 
