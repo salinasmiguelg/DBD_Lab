@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Comprobante;
 use App\Models\User;
 use App\Models\Transaccion;
+use App\Models\Transaccion_user;
 class ComprobanteController extends Controller
 {
     /**
@@ -58,6 +59,11 @@ class ComprobanteController extends Controller
             ],404);
         }
         */
+        
+        $despacho = 0;
+        if($request->tipoDespacho == "Despacho a Domicilio"){
+            $despacho = 2000;
+        }
         $comprobante = new Comprobante();
         $comprobante->tipo = $request->tipo;
         $comprobante->id_users = (int)$request->id_users;
@@ -66,16 +72,31 @@ class ComprobanteController extends Controller
         $comprobante->direccionDespacho = $request->direccionDespacho;
         $comprobante->metodoPago = $request->metodoPago;
         $comprobante->tipoDespacho = $request->tipoDespacho;
-        $comprobante->total = $request->monto;
+        $comprobante->total = $request->monto + $despacho;
         $comprobante->delete = false;
         $comprobante->save();
 
         $transaccion = Transaccion::find($request->idT);
-        $transaccion->monto = $comprobante->total;
+        $transaccion->monto = $comprobante->total + $despacho;
+        $transaccion->delete = true;
         $transaccion->save();
+
 
         $id = (int)$request->id_users;
         $user = User::find($id);
+        $transaccion1 = new Transaccion();
+        // hacer formula para calcular el monto
+        $transaccion1->monto = 0;
+        // ver forma de colocar la fecha actual
+        $transaccion1->fechaPago = date('Y-m-d');
+        $transaccion1->delete = false;
+        $transaccion1->save();
+
+        $transaccionUser = new Transaccion_user();
+        $transaccionUser->id_users = $user->id;
+        $transaccionUser->id_transaccions = $transaccion1->id;
+        $transaccionUser->delete = false;
+        $transaccionUser->save();
         echo '<div class="alert alert-danger">Se a creado el comprobante</div>';
         return view('comprobante', compact('user', 'comprobante'));
         }
