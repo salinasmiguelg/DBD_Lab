@@ -82,7 +82,7 @@ class Transaccion_productoController extends Controller
             }
         }
         $rol = Rol::find($idR);
-        if($request->max < $request->cantidad){
+        if((int)$request->max < $request->cantidad){
             echo '<div class="alert alert-danger">Coloque un stock que no pase el maximo disponible</div>';
             return view('home',compact('user','producto','comuna','producto1','rol'));
         }

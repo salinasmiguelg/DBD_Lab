@@ -131,6 +131,7 @@
                                 <div class="card-body">
                                     <input type="hidden" name="id_productos" value= "{{$producto1->id}}">
                                     <input type="hidden" name="id_transaccions" value= "{{$user->id}}">
+                                    <input type="hidden" name="max" value= "{{$producto1->stock}}">
                                     <h4 class="card-title">{{$producto1->nombreProducto}}</h4>
                                     <p class="card-text">El precio del producto es: {{$producto1->precioUnitario}} CLP</p>
                                     <p class="card-text">Stock: {{$producto1->stock}}</p>
