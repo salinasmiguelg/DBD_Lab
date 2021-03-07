@@ -43,7 +43,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="ejemploCorreo" class="form-label"></label>
-                            <input name="total" type="hidden" class="form-control" id="ejemploNombre" placeholder="Total" value= 400 >
+                            <input name="total" type="hidden" class="form-control" id="ejemploNombre" placeholder="Total" value= "{{$transaccion->monto}}" >
                         </div>
                         <div class="mb-3">
                             <label for="id_user" class="form-label"></label>
@@ -102,16 +102,9 @@
                             <td>1</td>
                             <td>100</td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Manzana</td>
-                            <td>150</td>
-                            <td>2</td>
-                            <td>300</td>
-                        </tr>
                     </tbody>
                 </table>
-                <h4>Total a pagar: 400 <h4>               
+                <h4>Total a pagar: {{$transaccion->monto}} <h4>               
             </div>
 
             <!-- Tercera seccion de Grilla: Foto de pagina y boton de retorno -->

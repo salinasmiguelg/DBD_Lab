@@ -83,15 +83,14 @@ class ComprobanteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, $idC)
     {
-        $comprobante = Comprobante::find($id);
+        $comprobante = Comprobante::find($idC);
+        $user = User::find($id);
         if($comprobante != NULL && $comprobante->delete == false){
             return response()->json($comprobante);
         }
-        return response()->json([
-            "message"=>"No se encontró comprobante"
-        ],404);
+        return view('comprobante', compact('comprobante','user'))
         //return view('comprobante', compact('user', 'rol', 'transaccion'));
     }
 

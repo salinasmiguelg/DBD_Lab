@@ -4,6 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Models\Rol;
 use App\Models\Comprobante;
+use App\models\Transaccion_user;
+use App\models\Transaccion;
+use App\models\Transaccion_producto;
+use App\models\Producto;
+use Illuminate\Support\Facades\DB;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -67,11 +73,22 @@ Route::get('/puestos/{id}/{idU}','PuestoController@showPuestos');
 //Vista de pago
 Route::get('/pago/{id}',function($id){
     $user = User::find($id);
-    //$transaccion_user = Transaccion_user::find($id);
-    return view('pago',compact('user'));
+    $transaccion_user = DB::table('transaccion_users')
+    ->join('users','users.id','=', 'transaccion_users.id_users')
+    ->select('transaccion_users.id_transaccions')
+    ->where('users.delete',false)
+    ->where('users.id', $id)
+    ->get();
+    $idT = 0;
+    foreach($transaccion_user as $transaccion_user){
+        $idT = $transaccion_user->id_transaccions;
+    }
+    $transaccion = Transaccion::find($idT);
+    
+    return view('pago',compact('user','transaccion'));
 });
 
-Route::get('/pago/comprobante/{id}','ComprobanteController@show');
+Route::get('/pago/comprobante/{id}/{idC}','ComprobanteController@show');
 
 //Vista a Home
 /*
