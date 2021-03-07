@@ -68,7 +68,10 @@
                                     <input name = "email"  class="form-control rounded-pill" placeholder="Correo Electrónico" required=""  type =  "text" autofocus="">
                                     <input name = "contraseña"  class = "form-control rounded-pill" placeholder="Contraseña" required minlength="8" maxlength="40"  type =  "text" autofocus="">
                                     <input name = "contraseña"  class = "form-control rounded-pill" placeholder="Repita la contraseña" required minlength="8" maxlength="40"  type =  "text" autofocus="">
-
+                                    <input name = "nombreRegion"  class = "form-control rounded-pill" placeholder="Region" required minlength="2" maxlength="40"  type =  "text" autofocus="">
+                                    <input name = "nombreComuna"  class = "form-control rounded-pill" placeholder="Comuna" required minlength="2" maxlength="40"  type =  "text" autofocus="">
+                                    <input name = "nombreCalle"  class = "form-control rounded-pill" placeholder="Calle" required minlength="2" maxlength="40"  type =  "text" autofocus="">
+                                    <input name = "nombreNumero"  class = "form-control rounded-pill" placeholder="Numero de la casa" required minlength="1" maxlength="40"  type =  "text" autofocus="">
                                     <!--
                                     <div class="form-check-inline">
 
@@ -99,6 +102,21 @@
                                             </label>
                                           </div>
                                         </div>
+                                        <div class = "form-check-inline">
+                                            <div class="form-check-inline">
+                                                <input name = "esDepartamento" class="form-check-input" type="radio" id="gridRadios2" value="true">
+                                                <label class="form-check-label">
+                                                Es Departamento
+                                                </label>
+                                            </div>
+                                            <div class="form-check-inline">
+                                                <input name = "esDepartamento" class="form-check-input" type="radio" id="gridRadios2" value="false">
+                                                <label class="form-check-label">
+                                                 Es Casa
+                                                </label>
+                                            </div>
+                                        </div>
+
 
 
 
@@ -107,6 +125,7 @@
                                     </div>
 
                                 </div>
+                            </div>
 
 
 
@@ -206,14 +225,14 @@
     @media (min-width: 500px) {
         .form-sigin{
             margin-top: 300px;
-            margin-bottom: 80px;
+
             padding: 80px;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 500px;
-            height: 65%;
+            height: 105%;
             background-color: #81be4d;
             border-radius: 20px;
             text-align: center;
@@ -238,6 +257,14 @@
         margin-left: auto;
         margin-right: auto;
         }
+        .custom-select{
+            width: 250px;
+
+        }
+        .input-group-prepend{
+            width: 100px;
+
+        }
 
     }
     .boton{
@@ -247,11 +274,7 @@
         background-color:#a7dcb2;
     }
 
-    .form-control input[type='text'],
-    .form-control input[type='email'],
-    .form-control input[type='contraseña'] {
-        padding-left: 60px;
-    }
+
     .color1{
         background-color:#3a7658;
         color: #ffffff;

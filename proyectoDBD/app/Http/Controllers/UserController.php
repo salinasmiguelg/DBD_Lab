@@ -66,7 +66,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $comprobante = Comprobante::find($id)->where('id','id_users');
-        
+
         $producto = Producto::all()->where('delete',false)->where('stock','>',0);
         $comuna = Comuna::all()->where('delete',false);
         $producto1 = Producto::all()->where('delete',false)->where('stock','>',0);
@@ -85,7 +85,7 @@ class UserController extends Controller
     }
 
     */
-    
+
 
     /**
      * Store a newly created resource in storage.
@@ -131,7 +131,7 @@ class UserController extends Controller
         $rol->save();
         $transaccion = new Transaccion();
         // hacer formula para calcular el monto
-        $transaccion->monto = 50;
+        $transaccion->monto = 0;
         // ver forma de colocar la fecha actual
         $transaccion->fechaPago = date('Y-m-d');
         $transaccion->delete = false;
@@ -142,6 +142,29 @@ class UserController extends Controller
         $transaccionUser->id_transaccions = $transaccion->id;
         $transaccionUser->delete = false;
         $transaccionUser->save();
+
+        $region = new Region();
+        $region->nombre = $request->nombreRegion;
+        $region->id_users = $user->id;
+        $region->delete = false;
+        $region->save();
+
+        $comuna = new Comuna();
+        $comuna->nombre = $request->nombreComuna;
+        $comuna->id_regions = $region->id;
+        $comuna->delete = false;
+        $comuna->save();
+
+
+        $direccion = new Direccion();
+        $direccion->calle = $request->nombreCalle;
+        $direccion->numero = $request->nombreNumero;
+        $direccion->es_departamento = $request->esDepartamento;
+        $direccion->id_users = $user->id;
+        $direccion->id_comunas = $comuna->id;
+        $direccion->delete = false;
+        $direccion->save();
+
 
         return redirect()->action([UserController::class, 'continueSession'], ['id' => $user->id]);
     }
@@ -345,7 +368,7 @@ class UserController extends Controller
             ->where('transaccion_productos.delete',false)
             ->get();
 
-        
+
         //guardar total en transaccion
 
         $transaccion_producto1 = DB::table('transaccion_users')
