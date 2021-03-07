@@ -65,13 +65,17 @@
 
                 <div class = "col">
                     <div class = "container fluid">
-
-                      <h1 class = "first-title">Localizados en: {{$comuna->nombre}}</h1>
+                      <div class="container-title">
+                        <h1 class = "first-title">Localizados en {{$comuna->nombre}}</h1>
+                      </div>
                       @forelse($ferias_puesto as $ferias_puesto)
                       <div class = "card-columns">
                         <div class="card" style="width: 18rem;">
+                          <div class="card-header">
+                            Nombre de puesto: {{$ferias_puesto->descripcion}}
+                          </div>
                           <div class="card-body">
-                            <h5 class="card-title">Nombre de puesto: {{$ferias_puesto->descripcion}}</h5>
+                            
                             <p class="card-text">Categoría: {{$ferias_puesto->categoria}}</p>
                             <p class="card-text">Feria: {{$ferias_puesto->descripcion_feria}}</p>
                             <p class="card-text">Dueño: juanito </p>
@@ -153,5 +157,10 @@
       text-align: center;
       font-size: 30px;
       color: white;
+    }
+    .container-title{
+      background-color: #3a7658;
+      border-radius: 5px;
+      padding: 1%;
     }
 </style>
