@@ -73,8 +73,7 @@ class ComprobanteController extends Controller
         $user = User::find($id);
         print_r($user->id);
         echo '<div class="alert alert-danger">Se a creado el comprobante</div>';
-        return redirect()->action([UserController::class, 'continueSession'], ['id' => $user->id]);
-        //return view('pago', compact('user','comprobante'));
+        return view('comprobante', compact('user', 'comprobante'));
         }
 
     /**
@@ -90,7 +89,7 @@ class ComprobanteController extends Controller
         if($comprobante != NULL && $comprobante->delete == false){
             return response()->json($comprobante);
         }
-        return view('comprobante', compact('comprobante','user'))
+        return view('comprobante', compact('comprobante','user'));
         //return view('comprobante', compact('user', 'rol', 'transaccion'));
     }
 

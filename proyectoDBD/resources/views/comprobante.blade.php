@@ -30,7 +30,7 @@
                   <li class="list-group-item">Dirección de Despacho: {{$comprobante->direccionDespacho}}</li>
                   <li class="list-group-item">Método de despacho: {{$comprobante->metodoPago}}</li>
                   <li class="list-group-item">Tipo de despacho: {{$comprobante->tipoDespacho}}</li>
-                  <li class="list-group-item">Total Pagado: {{$comprobante->monto}}</li>
+                  <li class="list-group-item">Total Pagado: {{$comprobante->total}}</li>
               </ul>
           </div>
 

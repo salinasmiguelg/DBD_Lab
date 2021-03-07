@@ -35,7 +35,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="ejemploNombre" class="form-label"></label>
-                            <input name="apellido" type="hidden" class="form-control" id="ejemploNombre" placeholder="Apellidos" value="{{$user->apellido}}>
+                            <input name="apellido" type="hidden" class="form-control" id="ejemploNombre" placeholder="Apellidos" value="{{$user->apellido}}" >
                         </div>
                         <div class="mb-3">
                             <label for="ejemploCorreo" class="form-label"></label>
@@ -47,7 +47,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="id_user" class="form-label"></label>
-                            <input name="id_users" type="hidden" class="form-control" id="ejemploNombre" placeholder="" value = {{$user->id}}>
+                            <input name="id_users" type="hidden" class="form-control" id="ejemploNombre" placeholder="" value = "{{$user->id}}" >
                         </div>
 
                 </div>
