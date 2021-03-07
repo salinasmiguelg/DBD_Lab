@@ -77,6 +77,22 @@
                       <div class="mb-3"><!-- ocultar esto -->
                         <input class="hidden" type="hidden" name="id_cantidads" value = {{$user->id}}>
                       </div>
+                      <div class="mb-3">
+                        <label for="formGroupExampleInput">Region del puesto</label>
+                        <input class="form-control" type="text" name="nombreRegion">
+                      </div>
+                      <div class="mb-3">
+                        <label for="formGroupExampleInput">Comuna del puesto</label>
+                        <input class="form-control" type="text" name="nombreComuna">
+                      </div>
+                      <div class="mb-3">
+                        <label for="formGroupExampleInput">Nombre de Feria</label>
+                        <input class="form-control" type="text" name="nombreFeria">
+                      </div>
+                      <div class="mb-3">
+                        <label for="formGroupExampleInput">Nombre de Puesto</label>
+                        <input class="form-control" type="text" name="nombrePuesto">
+                      </div>
                         <button type="submit" class="btn btn-primary px-4 " >Agregar Producto</button>
                       </form>
                       </div>

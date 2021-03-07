@@ -11,6 +11,11 @@ use App\Models\Transaccion_user;
 use App\Models\Transaccion_producto;
 use App\Models\User;
 use App\Models\Rol;
+use App\Models\Puesto;
+use App\Models\Comuna;
+use App\Models\Region;
+use App\Models\Puesto_producto;
+use App\Models\Feria;
 use Illuminate\Support\Facades\DB;
 class ProductoController extends Controller
 {
@@ -125,11 +130,53 @@ class ProductoController extends Controller
         $producto->stock = $request->stock;
         $producto->categoria = $request->categoria;
         $producto->id_cantidads = 1;//(int)$request->id_cantidads;
-        $producto->id_proceso_compras =1; //(int)$request->id_proceso_compras;
+        $producto->id_proceso_compras = 1; //(int)$request->id_proceso_compras;
         $producto->delete = false;
         $producto->save();
+
         $id = (int)$request->id_cantidads;
         $user = User::find($id);
+        $rol = Rol::all()->where('nombre','Vendedor')->where('id_users',$id);
+        if($rol == NULL){
+            return view('principal');
+        }
+        $idRol = 0;
+        foreach($rol as $rol){
+            $idRol = $rol->id;
+        }
+        $region = new Region();
+        $region->nombre = $request->nombreRegion;
+        $region->id_users = $id;
+        $region->delete = false;
+        $region->save();
+
+        $comuna = new Comuna();
+        $comuna->nombre = $request->nombreComuna;
+        $comuna->id_regions = $region->id;
+        $comuna->delete = false;
+        $comuna->save();
+
+        $feria = new Feria();
+        $feria->descripcion = $request->nombreFeria;
+        $feria->id_comunas = $comuna->id;
+        $feria->delete = false;
+        $feria->save();
+
+        $puesto = new Puesto();
+        $puesto->categoria = $request->categoria;
+        $puesto->descripcion = $request->nombrePuesto;
+        $puesto->id_ferias = $feria->id;
+        $puesto->id_users = $id;
+        $puesto->id_rols = $idRol;
+        $puesto->delete = false;
+        $puesto->save();
+
+        $puesto_producto = new Puesto_Producto();
+        $puesto_producto->id_productos = $producto->id;
+        $puesto_producto->id_puestos = $puesto->id;
+        $puesto_producto->delete = false;
+        $puesto_producto->save();
+
         echo '<div class="alert alert-danger">Se a creado el producto.</div>';
         return redirect()->action([UserController::class, 'continueSession'], ['id' => $user->id]);
         //return view('createProducto', compact('user','producto'));
