@@ -26,8 +26,8 @@ class ProductoFactory extends Factory
         return [
             //
             'nombreProducto'=>$this->faker->randomElement($array = array ('Papa' , 'Acelga' , 'Lechuga','Tomate','Pala','Escoba')),
-            'precioUnitario'=>$this->faker->randomNumber,
-            'stock'=>$this->faker->randomNumber,
+            'precioUnitario'=>$this->faker->unique()->numberBetween(1, 10000),
+            'stock'=>$this->faker->unique()->numberBetween(1, 100),
             'categoria'=>$this->faker->word,
             'delete' => $this->faker->randomElement($array = array (false)),
             'id_proceso_compras' => Proceso_compra::all()->random()->id,
