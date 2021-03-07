@@ -304,11 +304,12 @@ class UserController extends Controller
 
     public function showFeriante($nombre,$idU)
     {
-        $producto = Producto::all()->where('nombreProducto',$nombre)->where('delete',false);
+        $producto = Producto::all()->where('nombreProducto',$nombre)->where('delete',false)->where('productos.stock','>',0);
         $puestoProducto_user = DB::table('puesto_productos')
             ->join('productos','productos.id','=','puesto_productos.id_productos')
             ->where('productos.nombreProducto',$nombre)
             ->where('productos.delete',false)
+            ->where('productos.stock','>',0)
             ->join('puestos','puestos.id','=','puesto_productos.id_puestos')
             ->where('puestos.delete',false)
             ->join('rols','rols.id','=','puestos.id_rols')
