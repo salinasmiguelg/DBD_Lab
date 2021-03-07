@@ -43,7 +43,7 @@ Route::get('/crearUsuario',function(){
 });*/
 
 
-Route::get('/feriantes/{id}/{idU}','UserController@showFeriante');
+Route::get('/feriantes/{nombre}/{idU}','UserController@showFeriante');
 
 
 Route::get('/puestos/{id}/{idU}','PuestoController@showPuestos');

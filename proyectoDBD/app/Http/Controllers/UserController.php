@@ -302,13 +302,14 @@ class UserController extends Controller
         return view('perfil',compact('user','region','direccion','rol','comuna_user','rol1'));
     }//acordarse que es en perfil rol1
 
-    public function showFeriante($id,$idU)
+    public function showFeriante($nombre,$idU)
     {
-        $producto = Producto::find($id);
-        $puesto_producto = Puesto_producto::all()->where('id_productos',$id)->where('delete',false);
+        $producto = Producto::all()->where('nombreProducto',$nombre)->where('delete',false);
         $puestoProducto_user = DB::table('puesto_productos')
+            ->join('productos','productos.id','=','puesto_productos.id_productos')
+            ->where('productos.nombreProducto',$nombre)
+            ->where('productos.delete',false)
             ->join('puestos','puestos.id','=','puesto_productos.id_puestos')
-            ->where('puesto_productos.id_productos',$id)
             ->where('puestos.delete',false)
             ->join('rols','rols.id','=','puestos.id_rols')
             ->where('rols.delete',false)
@@ -317,6 +318,7 @@ class UserController extends Controller
             ->where('users.delete',false)
             ->get();
         $user = User::find($idU);
+        $nombreProducto = $nombre;
 
         $rol_user = Rol::all()->where('id_users',$idU)->where('delete',false);
         $idR = 0;
@@ -326,11 +328,7 @@ class UserController extends Controller
             }
         }
         $rol = Rol::find($idR);
-        if($producto == NULL or $producto->delete == true){
-            return response()->json([
-                'message' => 'No se encontro Producto']);
-        }
-        return view('feriantes',compact('user','producto','puesto_producto','puestoProducto_user','rol'));
+        return view('feriantes',compact('user','producto','puestoProducto_user','rol','nombreProducto'));
     }
 
 

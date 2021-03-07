@@ -55,7 +55,7 @@
                 <div class = "col">
                     <div class = "container fluid">
 
-                      <h1 class = "first-title">Feriantes que venden: {{$producto->nombreProducto}}</h1>
+                      <<h1 class = "first-title">Feriantes que venden: {{$nombreProducto}}</h1>
                       @forelse($puestoProducto_user as $puestoProducto_user)
                       <div class = "card-columns">
                         <div class="card" style="width: 18rem;">
