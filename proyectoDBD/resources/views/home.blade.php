@@ -132,7 +132,7 @@
                                     <input type="hidden" name="id_productos" value= "{{$producto1->id}}">
                                     <input type="hidden" name="id_transaccions" value= "{{$user->id}}">
                                     <h4 class="card-title">{{$producto1->nombreProducto}}</h4>
-                                    <p class="card-text">El precio del producto1 es: {{$producto1->precioUnitario}} CLP</p>
+                                    <p class="card-text">El precio del producto es: {{$producto1->precioUnitario}} CLP</p>
                                     <p class="card-text">Stock: {{$producto1->stock}}</p>
                                     <input class="numeraco container-fluid"type="number" name="cantidad" value= "1">
                                     <button type="submit" class="btn color1 px-4 container-fluid">Agregar al Carrito</button>
