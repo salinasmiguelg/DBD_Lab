@@ -72,7 +72,7 @@
                     <a class="nav-link dropdown-toggle color7" href="http://example.com/" id="dropdown01" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Productos</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown01">
                     @forelse($producto as $producto)
-                    <a class="dropdown-item" href="/feriantes/{{$producto->id}}/{{$user->id}}">{{$producto->nombreProducto}}</a>
+                    <a class="dropdown-item" href="/feriantes/{{$producto->nombreProducto}}/{{$user->id}}">{{$producto->nombreProducto}}</a>
                     @empty
                     <p>No Funciona</p>
                     @endforelse
@@ -87,7 +87,7 @@
         <div class = "alert alert-success">
             Se ha añadido correctamente el producto al carro
             <a href="/carro/{{$user->id}}">Ver carro</a>
-        </div> 
+        </div>
     </div>
 -->
 
@@ -99,12 +99,20 @@
         </div>
     </section>
     <div class = "container-fluid text-center">
+
         <div class ="row center imagen">
+            <!--
         <img src="https://i.ibb.co/L5mx9H3/HKMFWLPZ2-FDXPETCBS4-EG5-GE6-I.jpg" alt="HKMFWLPZ2-FDXPETCBS4-EG5-GE6-I" border="0">
         </div>
+        -->
         <!--hola-->
         <div class="container">
+            <div class="bg-image d-flex justify-content-center align-items-center"style="background-image: url('https://mdbootstrap.com/img/new/fluid/nature/015.jpg');height: 100vh;">
+                <h1 class="text-white">Page title</h1>
+
+
             <div class="row row-cols-1 row-cols-md-4 g-4 px-4 py-4">
+
                 @forelse($producto1 as $producto1)
                 <form action="{{route('agregarProducto')}}" method="POST">
                     <div class="col">
@@ -116,7 +124,7 @@
                                 <p class="card-text">El precio del producto1 es: {{$producto1->precioUnitario}} CLP</p>
                                 <p class="card-text">Stock: {{$producto1->stock}}</p>
                                 <input class="numeraco container-fluid"type="number" name="cantidad" value= "1">
-                                <button type="submit" class="btn btn-primary px-4">Agregar al Carrito</button>
+                                <button type="submit" class="btn btn-primary px-4 container-fluid">Agregar al Carrito</button>
                             </div>
                         </div>
                     </div>
@@ -126,6 +134,7 @@
                     No hay productos
                 </div>
                 @endforelse
+            </div>
             </div>
         </div>
     <div class = "end-50 bottom text-center">
@@ -190,8 +199,9 @@ body{
 
 
 
-        font-size: 20px;
+
     }
+
     .color1{
         background-color:#3a7658;
         color: #ffffff;

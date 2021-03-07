@@ -71,7 +71,7 @@
                                     <input name = "nombreRegion"  class = "form-control rounded-pill" placeholder="Region" required minlength="2" maxlength="40"  type =  "text" autofocus="">
                                     <input name = "nombreComuna"  class = "form-control rounded-pill" placeholder="Comuna" required minlength="2" maxlength="40"  type =  "text" autofocus="">
                                     <input name = "nombreCalle"  class = "form-control rounded-pill" placeholder="Calle" required minlength="2" maxlength="40"  type =  "text" autofocus="">
-                                    <input name = "nombreNumero"  class = "form-control rounded-pill" placeholder="Numero de la casa" required minlength="1" maxlength="40"  type =  "text" autofocus="">
+                                    <input name = "nombreNumero"  class = "form-control rounded-pill" placeholder="Numero de la casa" required minlength="1" maxlength="40"  type =  "number" autofocus="">
                                     <!--
                                     <div class="form-check-inline">
 
@@ -104,7 +104,7 @@
                                         </div>
                                         <div class = "form-check-inline">
                                             <div class="form-check-inline">
-                                                <input name = "esDepartamento" class="form-check-input" type="radio" id="gridRadios2" value="true">
+                                                <input name = "esDepartamento" class="form-check-input" type="radio" id="gridRadios2" value="true" checked>
                                                 <label class="form-check-label">
                                                 Es Departamento
                                                 </label>
