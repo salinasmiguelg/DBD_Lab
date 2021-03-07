@@ -77,24 +77,30 @@ use App\Models\Producto;
 
             <div class="container-fluid">
                 <!-- Selector 1 -->
-                <select name="metodoPago" class="form-select" id="validationCustom04" required="">
-                    <option selected="" disabled="" value="">Método Pago </option>
-                    <option>Efectivo</option>
-                    <option>Debito/Crédito</option>
-                    <option>Déposito</option>
-                </select>
+                <div class = 'row'>
+                    <select name="metodoPago" class="form-select" id="validationCustom04" required="">
+                        <option selected="" disabled="" value="">Método Pago </option>
+                        <option>Efectivo</option>
+                        <option>Debito/Crédito</option>
+                        <option>Déposito</option>
+                    </select>
+                </div>
                 <!-- Selector 2 -->
-                <select name="tipoDespacho" class="form-select" id="validationCustom04" required="">
-                    <option selected="" disabled="" value="">Método Despacho </option>
-                    <option>Retiro Personal</option>
-                    <option>Despacho a Domicilio</option>
-                </select>
+                <div class = 'row'>
+                    <select name="tipoDespacho" class="form-select" id="validationCustom04" required="">
+                        <option selected="" disabled="" value="">Método Despacho </option>
+                        <option>Retiro Personal</option>
+                        <option>Despacho a Domicilio</option>
+                    </select>
+                </div>
                 <!-- Selector 2 -->
+                <div class = 'row'>
                 <select name="tipo" class="form-select" id="validationCustom04" required="">
                     <option selected="" disabled="" value="">Boleta o Factura </option>
                     <option>Boleta</option>
                     <option>Factura</option>
                 </select>
+                </div>
             </div>
                 <!--Boton de formulario para finalizar la compra. Deben servira si se han seleccionado opciones en anteriores selectores-->
                 <div class="row">

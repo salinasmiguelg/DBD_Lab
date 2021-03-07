@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel= "canonical" href = "https://getbootstrap.com/docs/4.0/examples/sig-in/">
 
-    <title>Feriinf</title>
+    <title>Feriantes</title>
   </head>
   <body>
   <div class = "container-fluid ">
@@ -52,16 +52,25 @@
 
                 </div>
 
+                <!-- titulo Pagina Pago -->
+                <div class="jumbotron">
+                  <h1 class="text-center">Feriantes</h1>
+                </div>
+
                 <div class = "col">
                     <div class = "container fluid">
-
-                      <<h1 class = "first-title">Feriantes que venden: {{$nombreProducto}}</h1>
+                      <div class='container-title'>
+                        <h1 class = "first-title">Feriantes que venden: {{$nombreProducto}}</h1>
+                      </div>
                       @forelse($puestoProducto_user as $puestoProducto_user)
                       <div class = "card-columns">
                         <div class="card" style="width: 18rem;">
+                          <div class="card-header">
+                              Nombre: {{$puestoProducto_user->nombre}} {{$puestoProducto_user->apellido}}
+                            </div>
                           <div class="card-body">
-                            <h5 class="card-title">Nombre: {{$puestoProducto_user->nombre}} {{$puestoProducto_user->apellido}}</h5>
-                            <h5 class="card-title">Contacto: </h5>
+                      
+                            <p class="card-title">Contacto: </p>
                             <p class="card-text">Telefono: {{$puestoProducto_user->numeroTelefono}}</p>
                             <p class="card-text">Email: {{$puestoProducto_user->email}}</p>
                             <!--
@@ -88,10 +97,9 @@
                         </div>
                         -->
 
-                        <div class = "end-50 bottom text-center">
-                            <p class = "text-muted padding_up">
+                        <!-- Footer de la pagina-->
+                        <div class="footer">
                                 FERIINF - Online Market - 2021
-                            </p>
                         </div>
 
                     </div>
@@ -132,11 +140,32 @@
         background-color: #81be4d;
     }
     .card {
-      background-color: #a7dcb2;
+      background-color: #3a7658;
       margin: 1%;
+      color: white;
     }
     .first-title{
       text-align: center;
       font-size: 30px;
+      color: white;
+    }
+    .jumbotron{
+        background-image: url("https://foodandtravel.mx/wp-content/uploads/2020/05/Frutas-y-verduras-de-temporada-Por.jpg");
+        background-size: cover;
+        color: white;
+    }
+    .container-title{
+      background-color: #3a7658;
+      border-radius: 5px;
+      padding: 1%;
+    }
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #032107;
+        color: white;
+        text-align: center;
     }
 </style>
