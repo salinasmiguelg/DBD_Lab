@@ -74,14 +74,6 @@ class Transaccion_productoController extends Controller
         $producto = Producto::all()->where('delete',false)->where('stock','>',0);
         $producto1 = Producto::all()->where('delete',false)->where('stock','>',0);
         $comuna = Comuna::all()->where('delete',false);
-        $transaccion_user = Transaccion_user::all()->where('id_users',$id)->where('delete',false);
-        foreach($transaccion_user as $transaccion_user){
-            $transaccion_producto->id_transaccions = $transaccion_user->id_transaccions;
-        }
-        $transaccion_producto->cantidad = (int)$request->cantidad;
-        $transaccion_producto->delete = false;
-        $transaccion_producto->save();
-
         $rol_user = Rol::all()->where('id_users',$id)->where('delete',false);
         $idR = 0;
         foreach($rol_user as $rol_user){
@@ -90,6 +82,22 @@ class Transaccion_productoController extends Controller
             }
         }
         $rol = Rol::find($idR);
+        if($request->max < $request->cantidad){
+            echo '<div class="alert alert-danger">Coloque un stock que no pase el maximo disponible</div>';
+            return view('home',compact('user','producto','comuna','producto1','rol'));
+        }
+        if(0 >= $request->cantidad){
+            echo '<div class="alert alert-danger">no puede agregar cantidad negativa ni 0 de algún producto</div>';
+            return view('home',compact('user','producto','comuna','producto1','rol'));
+        }
+        $transaccion_user = Transaccion_user::all()->where('id_users',$id)->where('delete',false);
+        foreach($transaccion_user as $transaccion_user){
+            $transaccion_producto->id_transaccions = $transaccion_user->id_transaccions;
+        }
+        $transaccion_producto->cantidad = (int)$request->cantidad;
+        $transaccion_producto->delete = false;
+        $transaccion_producto->save();
+
         return view('home',compact('user','producto','comuna','producto1','rol'));
     }
 
