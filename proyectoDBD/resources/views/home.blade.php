@@ -67,14 +67,29 @@
                     </div>
                 </div>
             </div>
+            
             <div class="col-sm border border-dark">
                 <div class="dropdown">
                     <a class="nav-link dropdown-toggle color7" href="http://example.com/" id="dropdown01" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Productos</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown01">
                     @forelse($producto as $producto)
+                    <?php
+                        $k = 1;
+                        $array[] = "oo"; 
+                        for($i = 0; $i < count($array); $i++){
+                            if("{$producto->nombreProducto}" == $array[$i]){
+                                $k = 0;
+                            }
+                        }
+                        if($k == 1){
+                            $array[] = "{$producto->nombreProducto}";
+                        }
+                    ?>
+                    @if($k == 1)
                     <a class="dropdown-item" href="/feriantes/{{$producto->nombreProducto}}/{{$user->id}}">{{$producto->nombreProducto}}</a>
+                    @endif
                     @empty
-                    <p>No Funciona</p>
+                    <a class="dropdown-item">No hay Productos</a>
                     @endforelse
                     </div>
                 </div>
