@@ -31,11 +31,11 @@
                 <div class="mb-3">
                         <div>
                             <label for="ejemploNombre" class="form-label"></label>
-                            <input name="nombre" type="nombre" class="form-control" id="ejemploNombre" placeholder="Nombre">
+                            <input name="nombre" type="hidden" class="form-control" id="ejemploNombre" placeholder="Nombre" value="{{$user->nombre}}">
                         </div>
                         <div class="mb-3">
                             <label for="ejemploNombre" class="form-label"></label>
-                            <input name="apellido" type="nombre" class="form-control" id="ejemploNombre" placeholder="Apellidos">
+                            <input name="apellido" type="hidden" class="form-control" id="ejemploNombre" placeholder="Apellidos" value="{{$user->apellido}}>
                         </div>
                         <div class="mb-3">
                             <label for="ejemploCorreo" class="form-label"></label>
@@ -43,25 +43,12 @@
                         </div>
                         <div class="mb-3">
                             <label for="ejemploCorreo" class="form-label"></label>
-                            <input name="total" type="nombre" class="form-control" id="ejemploNombre" placeholder="Confirme Total">
+                            <input name="total" type="hidden" class="form-control" id="ejemploNombre" placeholder="Total" value= 400 >
                         </div>
                         <div class="mb-3">
                             <label for="id_user" class="form-label"></label>
-                            <input name="id_users" type="numberdisabled" class="form-control" id="ejemploNombre" placeholder="" value = {{$user->id}}>
+                            <input name="id_users" type="hidden" class="form-control" id="ejemploNombre" placeholder="" value = {{$user->id}}>
                         </div>
-
-
-                    <div class="form-check">
-                        <div class="mb-3">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                        </div>
-                        
-                        <label class="form-check-label" for="invalidCheck">
-                            Todo en orden!
-                        </label>
-
-                    </div>
-
 
                 </div>
 

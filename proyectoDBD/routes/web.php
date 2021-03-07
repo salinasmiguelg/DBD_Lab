@@ -65,17 +65,13 @@ Route::get('/feriantes/{id}/{idU}','UserController@showFeriante');
 Route::get('/puestos/{id}/{idU}','PuestoController@showPuestos');
 
 //Vista de pago
-
 Route::get('/pago/{id}',function($id){
     $user = User::find($id);
+    //$transaccion_user = Transaccion_user::find($id);
     return view('pago',compact('user'));
 });
 
-
-//Vista comprobante de pago
-Route::get('/pago/comprobante', function () {
-    return view('comprobante');
-});
+Route::get('/pago/comprobante/{id}','ComprobanteController@show');
 
 //Vista a Home
 /*

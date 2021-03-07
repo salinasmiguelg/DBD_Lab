@@ -57,6 +57,32 @@ class UserController extends Controller
         return view('home',compact('user','producto','comuna','producto1','rol'));
     }
 
+    /*
+    public function continuetoPago($id)
+    {
+        $user = User::find($id);
+        $comprobante = Comprobante::find($id)->where('id','id_users');
+        
+        $producto = Producto::all()->where('delete',false)->where('stock','>',0);
+        $comuna = Comuna::all()->where('delete',false);
+        $producto1 = Producto::all()->where('delete',false)->where('stock','>',0);
+        $rol_user = Rol::all()->where('id_users',$id)->where('delete',false);
+        $idR = 0;
+        foreach($rol_user as $rol_user){
+            if($rol_user->nombre == "Vendedor"){
+                $idR = $rol_user->id;
+            }
+        }
+        $rol = Rol::find($idR);
+        if($user == NULL){
+            view('principal', compact('producto'));
+        }
+        return view('comprobante',compact('user','producto','comuna','producto1','rol','comprobante'));
+    }
+
+    */
+    
+
     /**
      * Store a newly created resource in storage.
      *

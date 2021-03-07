@@ -71,6 +71,7 @@ class ComprobanteController extends Controller
         $comprobante->save();
         $id = (int)$request->id_users;
         $user = User::find($id);
+        print_r($user->id);
         echo '<div class="alert alert-danger">Se a creado el comprobante</div>';
         return redirect()->action([UserController::class, 'continueSession'], ['id' => $user->id]);
         //return view('pago', compact('user','comprobante'));
@@ -91,6 +92,7 @@ class ComprobanteController extends Controller
         return response()->json([
             "message"=>"No se encontró comprobante"
         ],404);
+        //return view('comprobante', compact('user', 'rol', 'transaccion'));
     }
 
 
