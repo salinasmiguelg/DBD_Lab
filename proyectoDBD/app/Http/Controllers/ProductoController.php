@@ -41,10 +41,10 @@ class ProductoController extends Controller
         $producto = Producto::all()->where('stock','>',0)->where('delete',false);
         $user = User::find($id);
         if($producto == NULL){
-            return view('carro',compact('user','producto'));
+            return view('principal');
         }
         if($user == NULL){
-            return view('principal',compact('producto'));
+            return view('principal');
         }
         $transaccion_user = DB::table('transaccion_users')
             ->join('users','users.id','=','transaccion_users.id_users')
