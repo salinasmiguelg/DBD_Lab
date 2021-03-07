@@ -79,7 +79,7 @@
         -->
     </div>
 
-
+    <div class="bg-image border-0 container-fluid" >
 
     <section id="showcase" >
         <div class = "container text-xl-center">
@@ -87,17 +87,19 @@
             <p> Nos aseguramos de que nuestros productos sean frescos y seguros</p>
         </div>
     </section>
-    <div class = "container-fluid text-center">
-        <div class ="row center imagen padding_up">
-        <img src="https://i.ibb.co/L5mx9H3/HKMFWLPZ2-FDXPETCBS4-EG5-GE6-I.jpg" alt="HKMFWLPZ2-FDXPETCBS4-EG5-GE6-I" border="0">
-        </div>
+    <footer class= "bg-light text-center text-lg-start">
+
+    </footer>
 
     </div>
-    <div class = "end-50 bottom text-center">
+    <div class = "end-100 text-white text-center ">
         <p class = "text-muted padding_up">
             FERIINF - Online Market - 2021
         </p>
     </div>
+
+
+
 
 
 
@@ -121,20 +123,28 @@
 body{
         background-color:#a7dcb2;
     }
-    .imagen{
-
-
-
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 70%;
-        /*font-size: 20px;
+    .bg-image{
+    background-image: url('https://static.vecteezy.com/system/resources/previews/000/812/118/non_2x/grocery-shopping-cart-with-vegetables-and-fruits-photo.jpg');
+    background-size: cover;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    border: none;
+        /*
+        border-radius: 5px;
+        height: 70%;
+        width: 1000px;
+        text-align: center;
+        font-size: 20px;
         position: relative;
-        /*margin: 150px;*/
-       /* margin-top: center;
+        margin-top: center;
         margin-bottom: center;
-        margin-left: center;
+        margin-left: 425px;
         margin-right: center;*/
 
 
@@ -167,9 +177,6 @@ body{
     }
     .color7{
         color: #ffffff;
-    }
-    body {
-        padding-bottom: 20px;
     }
 
     .navbar {

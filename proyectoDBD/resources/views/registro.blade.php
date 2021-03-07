@@ -54,6 +54,7 @@
                       </nav>
 
                 </div>
+                <div class="bg-image border-0 container-fluid" >
 
                 <div class = "col ">
                     <div class = "container fluid">
@@ -161,13 +162,14 @@
 
                         </div>
                         -->
-
-                        <div class = "end-50 bottom text-center">
-                            <p class = "text-muted padding_up">
-                                FERIINF - Online Market - 2021
-                            </p>
                         </div>
 
+
+                    </div>
+                    <div class = " bottom text-center">
+                        <p class = "text-muted padding_up">
+                            FERIINF - Online Market - 2021
+                        </p>
                     </div>
                 </div>
             </div>
@@ -177,6 +179,33 @@
 </html>
 
 <style>
+
+.bg-image{
+    background-image: url('https://static.vecteezy.com/system/resources/previews/000/812/118/non_2x/grocery-shopping-cart-with-vegetables-and-fruits-photo.jpg');
+    background-size: cover;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    border: none;
+        /*
+        border-radius: 5px;
+        height: 70%;
+        width: 1000px;
+        text-align: center;
+        font-size: 20px;
+        position: relative;
+        margin-top: center;
+        margin-bottom: center;
+        margin-left: 425px;
+        margin-right: center;*/
+
+
+    }
     /*
     .form-sigin{
         -webkit-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.1);
@@ -224,7 +253,7 @@
     } */
     @media (min-width: 500px) {
         .form-sigin{
-            margin-top: 300px;
+            margin-top: 400px;
 
             padding: 80px;
             position: absolute;
@@ -232,7 +261,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 500px;
-            height: 105%;
+            height: 60%;
             background-color: #81be4d;
             border-radius: 20px;
             text-align: center;

@@ -54,6 +54,8 @@
 
                 </div>
 
+                <div class="bg-image border-0 container-fluid" >
+
                 <div class = "col">
                     <div class = "container fluid">
 
@@ -91,14 +93,15 @@
 
                         </div>
                         -->
+                    </div>
 
-                        <div class = "end-50 bottom text-center">
-                            <p class = "text-muted padding_up">
-                                FERIINF - Online Market - 2021
-                            </p>
-                        </div>
 
                     </div>
+                </div>
+                <div class = "end-50 bottom text-center">
+                    <p class = "text-muted padding_up">
+                        FERIINF - Online Market - 2021
+                    </p>
                 </div>
             </div>
         </div>
@@ -108,6 +111,32 @@
 
 <style>
 
+.bg-image{
+    background-image: url('https://static.vecteezy.com/system/resources/previews/000/812/118/non_2x/grocery-shopping-cart-with-vegetables-and-fruits-photo.jpg');
+    background-size: cover;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    border: none;
+        /*
+        border-radius: 5px;
+        height: 70%;
+        width: 1000px;
+        text-align: center;
+        font-size: 20px;
+        position: relative;
+        margin-top: center;
+        margin-bottom: center;
+        margin-left: 425px;
+        margin-right: center;*/
+
+
+    }
 
 
     @media (min-width: 500px) {

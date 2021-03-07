@@ -189,14 +189,11 @@ body{
     }
 
     .bg-image{
-        background-image: url('https://static.vecteezy.com/system/resources/previews/000/812/118/non_2x/grocery-shopping-cart-with-vegetables-and-fruits-photo.jpg');
-
-        background-size: cover;
+    background-image: url('https://static.vecteezy.com/system/resources/previews/000/812/118/non_2x/grocery-shopping-cart-with-vegetables-and-fruits-photo.jpg');
+    background-size: cover;
     height: 100vh;
     padding: 0;
-
-margin: 0;
-
+    margin: 0;
     background-repeat: no-repeat;
     background-position: center center;
     -webkit-background-size: cover;
