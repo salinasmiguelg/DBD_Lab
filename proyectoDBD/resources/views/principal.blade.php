@@ -16,7 +16,11 @@
     <div class = "container-fluid ">
         <div class="row color1">
             <nav class="navbar navbar-dark ">
-                <a class="navbar-brand" href="/">Feriinf</a>
+
+                <a class="navbar-brand" href="/">
+                    <img alt="Logo" src="https://i.ibb.co/txhWnGx/logotipo-feria-de-osorno-1.png"
+                    width=200" height="50">
+                </a>
                 <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
@@ -32,22 +36,9 @@
                     <li class="nav-item">
                       <a class="nav-link disabled" href="/">Página principal <span class="sr-only">(current)</span></a>
                     </li>
-                    <!--
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="http://example.com/" id="dropdown01" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                      <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Action</a>
-                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Another action</a>
-                        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/examples/navbars/#">Something else here</a>
-                      </div>
-                    </li>
-                    -->
+
                   </ul>
-                    <!--
-                  <form class="form-inline my-2 my-md-0">
-                    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-                  </form>
-                  -->
+
                 </div>
               </nav>
 
@@ -87,16 +78,12 @@
             <p> Nos aseguramos de que nuestros productos sean frescos y seguros</p>
         </div>
     </section>
-    <footer class= "bg-light text-center text-lg-start">
-
-    </footer>
+    <div class="footer">
+        FERIINF - Online Market - 2021
+    </div>
 
     </div>
-    <div class = "end-100 text-white text-center ">
-        <p class = "text-muted padding_up">
-            FERIINF - Online Market - 2021
-        </p>
-    </div>
+
 
 
 
@@ -124,7 +111,7 @@ body{
         background-color:#a7dcb2;
     }
     .bg-image{
-    background-image: url('https://static.vecteezy.com/system/resources/previews/000/812/118/non_2x/grocery-shopping-cart-with-vegetables-and-fruits-photo.jpg');
+    background-image: url('https://i.ibb.co/P9MvwF6/grocery-shopping-cart-with-vegetables-and-fruits-photo.png');
     background-size: cover;
     height: 100vh;
     padding: 0;
@@ -148,6 +135,15 @@ body{
         margin-right: center;*/
 
 
+    }
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #032107;
+        color: white;
+        text-align: center;
     }
     .color1{
         background-color:#3a7658;

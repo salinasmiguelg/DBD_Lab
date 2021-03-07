@@ -21,7 +21,10 @@ use App\Models\Producto;
             <div class = "row">
                 <div class="color1">
                     <nav class="navbar navbar-dark ">
-                        <a class="navbar-brand" href="/home/{{$user->id}}">Feriinf</a>
+                    <a class="navbar-brand" href="/home/{{$user->id}}">
+                    <img alt="Logo" src="https://i.ibb.co/txhWnGx/logotipo-feria-de-osorno-1.png"
+                    width=200" height="50">
+                </a>
                         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
                           <span class="navbar-toggler-icon"></span>
                         </button>
@@ -58,6 +61,7 @@ use App\Models\Producto;
                     </nav>
 
                 </div>
+                <div class="bg-image border-0 container-fluid" >
 
                 <div class = "col ">
                     <div class = "container fluid">
@@ -98,17 +102,15 @@ use App\Models\Producto;
                             <a class="btn btn-primary btn-lg active" href = "/pago/{{$user->id}}">Pasar por caja</a>
                         </div>
 
-                        <div class = "end-50 bottom text-center">
-                            <p class = "text-muted padding_up">
-                                FERIINF - Online Market - 2021
-                            </p>
+                        <div class="footer">
+                             FERIINF - Online Market - 2021
                         </div>
 
                     </div>
                 </div>
             </div>
         </div>
-
+    </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     </body>
 </html>
@@ -134,6 +136,41 @@ use App\Models\Producto;
             padding: 80px;
 
         }
+    }
+    .bg-image{
+    background-image: url('https://i.ibb.co/Ntqg238/Person-buying-food-products-in-the-supermarket-queue.jpg');
+    background-size: cover;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    border: none;
+        /*
+        border-radius: 5px;
+        height: 70%;
+        width: 1000px;
+        text-align: center;
+        font-size: 20px;
+        position: relative;
+        margin-top: center;
+        margin-bottom: center;
+        margin-left: 425px;
+        margin-right: center;*/
+
+
+    }
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #032107;
+        color: white;
+        text-align: center;
     }
     body{
         background-color:#a7dcb2;

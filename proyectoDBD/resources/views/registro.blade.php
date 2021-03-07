@@ -18,7 +18,10 @@
             <div class = "row">
                 <div class="color1">
                     <nav class="navbar navbar-dark ">
-                        <a class="navbar-brand" href="/">Feriinf</a>
+                        <a class="navbar-brand" href="/">
+                            <img alt="Logo" src="https://i.ibb.co/txhWnGx/logotipo-feria-de-osorno-1.png"
+                            width=200" height="50">
+                        </a>
                         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
                           <span class="navbar-toggler-icon"></span>
                         </button>
@@ -163,13 +166,10 @@
                         </div>
                         -->
                         </div>
-
-
-                    </div>
-                    <div class = " bottom text-center">
-                        <p class = "text-muted padding_up">
+                        <div class="footer">
                             FERIINF - Online Market - 2021
-                        </p>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -181,7 +181,7 @@
 <style>
 
 .bg-image{
-    background-image: url('https://static.vecteezy.com/system/resources/previews/000/812/118/non_2x/grocery-shopping-cart-with-vegetables-and-fruits-photo.jpg');
+    background-image: url('https://i.ibb.co/P9MvwF6/grocery-shopping-cart-with-vegetables-and-fruits-photo.png');
     background-size: cover;
     height: 100vh;
     padding: 0;
@@ -205,6 +205,15 @@
         margin-right: center;*/
 
 
+    }
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #032107;
+        color: white;
+        text-align: center;
     }
     /*
     .form-sigin{

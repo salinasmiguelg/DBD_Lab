@@ -14,7 +14,11 @@
             <div class = "row">
                 <div class="color1">
                     <nav class="navbar navbar-dark ">
-                        <a class="navbar-brand" href="/home/{{$user->id}}">Feriinf</a>
+
+                        <a class="navbar-brand" href="/home/{{$user->id}}">
+                    <img alt="Logo" src="https://i.ibb.co/txhWnGx/logotipo-feria-de-osorno-1.png"
+                    width=200" height="50">
+                </a>
                         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
                           <span class="navbar-toggler-icon"></span>
                         </button>
@@ -123,6 +127,41 @@
         border-radius: 20px;
         padding: 30px 25px;
         background-color: #ffffff;
+    }
+    .bg-image{
+    background-image: url('https://i.ibb.co/P9MvwF6/grocery-shopping-cart-with-vegetables-and-fruits-photo.png');
+    background-size: cover;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    border: none;
+        /*
+        border-radius: 5px;
+        height: 70%;
+        width: 1000px;
+        text-align: center;
+        font-size: 20px;
+        position: relative;
+        margin-top: center;
+        margin-bottom: center;
+        margin-left: 425px;
+        margin-right: center;*/
+
+
+    }
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #032107;
+        color: white;
+        text-align: center;
     }
     @media (min-width: 580px) {
         .form-sigin {
