@@ -133,7 +133,7 @@ class UserController extends Controller
         // hacer formula para calcular el monto
         $transaccion->monto = 50;
         // ver forma de colocar la fecha actual
-        $transaccion->fechaPago = "2021-03-06";
+        $transaccion->fechaPago = date('Y-m-d');
         $transaccion->delete = false;
         $transaccion->save();
 
@@ -191,9 +191,9 @@ class UserController extends Controller
             if($user->email == $request->email && $user->contraseña == $request->contraseña){
                 $transaccion = new Transaccion();
                 // hacer formula para calcular el monto
-                $transaccion->monto = 50;
+                $transaccion->monto = 0;
                 // ver forma de colocar la fecha actual
-                $transaccion->fechaPago = "2021-03-06";
+                $transaccion->fechaPago = date('Y-m-d');
                 $transaccion->delete = false;
                 $transaccion->save();
 
