@@ -92,56 +92,59 @@
 -->
 
 
-    <section id="showcase" >
-        <div class = "container text-xl-center">
-            <h1>No necesitas salir para obtener la mejor fruta</h1>
-            <p> Nos aseguramos de que nuestros productos sean frescos y seguros</p>
-        </div>
-    </section>
-    <div class = "container-fluid text-center">
 
-        <div class ="row center imagen">
+    <div class = "text-center">
+
             <!--
         <img src="https://i.ibb.co/L5mx9H3/HKMFWLPZ2-FDXPETCBS4-EG5-GE6-I.jpg" alt="HKMFWLPZ2-FDXPETCBS4-EG5-GE6-I" border="0">
         </div>
         -->
         <!--hola-->
-        <div class="container">
-            <div class="bg-image d-flex justify-content-center align-items-center"style="background-image: url('https://mdbootstrap.com/img/new/fluid/nature/015.jpg');height: 100vh;">
-                <h1 class="text-white">Page title</h1>
+        <div class="container-fluid">
 
+            <div class="bg-image border-0 container-fluid" >
 
-            <div class="row row-cols-1 row-cols-md-4 g-4 px-4 py-4">
+            <div class = "container-fluid   ">
+                <h1>No necesitas salir para obtener la mejor fruta</h1>
+                <p> Nos aseguramos de que nuestros productos sean frescos y seguros</p>
+                <div class="row  row-cols-md-3  card-deck container-fluid">
 
-                @forelse($producto1 as $producto1)
-                <form action="{{route('agregarProducto')}}" method="POST">
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <input type="hidden" name="id_productos" value= "{{$producto1->id}}">
-                                <input type="hidden" name="id_transaccions" value= "{{$user->id}}">
-                                <h4 class="card-title">{{$producto1->nombreProducto}}</h4>
-                                <p class="card-text">El precio del producto1 es: {{$producto1->precioUnitario}} CLP</p>
-                                <p class="card-text">Stock: {{$producto1->stock}}</p>
-                                <input class="numeraco container-fluid"type="number" name="cantidad" value= "1">
-                                <button type="submit" class="btn btn-primary px-4 container-fluid">Agregar al Carrito</button>
+                    @forelse($producto1 as $producto1)
+                    <form action="{{route('agregarProducto')}}" method="POST">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <input type="hidden" name="id_productos" value= "{{$producto1->id}}">
+                                    <input type="hidden" name="id_transaccions" value= "{{$user->id}}">
+                                    <h4 class="card-title">{{$producto1->nombreProducto}}</h4>
+                                    <p class="card-text">El precio del producto1 es: {{$producto1->precioUnitario}} CLP</p>
+                                    <p class="card-text">Stock: {{$producto1->stock}}</p>
+                                    <input class="numeraco container-fluid"type="number" name="cantidad" value= "1">
+                                    <button type="submit" class="btn color1 px-4 container-fluid">Agregar al Carrito</button>
+                                </div>
                             </div>
                         </div>
+                    </form>
+                    @empty
+                    <div class="alert alert-info px-4" role="alert">
+                        No hay productos
                     </div>
-                </form>
-                @empty
-                <div class="alert alert-info px-4" role="alert">
-                    No hay productos
+                    @endforelse
                 </div>
-                @endforelse
             </div>
-            </div>
+
+
+
+
         </div>
     <div class = "end-50 bottom text-center">
-        <p class = "text-muted padding_up">
+        <p class = "text-muted text-white padding_up">
             FERIINF - Online Market - 2021
         </p>
     </div>
+
+    </div>
+</div>
 
 
 
@@ -163,14 +166,28 @@
 
 
 body{
-        background-color:#a7dcb2;
-    }
-    .imagen{
 
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 70%;
+
+        background-color:#a7dcb2;
+
+
+    }
+
+    .bg-image{
+        background-image: url('https://static.vecteezy.com/system/resources/previews/000/812/118/non_2x/grocery-shopping-cart-with-vegetables-and-fruits-photo.jpg');
+
+        background-size: cover;
+    height: 100vh;
+    padding: 0;
+
+margin: 0;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    border: none;
         /*
         border-radius: 5px;
         height: 70%;
@@ -185,20 +202,19 @@ body{
 
 
     }
-
     .card{
+        min-width: 200px;
+        margin: 10px;
+    }
+    .card-body{
 
 
 
             text-align: center;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 20px;
 
+            min-width: 200px;
 
-
-
+            font-size: 15px;
 
     }
 
@@ -231,9 +247,7 @@ body{
     .color7{
         color: #ffffff;
     }
-    body {
-        padding-bottom: 20px;
-    }
+
 
     .navbar {
         margin-bottom: 20px;
