@@ -97,8 +97,10 @@ class Transaccion_productoController extends Controller
         $transaccion_producto->cantidad = (int)$request->cantidad;
         $transaccion_producto->delete = false;
         $transaccion_producto->save();
-
-        return view('home',compact('user','producto','comuna','producto1','rol'));
+        $actualizarProducto = Producto::find($request->id_productos);
+        $actualizarProducto->stock = $actualizarProducto->stock - (int)$request->cantidad;
+        $actualizarProducto->save();
+        return redirect()->action([UserController::class, 'continueSession'], ['id' => $user->id]);
     }
 
     /**
