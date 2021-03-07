@@ -51,8 +51,12 @@ class UserController extends Controller
             }
         }
         $rol = Rol::find($idR);
+        if($rol == NULL){
+            echo '<div class="alert alert-danger">Este usuario no tiene rol, no podra loguearse</div>';
+            return view('login');
+        }
         if($user == NULL){
-            view('principal', compact('producto'));
+            return view('principal', compact('producto'));
         }
         return view('home',compact('user','producto','comuna','producto1','rol'));
     }
