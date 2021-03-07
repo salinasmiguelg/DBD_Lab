@@ -51,7 +51,6 @@
                   -->
                 </div>
               </nav>
-
         </div>
         <!-- barras de navegacion-->
         <div class="row  text-center color1">
@@ -82,6 +81,12 @@
             </div>
 
         </div>
+    </div>
+    <div class = "container-fluid">
+        <div class = "alert alert-success">
+            Se ha añadido correctamente el producto al carro
+            <a href="/carro/{{$user->id}}">Ver carro</a>
+        </div> 
     </div>
 
 
