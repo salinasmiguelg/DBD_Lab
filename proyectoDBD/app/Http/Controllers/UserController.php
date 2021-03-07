@@ -226,9 +226,21 @@ class UserController extends Controller
             return response()->json([
                 'message' => 'No se encontro User']);
         }
-        return response()->json($user);
+        return view('edit')->with('user',$user);
     }
-
+    public function showCrearProducto($id)
+    {
+        $user = User::find($id);
+        $rol_user = Rol::all()->where('id_users',$id)->where('delete',false);
+            $idR = 0;
+            foreach($rol_user as $rol_user){
+                if($rol_user->nombre == "Vendedor"){
+                    $idR = $rol_user->id_users;
+                }
+            }
+            $rol = Rol::find($idR);
+        return view('createProducto',compact('user','rol'));
+    }
 
     public function showPerfil($id)
     {
@@ -295,25 +307,21 @@ class UserController extends Controller
     }
 
 
-    public function showPerfilPago($id)
+    public function showPago($id)
     {
         //
         $user = User::find($id);
-        $region = Region::all()->where('id_users',$id)->where('delete',false);
-        $direccion = Direccion::all()->where('id_users',$id)->where('delete',false);
-
-        $comuna_user = DB::table('comunas')
-            ->join('regions','regions.id','=','comunas.id_regions')
-            ->select('comunas.nombre')
-            ->where('comunas.delete',false)
-            ->where('regions.id_users',$id)
+        $transaccion_user = DB::table('transaccion_users')
+            ->join('users','users.id','=', 'transaccion_users.id_users')
+            ->select('transaccion_users.id_transaccions')
+            ->where('users.delete',false)
+            ->where('users.id', $id)
             ->get();
-
-
-        if($user == NULL or $user->delete == true){
-            return response()->json([
-                'message' => 'No se encontro User para proceso de pago']);
+        $idT = 0;
+        foreach($transaccion_user as $transaccion_user){
+            $idT = $transaccion_user->id_transaccions;
         }
+        $transaccion = Transaccion::find($idT);
         $rol_user = Rol::all()->where('id_users',$id)->where('delete',false);
         $idR = 0;
         foreach($rol_user as $rol_user){
@@ -322,8 +330,31 @@ class UserController extends Controller
             }
         }
         $rol = Rol::find($idR);
+        $transaccion_producto = DB::table('transaccion_users')
+            ->join('users','users.id','=','transaccion_users.id_users')
+            ->where('transaccion_users.delete',false)
+            ->where('transaccion_users.id_users',$id)
+            ->join('transaccions','transaccions.id','=','transaccion_users.id_transaccions')
+            ->where('transaccions.delete',false)
+            ->join('transaccion_productos','transaccion_productos.id_transaccions','=','transaccions.id')
+            ->select('transaccion_productos.*')
+            ->where('transaccion_productos.delete',false)
+            ->get();
 
-        return view('pago',compact('user','region','direccion','comuna_user','rol'));
+        
+        //guardar total en transaccion
+
+        $transaccion_producto1 = DB::table('transaccion_users')
+        ->join('users','users.id','=','transaccion_users.id_users')
+        ->where('transaccion_users.delete',false)
+        ->where('transaccion_users.id_users',$id)
+        ->join('transaccions','transaccions.id','=','transaccion_users.id_transaccions')
+        ->where('transaccions.delete',false)
+        ->join('transaccion_productos','transaccion_productos.id_transaccions','=','transaccions.id')
+        ->select('transaccion_productos.*')
+        ->where('transaccion_productos.delete',false)
+        ->get();
+        return view('pago',compact('user','transaccion','transaccion_producto','transaccion_producto1'));
     }
 
     /**

@@ -1,3 +1,6 @@
+<?php
+use App\Models\Producto;
+?>
 <!doctype html>
 <html lang="es">
   <head>
@@ -41,14 +44,34 @@
                             <label for="ejemploCorreo" class="form-label"></label>
                             <input name="direccionDespacho" type="correo" class="form-control" id="ejemploCorreo" placeholder="Direccion Despacho">
                         </div>
-                        <div class="mb-3">
-                            <label for="ejemploCorreo" class="form-label"></label>
-                            <input name="total" type="hidden" class="form-control" id="ejemploNombre" placeholder="Total" value= "{{$transaccion->monto}}" >
-                        </div>
+
                         <div class="mb-3">
                             <label for="id_user" class="form-label"></label>
                             <input name="id_users" type="hidden" class="form-control" id="ejemploNombre" placeholder="" value = "{{$user->id}}" >
                         </div>
+                    
+                        <?php
+                            $total1 = 0;
+                        ?>
+                        @forelse($transaccion_producto1 as $transaccion_producto1)
+                            <?php
+                                $idP = $transaccion_producto1->id_productos;
+                                $product1 = Producto::find($idP);
+                                $totalProducto1 = $product1->precioUnitario * $transaccion_producto1->cantidad;
+                                $total1 = $total1 + $totalProducto1;
+                            ?>
+                        @empty
+                            No hay productos en el carrito
+                        @endforelse
+                        <div class="mb-3">
+                            <label for="monto" class="form-label"></label>
+                            <input name="monto" type="hidden" class="form-control" id="ejemploNombre" placeholder="" value = "{{$total1}}" >
+                        </div>
+                        <div class="mb-3">
+                            <label for="idT" class="form-label"></label>
+                            <input name="idT" type="hidden" class="form-control" id="ejemploNombre" placeholder="" value = "{{$transaccion->id}}" >
+                        </div>
+                    
 
                 </div>
 
@@ -94,17 +117,32 @@
                         <th scope="col">Subtotal</th>
                         </tr>
                     </thead>
+                    <?php
+                        $total = 0;
+                    ?>
+                    @forelse($transaccion_producto as $transaccion_producto)
+                    <?php
+                        $idTr = $transaccion_producto->id_productos;
+                        $product = Producto::find($idTr);
+                    ?>
                     <tbody>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Zanahoria</td>
-                            <td>100</td>
-                            <td>1</td>
-                            <td>100</td>
+                            <th scope="row">-</th>
+                            <td>{{$product->nombreProducto}}</td>
+                            <td>{{$product->precioUnitario}}</td>
+                            <td>{{$transaccion_producto->cantidad}}</td>
+                            <?php
+                                $totalProducto = $product->precioUnitario * $transaccion_producto->cantidad;
+                                $total = $total + $totalProducto;
+                            ?>
+                            <td>{{$totalProducto}}</td>
                         </tr>
                     </tbody>
+                    @empty
+                        No hay productos en el carrito
+                    @endforelse
                 </table>
-                <h4>Total a pagar: {{$transaccion->monto}} <h4>               
+                <h4>Total a pagar: {{$total}} <h4>              
             </div>
 
             <!-- Tercera seccion de Grilla: Foto de pagina y boton de retorno -->

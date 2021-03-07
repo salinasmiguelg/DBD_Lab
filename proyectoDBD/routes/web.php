@@ -1,14 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\User;
-use App\Models\Rol;
-use App\Models\Comprobante;
-use App\models\Transaccion_user;
-use App\models\Transaccion;
-use App\models\Transaccion_producto;
-use App\models\Producto;
-use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,23 +31,9 @@ Route::get('/perfil/{id}','UserController@showPerfil');
 
 
 //Vista Edicion de perfil
-Route::get('/perfil/edit/{id}',function($id){
-    $user = User::find($id);
-    return view('edit')->with('user',$user);
-});
+Route::get('/perfil/edit/{id}','UserController@show');
 
-Route::get('/crearProducto/{id}',function($id){
-    $user = User::find($id);
-    $rol_user = Rol::all()->where('id_users',$id)->where('delete',false);
-        $idR = 0;
-        foreach($rol_user as $rol_user){
-            if($rol_user->nombre == "Vendedor"){
-                $idR = $rol_user->id_users;
-            }
-        }
-        $rol = Rol::find($idR);
-    return view('createProducto',compact('user','rol'));
-});
+Route::get('/crearProducto/{id}','UserController@showCrearProducto');
 
 Route::get('/validate','UserController@userValidate')->name("userValidate");
 
@@ -71,22 +49,7 @@ Route::get('/feriantes/{id}/{idU}','UserController@showFeriante');
 Route::get('/puestos/{id}/{idU}','PuestoController@showPuestos');
 
 //Vista de pago
-Route::get('/pago/{id}',function($id){
-    $user = User::find($id);
-    $transaccion_user = DB::table('transaccion_users')
-    ->join('users','users.id','=', 'transaccion_users.id_users')
-    ->select('transaccion_users.id_transaccions')
-    ->where('users.delete',false)
-    ->where('users.id', $id)
-    ->get();
-    $idT = 0;
-    foreach($transaccion_user as $transaccion_user){
-        $idT = $transaccion_user->id_transaccions;
-    }
-    $transaccion = Transaccion::find($idT);
-    
-    return view('pago',compact('user','transaccion'));
-});
+Route::get('/pago/{id}','UserController@showPago');
 
 Route::get('/pago/comprobante/{id}/{idC}','ComprobanteController@show');
 

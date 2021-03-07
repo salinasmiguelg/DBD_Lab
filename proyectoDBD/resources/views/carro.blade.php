@@ -95,7 +95,7 @@ use App\Models\Producto;
                         </div>
                         -->
                         <div class="row">
-                            <button class="btn btn-primary btn-lg active" type="submit">Pasar por caja</button>
+                            <a class="btn btn-primary btn-lg active" href = "/pago/{{$user->id}}">Pasar por caja</a>
                         </div>
 
                         <div class = "end-50 bottom text-center">

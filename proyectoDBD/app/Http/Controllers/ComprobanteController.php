@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Comprobante;
 use App\Models\User;
+use App\Models\Transaccion;
 class ComprobanteController extends Controller
 {
     /**
@@ -39,7 +40,7 @@ class ComprobanteController extends Controller
             'direccionDespacho' => ['required'],
             'metodoPago' => ['required'],
             'tipoDespacho' => ['required'],
-            'total' => ['required'],
+            'monto' => ['required'],
             ]);
             /*
             'id_users' => ['required'],
@@ -65,13 +66,16 @@ class ComprobanteController extends Controller
         $comprobante->direccionDespacho = $request->direccionDespacho;
         $comprobante->metodoPago = $request->metodoPago;
         $comprobante->tipoDespacho = $request->tipoDespacho;
-        $comprobante->total = $request->total;
-
+        $comprobante->total = $request->monto;
         $comprobante->delete = false;
         $comprobante->save();
+
+        $transaccion = Transaccion::find($request->idT);
+        $transaccion->monto = $comprobante->total;
+        $transaccion->save();
+
         $id = (int)$request->id_users;
         $user = User::find($id);
-        print_r($user->id);
         echo '<div class="alert alert-danger">Se a creado el comprobante</div>';
         return view('comprobante', compact('user', 'comprobante'));
         }
