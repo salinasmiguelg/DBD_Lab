@@ -7,10 +7,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel= "canonical" href = "https://getbootstrap.com/docs/4.0/examples/sig-in/">
 
-    <title>Feriinf</title>
+    <title>Puestos</title>
   </head>
   <body>
+
+
+
+
   <div class = "container-fluid ">
+  
+
             <div class = "row">
                 <div class="color1">
                     <nav class="navbar navbar-dark ">
@@ -52,10 +58,15 @@
 
                 </div>
 
+                <!-- titulo Pagina Pago -->
+    <div class="jumbotron">
+      <h1 class="text-center">Puestos</h1>
+    </div>
+
                 <div class = "col">
                     <div class = "container fluid">
 
-                      <h1 class = "first-title">Puestos en: {{$comuna->nombre}}</h1>
+                      <h1 class = "first-title">Localizados en: {{$comuna->nombre}}</h1>
                       @forelse($ferias_puesto as $ferias_puesto)
                       <div class = "card-columns">
                         <div class="card" style="width: 18rem;">
@@ -77,10 +88,9 @@
 
                       </div>
 
-                        <div class = "end-50 bottom text-center">
-                            <p class = "text-muted padding_up">
+                        <!-- Footer de la pagina-->
+                        <div class="footer">
                                 FERIINF - Online Market - 2021
-                            </p>
                         </div>
 
                     </div>
@@ -121,11 +131,27 @@
         background-color: #81be4d;
     }
     .card {
-      background-color: #a7dcb2;
+      background-color: #3a7658;
+      color: white;
       margin: 1%;
+    }
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #032107;
+        color: white;
+        text-align: center;
+    }
+    .jumbotron{
+        background-image: url("https://foodandtravel.mx/wp-content/uploads/2020/05/Frutas-y-verduras-de-temporada-Por.jpg");
+        background-size: cover;
+        color: white;
     }
     .first-title{
       text-align: center;
       font-size: 30px;
+      color: white;
     }
 </style>
