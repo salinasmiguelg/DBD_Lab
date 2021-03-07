@@ -68,7 +68,7 @@
                                     <h3 class= "card-title position-relative">Registrarse</h3>
                                     <input name = "nombre"  class="form-control rounded-pill" placeholder="Nombre" required minlength="2" maxlength="30"  type =  "text" autofocus="">
                                     <input name = "apellido"  class="form-control rounded-pill" placeholder="Apellido" required minlength="2" maxlength="30"  type =  "text" autofocus="">
-                                    <input name = "numeroTelefono"  class="form-control rounded-pill" placeholder="Número de teléfono" required minlength="9" maxlength="13"  type =  "text" autofocus="">
+                                    <input name = "numeroTelefono"  class="form-control rounded-pill" placeholder="Número de teléfono" required minlength="9" maxlength="13"  type="number" autofocus="">
                                     <input name = "email"  class="form-control rounded-pill" placeholder="Correo Electrónico" required=""  type =  "text" autofocus="">
                                     <input name = "contraseña"  class = "form-control rounded-pill" placeholder="Contraseña" required minlength="8" maxlength="40"  type =  "text" autofocus="">
                                     <input name = "contraseña"  class = "form-control rounded-pill" placeholder="Repita la contraseña" required minlength="8" maxlength="40"  type =  "text" autofocus="">
